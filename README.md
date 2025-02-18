@@ -42,8 +42,8 @@ Hey there! I'm **Kronbii**, a **Mechatronics Engineer** with a strong passion fo
 ## 📫 Let's Connect!  
 
 - **GitHub:** [@Kronbii](https://github.com/Kronbii)  
-- **LinkedIn:** *(Add your LinkedIn if available)*  
-- **Portfolio:** *(Link if available or "Coming Soon!")*  
+- **LinkedIn:** *https://www.linkedin.com/in/rami-kronbi/*  
+- **Portfolio:** *https://www.instagram.com/ramikronbi*  
 
 ---
 
