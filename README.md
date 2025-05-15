@@ -6,7 +6,7 @@ Hey there! I'm **Kronbii**, a **Mechatronics Engineer** with a strong passion fo
 
 ## 🚀 About Me  
 
-- 🤖 **Computer Vision Intern at Oreyeon**  
+- 🤖 **Computer Vision Engineer at Oreyeon**  
 - 🔧 **Former Mechanical & Electronic Systems Engineering Intern at IMPEX** *(Chevrolet & Cadillac Dealer in Lebanon)*  
 - 🛠 **Passionate about AI, ML, Robotics, and Embedded Systems**  
 - 🎯 **Focusing on Object Detection, Image Processing & Autonomous Systems**  
