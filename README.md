@@ -2,7 +2,6 @@
 
 ## 📫 Connect with Me
 
-* **GitHub:** [@Kronbii](https://github.com/Kronbii)
 * **LinkedIn:** [Rami Kronbi](https://www.linkedin.com/in/rami-kronbi/)
 * **Instagram:** [@ramikronbi](https://www.instagram.com/ramikronbi)
 
