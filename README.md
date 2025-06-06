@@ -3,8 +3,8 @@
 ## 📫 Connect with Me
 
 * **LinkedIn:** [Rami Kronbi](https://www.linkedin.com/in/rami-kronbi/)
-* **Instagram:** [@ramikronbi](https://www.instagram.com/ramikronbi)
 * **Email:** [Ramy Kronby](ramykronby@gmail.com)
+* **Instagram:** [@ramikronbi](https://www.instagram.com/ramikronbi)
 
 ---
 
