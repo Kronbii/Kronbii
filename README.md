@@ -1,3 +1,6 @@
+### ✍️ Random Dev Quote
+![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
+
 # 💫 About Me:
 - im a medchatronics engineer<br>- currently working as a computer vision engineer<br>- i love robotics<br>- trying to be a robotics engineer<br>- trying to get more into ROS2, robotics, ML , deeplearning<br>
 
@@ -14,9 +17,6 @@
 
 ## 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=kronbii&theme=material-palenight&no-frame=false&no-bg=false&margin-w=4)
-
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
 
 ### 🔝 Top Contributed Repo
 ![](https://github-contributor-stats.vercel.app/api?username=kronbii&limit=5&theme=gruvbox&combine_all_yearly_contributions=true)
