@@ -2,7 +2,7 @@
 # 💫 About Me
 - 🛠️ I'm a **Mechatronics and Robotics Engineer**.
 - 👁️ Currently, I'm working as a **Computer Vision Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
-- 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**.
+- 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 
 ## 🌐 Socials:
