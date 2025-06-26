@@ -1,6 +1,8 @@
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
-# 💫 About Me:
-- im a medchatronics engineer<br>- currently working as a computer vision engineer<br>- i love robotics<br>- trying to be a robotics engineer<br>- trying to get more into ROS2, robotics, ML , deeplearning<br>
+# 💫 About Me
+- 🛠️ I'm a **Mechatronics and Robotics Engineer**.
+- 👁️ Currently, I'm working as a **Computer Vision Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
+- 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**.
 
 
 ## 🌐 Socials:
