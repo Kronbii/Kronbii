@@ -1,6 +1,4 @@
-### ✍️ Random Dev Quote
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
-
 # 💫 About Me:
 - im a medchatronics engineer<br>- currently working as a computer vision engineer<br>- i love robotics<br>- trying to be a robotics engineer<br>- trying to get more into ROS2, robotics, ML , deeplearning<br>
 
