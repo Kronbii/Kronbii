@@ -1,7 +1,7 @@
 ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=gruvbox)
 # 🤖 About Me
 - 🛠️ I'm a **Mechatronics and Robotics Engineer**.
-- 👁️ Currently, I'm working as a **Computer Vision Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
+- 👁️ Currently, I'm working as a **Computer Vision and AI Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
 - 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 
