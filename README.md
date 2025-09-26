@@ -10,7 +10,6 @@
 # 📊 GitHub Stats
 ![](https://github-readme-stats.vercel.app/api?username=kronbii&theme=github_dark&hide_border=false&include_all_commits=true&count_private=true)<br/>
 ![](https://nirzak-streak-stats.vercel.app/?user=kronbii&theme=github_dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=kronbii&theme=github_dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 # 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=kronbii&theme=material-palenight&no-frame=false&no-bg=false&margin-w=4)
@@ -20,5 +19,3 @@
 
 ---
 [![](https://visitcount.itsvg.in/api?id=kronbii&icon=0&color=0)](https://visitcount.itsvg.in)
-
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
