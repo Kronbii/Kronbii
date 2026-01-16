@@ -14,15 +14,6 @@
       Author of <b>easyPID</b>, a production-grade multi-instance PID controller library for embedded systems
     </td>
   </tr>
-  <tr>
-    <td width="50">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="38"/>
-    </td>
-    <td>
-      <b>OpenCV</b><br/>
-      Contributor to computer vision geometry and affine transformation tooling
-    </td>
-  </tr>
 </table>
 
 
