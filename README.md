@@ -4,14 +4,28 @@
 - 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 ## 🌍 Open-Source Contributions
-<p align="left">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="28" />
-<b>Arduino Library Manager</b> — Author of <b>easyPID</b>, a production-grade PID controller library for embedded systems
-</p>
-<p align="left">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="28" />
-<b>OpenCV</b> — Contributor to computer vision geometry and affine transformation tooling
-</p>
+
+<table>
+  <tr>
+    <td width="40">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="28"/>
+    </td>
+    <td>
+      <b>Arduino Library Manager</b><br/>
+      Author of <b>easyPID</b>, a production-grade multi-instance PID controller library for embedded systems
+    </td>
+  </tr>
+  <tr>
+    <td width="40">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="28"/>
+    </td>
+    <td>
+      <b>OpenCV</b><br/>
+      Contributor to computer vision geometry and affine transformation tooling
+    </td>
+  </tr>
+</table>
+
 
 # 🌐 Socials
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/ramikronbi) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/rami-kronbi) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:ramykronby@gmail.com) 
