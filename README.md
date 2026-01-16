@@ -7,33 +7,27 @@
 <div style="
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
   gap: 12px;
   padding: 10px 16px;
   border-radius: 12px;
-  background: #0d1117;
+  background-color: #0d1117;
   border: 1px solid #30363d;
   color: #c9d1d9;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  line-height: 1;
 ">
-  <div style="
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: #0d1117;
-  ">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg"
-      style="height: 20px;"
-    />
-  </div>
-  <span>@arduino</span>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg"
+    style="
+      height: 22px;
+      display: block;
+    "
+  />
+  <span style="line-height: 1;">@arduino</span>
 </div>
+
 
 
 
