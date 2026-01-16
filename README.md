@@ -4,27 +4,20 @@
 - 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 ## 🌍 Open-Source Contributions
+<p align="left">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="26" />
+  <b>Arduino Library Manager</b>
+  <br/>
+  Author of <b>easyPID</b>, a production-grade PID controller library for embedded systems
+</p>
 
-<table>
-  <tr>
-    <td width="40">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="28"/>
-    </td>
-    <td>
-      <b>Arduino Library Manager</b><br/>
-      Author of <b>easyPID</b>, a production-grade multi-instance PID controller library for embedded systems
-    </td>
-  </tr>
-  <tr>
-    <td width="40">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="28"/>
-    </td>
-    <td>
-      <b>OpenCV</b><br/>
-      Contributor to computer vision geometry and affine transformation tooling
-    </td>
-  </tr>
-</table>
+<p align="left">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="26" />
+  <b>OpenCV</b>
+  <br/>
+  Contributor to computer vision geometry and affine transformation tooling
+</p>
+
 
 
 # 🌐 Socials
