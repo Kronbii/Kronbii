@@ -4,32 +4,26 @@
 - I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 ## 🌍 Open-Source Contributions
-<div style="
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  gap: 12px;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background-color: #0d1117;
-  border: 1px solid #30363d;
-  color: #c9d1d9;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-">
-  <img
-    src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg"
-    style="
-      height: 22px;
-      display: block;
-    "
-  />
-  <span style="line-height: 1;">@arduino</span>
-</div>
-
-
-
+<table>
+  <tr>
+    <td width="40">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="28"/>
+    </td>
+    <td>
+      <b>Arduino Library Manager</b><br/>
+      Author of <b>easyPID</b>, a production-grade multi-instance PID controller library for embedded systems
+    </td>
+  </tr>
+  <tr>
+    <td width="40">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="28"/>
+    </td>
+    <td>
+      <b>OpenCV</b><br/>
+      Contributor to computer vision geometry and affine transformation tooling
+    </td>
+  </tr>
+</table>
 
 
 
