@@ -7,23 +7,34 @@
 <div style="
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  border-radius: 14px;
-  background-color: #0f1115;
-  border: 1px solid #2a2f3a;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: #ffffff;
-  font-size: 15px;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
   font-weight: 500;
+  line-height: 1;
 ">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" style="height:22px;" />
+  <div style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #0d1117;
+  ">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg"
+      style="height: 20px;"
+    />
+  </div>
   <span>@arduino</span>
 </div>
 
-<br/>
-
-Author of <b>easyPID</b>, a production-grade PID controller library for embedded systems
 
 
 
