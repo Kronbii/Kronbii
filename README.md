@@ -6,7 +6,7 @@
 ## 🌍 Open-Source Contributions
 <table>
   <tr>
-    <td width="40">
+    <td width="50">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="38"/>
     </td>
     <td>
@@ -15,7 +15,7 @@
     </td>
   </tr>
   <tr>
-    <td width="40">
+    <td width="50">
       <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="38"/>
     </td>
     <td>
