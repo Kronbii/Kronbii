@@ -1,7 +1,7 @@
-# 🤖 About Me
-- 🛠️ I'm a **Mechatronics and Robotics Engineer**.
-- 👁️ Currently, I'm working as a **Computer Vision and AI Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
-- 🚀 I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
+# 🤖 Who is Rami?
+- I'm a **Mechatronics and Robotics Engineer**.
+- Currently, I'm working as a **Computer Vision and AI Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
+- I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 ## 🌍 Open-Source Contributions
 <p align="left">
@@ -9,13 +9,6 @@
   <b>Arduino Library Manager</b>
   <br/>
   Author of <b>easyPID</b>, a production-grade PID controller library for embedded systems
-</p>
-
-<p align="left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg" width="26" />
-  <b>OpenCV</b>
-  <br/>
-  Contributor to computer vision geometry and affine transformation tooling
 </p>
 
 
