@@ -22,5 +22,4 @@
 # 🌐 Socials
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/ramikronbi) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/rami-kronbi) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:ramykronby@gmail.com) 
 
-![](https://github-readme-stats.vercel.app/api?username=kronbii&theme=github_dark&hide_border=false&include_all_commits=true&count_private=true)<br/>
 ![](https://github-readme-stats-phi-inky.vercel.app/api?username=kronbii&show=prs_merged,prs_merged_percentage&show_icons=True&theme=github_dark&hide_border=false&count_private=true&include_all_commits=true)
