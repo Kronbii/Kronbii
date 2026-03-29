@@ -1,7 +1,8 @@
 # 🤖 Who is Rami?
-- I'm a **Systems Engineer**.
-- Currently, I'm working as a **Embedded, Computer Vision, and AI Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
-- I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
+- I'm an **AI Systems Engineer** building real-time systems across **AI, ML, Computer Vision, and Robotics**.
+- Currently, I'm an **AI Systems & Computer Vision Engineer** at **[Oreyeon](https://www.oreyeon.com/)**, working on embedded vision, sensor fusion, and deployment-critical systems.
+- I also build and deploy **full-stack AI applications** with clean, modern UI.
+- Beyond engineering, I lead and build communities like **NASA Space Apps Beirut** and **Daleel**, mentor teams, and contribute to technical communities.
 
 ## 🌍 Open-Source Contributions
 <table>
