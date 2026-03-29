@@ -1,8 +1,16 @@
-# 🤖 Who is Rami?
-- I'm an **AI Systems Engineer** building real-time systems across **AI, ML, Computer Vision, and Robotics**.
-- Currently, I'm an **AI Systems & Computer Vision Engineer** at **[Oreyeon](https://www.oreyeon.com/)**, working on embedded vision, sensor fusion, and deployment-critical systems.
-- I also build and deploy **full-stack AI applications** with clean, modern UI.
-- Beyond engineering, I lead and build communities like **NASA Space Apps Beirut** and **Daleel**, mentor teams, and contribute to technical communities.
+# Rami Kronbi
+
+### 🧑‍💻 Portfolio
+[ramikronbi.com](https://ramikronbi.com)
+
+---
+
+### 🤖 Who is Rami?
+
+- **AI Systems Engineer** building real-time systems across **AI, ML, Computer Vision, and Robotics**
+- Currently an **AI Systems & Computer Vision Engineer** at **[Oreyeon](https://www.oreyeon.com/)**, working on embedded vision, sensor fusion, and deployment-critical systems
+- Also build and deploy **full-stack AI applications** with clean, modern UI
+- Beyond engineering, lead and build communities like **NASA Space Apps Beirut** and **Daleel**, mentor teams, and contribute to technical communities
 
 ## 🌍 Open-Source Contributions
 <table>
