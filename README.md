@@ -1,6 +1,6 @@
 # 🤖 Who is Rami?
-- I'm a **Mechatronics and Robotics Engineer**.
-- Currently, I'm working as a **Computer Vision and AI Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
+- I'm a **Systems Engineer**.
+- Currently, I'm working as a **Embedded, Computer Vision, and AI Engineer** at **[Oreyeon](https://www.oreyeon.com/)**.
 - I'm actively working to get more into **robotics** and deepen my expertise in **machine learning**. <br>
 
 ## 🌍 Open-Source Contributions
