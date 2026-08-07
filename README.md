@@ -48,5 +48,3 @@
   <a href="https://substack.com/@kronbii"><img src="https://img.shields.io/badge/Substack-FF6719?logo=substack&logoColor=white" /></a>
   <a href="https://www.youtube.com/@RamiKronbi"><img src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white" /></a>
 </p>
-
-![](https://github-readme-stats-phi-inky.vercel.app/api?username=kronbii&show=prs_merged,prs_merged_percentage&show_icons=True&theme=github_dark&hide_border=false&count_private=true&include_all_commits=true)
