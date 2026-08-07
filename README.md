@@ -41,3 +41,7 @@
   <a href="https://substack.com/@kronbii"><img src="https://img.shields.io/badge/Substack-FF6719?logo=substack&logoColor=white" /></a>
   <a href="https://www.youtube.com/@RamiKronbi"><img src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white" /></a>
 </p>
+
+[![committers.top badge](https://user-badge.committers.top/lebanon/USERNAME.svg)](https://user-badge.committers.top/lebanon/USERNAME)
+
+[![committers.top badge](https://org-badge.committers.top/lebanon/ORGNAME.svg)](https://org-badge.committers.top/lebanon/ORGNAME)
