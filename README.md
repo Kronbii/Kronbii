@@ -42,6 +42,6 @@
   <a href="https://www.youtube.com/@RamiKronbi"><img src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white" /></a>
 </p>
 
-[![committers.top badge](https://user-badge.committers.top/lebanon/USERNAME.svg)](https://user-badge.committers.top/lebanon/USERNAME)
-
-[![committers.top badge](https://org-badge.committers.top/lebanon/ORGNAME.svg)](https://org-badge.committers.top/lebanon/ORGNAME)
+<p align="center">
+  <a href="https://committers.top/lebanon"><img src="https://user-badge.committers.top/lebanon/Kronbii.svg" alt="committers.top Lebanon rank" /></a>
+</p>
