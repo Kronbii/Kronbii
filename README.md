@@ -5,7 +5,6 @@
   </picture>
 </a>
 
----
 
 <p align="center">
   <a href="https://committers.top/lebanon"><img src="https://user-badge.committers.top/lebanon/Kronbii.svg" alt="committers.top Lebanon rank" /></a>
@@ -13,8 +12,7 @@
 
 ---
 
-### 🧑‍💻 Portfolio
-[ramikronbi.com](https://ramikronbi.com)
+### 🧑‍💻 Portfolio: [ramikronbi.com](https://ramikronbi.com)
 
 ---
 
