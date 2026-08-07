@@ -5,9 +5,10 @@
   </picture>
 </a>
 
-<!-- SVG layout adapted from https://github.com/Andrew6rant/Andrew6rant -->
+<p align="center">
+  <a href="https://committers.top/lebanon"><img src="https://user-badge.committers.top/lebanon/Kronbii.svg" alt="committers.top Lebanon rank" /></a>
+</p>
 
-# Rami Kronbi
 
 ### 🧑‍💻 Portfolio
 [ramikronbi.com](https://ramikronbi.com)
@@ -40,8 +41,4 @@
   <a href="https://medium.com/@ramikronbi"><img src="https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white" /></a>
   <a href="https://substack.com/@kronbii"><img src="https://img.shields.io/badge/Substack-FF6719?logo=substack&logoColor=white" /></a>
   <a href="https://www.youtube.com/@RamiKronbi"><img src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=white" /></a>
-</p>
-
-<p align="center">
-  <a href="https://committers.top/lebanon"><img src="https://user-badge.committers.top/lebanon/Kronbii.svg" alt="committers.top Lebanon rank" /></a>
 </p>
