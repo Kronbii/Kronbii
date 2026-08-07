@@ -1,0 +1,138 @@
+# Everything shown on the card. Edit this file, then run:
+#
+#     python card.py
+#
+# Leader dots are counted for you. If a line is too long to fit the card,
+# card.py says so and tells you how many characters to cut.
+
+user = "rami@kronbii"          # the header, rendered as "user -————…"
+birthday = "2004-04-02"        # what the {age} / Uptime line counts from
+
+# The ASCII panel is configured in the [art] table at the bottom of this file.
+
+# Rows render top to bottom. Each one is:
+#
+#   { key = "…", value = "…" }   a normal ". Key: ..... value" line
+#   { blank = true }             a spacer
+#   { rule = "…" }               a "- Section -————…" divider
+#   { stats = "…" }              a GitHub stats line (see the bottom of the file)
+#
+# A dot in a key ("Languages.Real") renders the halves as separate highlights,
+# the way Andrew's card does.
+#
+# These values are filled in on every scheduled run by today.py:
+#
+#   {age}   time since BIRTHDAY, e.g. "25 years, 3 months, 14 days"
+#
+# Whatever you write here is only the placeholder shown until the first run.
+
+rows = [
+  { key = "OS",     value = "Ubuntu 24.04, Windows 11, Android" },
+  { key = "Uptime", value = "{age}" },
+  { key = "Host",   value = "Oreyeon" },
+  { key = "Kernel", value = "Systems & Vision Engineer" },
+  { key = "IDE",    value = "VSCode, Neovim, PlatformIO" },
+
+  { blank = true },
+
+  { key = "Languages.Programming", value = "Python, C++, C, JavaScript" },
+  { key = "Languages.Computer",    value = "HTML, CSS, JSON, YAML, LaTeX" },
+  { key = "Languages.Real",        value = "English, Arabic, German" },
+
+  { blank = true },
+
+  { key = "Hobbies.Software", value = "Computer Vision, Robotics, LLMs" },
+  { key = "Hobbies.Hardware", value = "Embedded Systems, Sensor Fusion" },
+
+  { rule = "Contact" },
+
+  { key = "Email.Personal", value = "ramykronby@gmail.com" },
+  { key = "Website",        value = "ramikronbi.com" },
+  { key = "LinkedIn",       value = "rami-kronbi" },
+  { key = "Instagram",      value = "ramikronbi" },
+  { key = "YouTube",        value = "@RamiKronbi" },
+
+  { rule = "GitHub Stats" },
+
+  # The three composite lines. Reorder or delete them freely; `labels` renames
+  # the highlighted words. The numbers themselves come from the API.
+  { stats = "repos",   labels = ["Repos", "Contributed", "Stars"] },
+  { stats = "commits", labels = ["Commits", "Followers"] },
+  { stats = "loc",     labels = ["Lines of Code"] },
+]
+
+# ── the ASCII panel ─────────────────────────────────────────────────────────
+# After changing anything here, run:  python asciify.py && python card.py
+# asciify.py prints the panel to the terminal, so you can tune without opening
+# the SVG. Everything below has a default; delete a line to go back to it.
+[art]
+source = "cache/avatar.png"    # the photo
+file   = "cache/art.txt"       # generated; safe to hand-edit afterwards
+
+# Font size of the art panel only -- the info column stays at 16px. Smaller type
+# means more characters in the same space, so more of the photo survives:
+#   16 -> 38x25   Andrew's original grid
+#   12 -> 50x33
+#   10 -> 60x39   resolves things like backpack straps
+#    8 -> 76x49   stops reading as characters, more like a halftone
+size = 10
+
+# How the photo meets the panel. The panel is tall and narrow, so a wide pose
+# can't do both at once:
+#   "fill"     fill the panel, cropping whatever falls outside its shape
+#   "contain"  show all of the subject, leaving blank rows above and below
+fit = "fill"
+
+# The characters used, sparse to dense. Must start with a space -- that's the
+# "nothing here" level. More characters means finer shading, but adding dense
+# ones in the middle can flatten the figure: the shirt starts landing on the
+# same weight as the backpack and the shape stops reading. Fewer, well-spaced
+# characters usually beat more.
+ramp = " .':;!*=%$@"
+
+# How solid the figure is: the lowest ramp level the subject is allowed to use.
+# 0 lets it fade into the background; 0.42 keeps it clearly above the wash; near
+# 1 makes it a flat silhouette with no internal detail.
+density = 0.3
+
+# How much of the scene behind you shows: the highest ramp level the background
+# may reach. This is a cliff, not a fade -- anything below about 0.06 rounds
+# away to nothing on an 11-character ramp. Measured on the current photo:
+#   0.00 - 0.05   nothing
+#   0.07          faint scene, ~300 characters
+#   0.10          clear scene, ~900 characters
+#   0.15+         busy enough to compete with the figure
+background = 0.2
+
+# Gamma on the figure's shading. 1.0 is linear. Below 1 pushes it toward solid
+# (less internal detail, stronger silhouette); above 1 opens up the mid-tones so
+# more of the shirt and backpack shading survives.
+shading = 0.8
+
+# Drop lone lit characters out in the background -- they read as dirt, not
+# scenery. Set false to keep every speck.
+despeckle = true
+
+# Padding around the subject before cropping. 1.0 is a tight crop, 1.06 leaves
+# a little air, 1.3 pulls back.
+headroom = 1.06
+
+# The box GrabCut seeds the subject from, as fractions of the photo
+# [left, top, right, bottom]. Everything outside is treated as definite
+# background, so a tight box cuts off whatever pokes out of it. Widen this if
+# part of you is being erased; tighten it if scenery is being kept.
+subject_box = [0.02, 0.24, 0.98, 0.98]
+
+# Placeholder numbers, shown until the first scheduled run replaces them. Their
+# width also reserves the column: today.py keeps each line the same total width
+# by reflowing the dots, so leave a little room for these to grow.
+[placeholders]
+age       = "22 years, 4 months, 5 days"
+repos     = "64"
+contrib   = "77"
+stars     = "19"
+commits   = "1,589"
+followers = "21"
+loc       = "6,359,006"
+loc_add   = "10,808,490"
+loc_del   = "4,449,484"
