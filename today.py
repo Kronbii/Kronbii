@@ -69,7 +69,25 @@ def format_plural(unit):
 
 
 RETRY_STATUS = {429, 500, 502, 503, 504}
-RETRIES = 5
+RETRIES = 8
+MAX_BACKOFF = 60
+
+# Commits per page in recursive_loc().
+#
+# GitHub costs this query by the diff it has to compute, not by commit count, so
+# a repository with large files makes a page expensive no matter how short its
+# history. One ~178MB repo here took 3.2s on average and 6.7s at worst for a page
+# of 100 -- close enough to the endpoint's internal timeout that it 502s first
+# whenever the API is degraded, and it is what ended two runs. At 50 the same
+# page measures 1.3s average, 3.8s worst.
+#
+# Total time for a full walk barely moves, since per-commit cost is roughly flat;
+# this trades one slow request for two safe ones. Going lower still is the next
+# lever if 502s return, but recursive_loc() recurses once per page, so the floor
+# is set by the longest history rather than by request timing: the deepest repo
+# here (5619 commits) walks in 113 pages and peaks at 338 stack frames against
+# the stock limit of 1000. Halving this again would roughly double that.
+COMMIT_PAGE = 50
 
 
 def post(query, variables):
@@ -80,13 +98,36 @@ def post(query, variables):
     queries. Upstream treats any non-200 as fatal, so a single blip anywhere in
     a run of hundreds of requests loses the whole thing -- which on the schedule
     means a day with no update. Backing off and trying again costs seconds.
+
+    Two kinds of failure are retried, because both have been observed to end a
+    scheduled run:
+
+    - A retryable status code, 502 above all.
+    - A transport-level exception. TLS and connection errors are raised out of
+      requests.post() before there is any status code to inspect, so a status-
+      only retry misses them entirely and the traceback escapes to the top.
+
+    The backoff caps at MAX_BACKOFF rather than doubling without limit, and runs
+    long enough (~2 minutes) to ride out a degraded patch rather than only a
+    single blip -- the failures seen so far outlasted a 15-second budget.
     """
     for attempt in range(RETRIES):
-        request = requests.post('https://api.github.com/graphql',
-                                json={'query': query, 'variables': variables}, headers=HEADERS)
-        if request.status_code not in RETRY_STATUS or attempt == RETRIES - 1:
+        last = attempt == RETRIES - 1
+        delay = min(2 ** attempt, MAX_BACKOFF)
+        try:
+            request = requests.post('https://api.github.com/graphql',
+                                    json={'query': query, 'variables': variables}, headers=HEADERS)
+        except requests.exceptions.RequestException as error:
+            # No status code exists here, so there is nothing to hand back to the
+            # caller. Out of attempts, the exception is the honest result.
+            if last:
+                raise
+            print(f'   {type(error).__name__} reaching GitHub, retrying in {delay}s '
+                  f'({attempt + 1}/{RETRIES - 1})')
+            time.sleep(delay)
+            continue
+        if request.status_code not in RETRY_STATUS or last:
             return request
-        delay = 2 ** attempt
         print(f'   {request.status_code} from GitHub, retrying in {delay}s '
               f'({attempt + 1}/{RETRIES - 1})')
         time.sleep(delay)
@@ -161,16 +202,16 @@ def graph_repos_stars(count_type, owner_affiliation, cursor=None, add_loc=0, del
 
 def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, deletion_total=0, my_commits=0, cursor=None):
     """
-    Uses GitHub's GraphQL v4 API and cursor pagination to fetch 100 commits from a repository at a time
+    Uses GitHub's GraphQL v4 API and cursor pagination to fetch COMMIT_PAGE commits from a repository at a time
     """
     query_count('recursive_loc')
     query = '''
-    query ($repo_name: String!, $owner: String!, $cursor: String) {
+    query ($repo_name: String!, $owner: String!, $cursor: String, $page: Int!) {
         repository(name: $repo_name, owner: $owner) {
             defaultBranchRef {
                 target {
                     ... on Commit {
-                        history(first: 100, after: $cursor) {
+                        history(first: $page, after: $cursor) {
                             totalCount
                             edges {
                                 node {
@@ -196,8 +237,15 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
             }
         }
     }'''
-    variables = {'repo_name': repo_name, 'owner': owner, 'cursor': cursor}
-    request = post(query, variables) # I cannot use simple_request(), because I want to save the file before raising Exception
+    variables = {'repo_name': repo_name, 'owner': owner, 'cursor': cursor, 'page': COMMIT_PAGE}
+    # I cannot use simple_request(), because I want to save the file before raising Exception.
+    # post() can also raise outright once it runs out of transport-level retries, and that path
+    # has to save the file too, or a network failure costs the partial cache this run built.
+    try:
+        request = post(query, variables)
+    except requests.exceptions.RequestException:
+        force_close_file(data, cache_comment)
+        raise
     if request.status_code == 200:
         if request.json()['data']['repository']['defaultBranchRef'] != None: # Only count commits if repo isn't empty
             return loc_counter_one_repo(owner, repo_name, data, cache_comment, request.json()['data']['repository']['defaultBranchRef']['target']['history'], addition_total, deletion_total, my_commits)
