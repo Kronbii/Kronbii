@@ -1,10 +1,18 @@
 name: README build
 on:
-  push:
-    branches:
-      - main
+  # Once a day, and by hand when a change needs to show up sooner.
+  #
+  # No push trigger: the card is a function of GitHub's data, not of this
+  # repository's contents, so rebuilding it on every commit only spends runs to
+  # produce the same output the next scheduled run would. workflow_dispatch
+  # covers the case where an edit here does change the card and the wait is
+  # unwanted.
+  #
+  # :37 rather than :00 because GitHub queues scheduled workflows and the top of
+  # the hour is its busiest slot -- every run on "0 4" started between 05:03 and
+  # 05:41 UTC, an hour or more late. An offset minute is less contended.
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "37 4 * * *"
   workflow_dispatch:
 permissions:
   contents: write
