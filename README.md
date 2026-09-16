@@ -32,7 +32,7 @@
 
   <tr>
   <td width="50" align="center">
-    <img src="https://betaflight.com/img/betaflight/icon_dark.svg"
+    <img src="assets/logos/betaflight.svg"
          width="38" height="38" alt="Betaflight logo"/>
   </td>
   <td>
@@ -43,7 +43,7 @@
   
 <tr>
   <td width="50" align="center">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCK3gbBPB6-SdVQ9aJdcl2D6VswMnivM2ILf5F7TdVdg&s=10"
+    <img src="assets/logos/openfront.png"
          width="38" height="38" alt="OpenFront logo"/>
   </td>
   <td>
