@@ -29,6 +29,28 @@
       Author of <b>easyPID</b>, a production-grade multi-instance PID controller library for embedded systems
     </td>
   </tr>
+
+  <tr>
+  <td width="50" align="center">
+    <img src="https://betaflight.com/img/betaflight/icon_dark.svg"
+         width="38" height="38" alt="Betaflight logo"/>
+  </td>
+  <td>
+    <b>Betaflight</b><br/>
+    Contributor to the open-source flight controller firmware project
+  </td>
+</tr>
+  
+<tr>
+  <td width="50" align="center">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCK3gbBPB6-SdVQ9aJdcl2D6VswMnivM2ILf5F7TdVdg&s=10"
+         width="38" height="38" alt="OpenFront logo"/>
+  </td>
+  <td>
+    <b>OpenFront</b><br/>
+    Contributor to the open-source real-time strategy game
+  </td>
+</tr>
 </table>
 
 ---
