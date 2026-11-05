@@ -278,8 +278,19 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
 def loc_counter_one_repo(history, addition_total, deletion_total, my_commits):
     """
     Adds the LOC value of one page of commits, counting only those authored by me
+
+    A commit whose diff GitHub cannot compute comes back as a null node, with a
+    SERVICE_UNAVAILABLE error ("The additions count for this commit is
+    unavailable") beside the data. That is permanent, not a blip: two commits in
+    fine-crack-tracing always do it. Indexing into the null raised TypeError,
+    which cache_builder reads as an empty repo, so the repo was cached as
+    '0 0 0 0' and re-walked on every run -- its heaviest page each time, until
+    one degraded morning it 502'd through every retry and ended the run. Such a
+    commit has no lines to add, so it is skipped and the rest of the repo counts.
     """
     for node in history['edges']:
+        if node['node'] is None:
+            continue
         if node['node']['author']['user'] == OWNER_ID:
             my_commits += 1
             addition_total += node['node']['additions']
