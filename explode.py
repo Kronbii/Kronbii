@@ -3,8 +3,9 @@ Draws "What I build with" as an exploded assembly drawing.
 
     python explode.py
 
-Writes assets/explode-light.svg and assets/explode-dark.svg. Local only: the
-drawing changes when the parts list below does, not from day to day.
+Writes assets/explode-light.svg and assets/explode-dark.svg, and phone copies
+(assets/explode-phone-*.svg) with the parts list under the drawing. Local
+only: the drawing changes when the parts list below does, not from day to day.
 
 The robot is a composite, not one project: a tracked chassis, its drive, a
 compute deck and a top deck carrying the arm, the servos and the sensors --
@@ -696,9 +697,15 @@ def text(x, y, s, size, cls='tx', anchor='start', weight=None, track=0):
             f'textLength="{w:.1f}" lengthAdjust="spacingAndGlyphs">{esc(s)}</text>')
 
 
-def build(theme):
-    t = SAGE[theme]
-    m, g = t['fringe'][1], t['fringe'][0]
+def assembly(area, size, balloon_x=None):
+    """
+    The exploded robot fitted into `area` (x, y, w, h) on a sheet of `size`
+    (w, h): its layers in painter's order with their assembly lines, then its
+    balloons. `balloon_x(left, right)` picks the two balloon columns from the
+    robot's drawn left and right edges. Returns the drawing, how far each
+    layer drops to close, the hull clip and the layers.
+    """
+    W, H = size
     L = layers()
     B = balloons()
 
@@ -710,7 +717,6 @@ def build(theme):
                 pts.append(project(add(p, (0, 0, OFFSET[i]))))
     x0, x1 = min(p[0] for p in pts), max(p[0] for p in pts)
     y0, y1 = min(p[1] for p in pts), max(p[1] for p in pts)
-    area = (74, 34, 560, HEIGHT - 34 - 52)               # x, y, w, h for the robot
     k = min(area[2] / (x1 - x0), area[3] / (y1 - y0))
     ox = area[0] + (area[2] - (x1 - x0) * k) / 2 - x0 * k
     oy = area[1] + (area[3] - (y1 - y0) * k) / 2 - y0 * k
@@ -730,7 +736,7 @@ def build(theme):
             P0((h['x0'], h['y1'], h['z1'])), P0((h['x0'], h['y1'], h['z0'])),
             P0((h['x1'], h['y1'], h['z0'])), P0((h['x1'], h['y0'], h['z0']))]
     clip = (f'<clipPath id="tub" clipPathUnits="userSpaceOnUse"><path clip-rule="evenodd" '
-            f'd="M-10,-10H{WIDTH + 10}V{HEIGHT + 10}H-10Z {path_of(near)}"/></clipPath>')
+            f'd="M-10,-10H{W + 10}V{H + 10}H-10Z {path_of(near)}"/></clipPath>')
 
     body = []
     for name, parts, i in L:
@@ -747,7 +753,10 @@ def build(theme):
             body.append(f'<g class="bal"><path class="cl" d="{d}"/></g>')
 
     # balloons, drawn last; each rides with its layer and fades as it closes
-    left_x, right_x = max(28, ox + x0 * k - 40), min(612, ox + x1 * k + 40)
+    if balloon_x:
+        left_x, right_x = balloon_x(ox + x0 * k, ox + x1 * k)
+    else:
+        left_x, right_x = max(28, ox + x0 * k - 40), min(612, ox + x1 * k + 40)
     rows = {'l': [], 'r': []}
     for n, i, a, side in B:
         q = P_for(i)(a)
@@ -771,6 +780,11 @@ def build(theme):
     for i, items in balls.items():
         if items:
             body.append(f'<g class="L{i}"><g class="bal">{"".join(items)}</g></g>')
+    return body, drop, clip, L
+
+
+def build(theme):
+    body, drop, clip, L = assembly((74, 34, 560, HEIGHT - 34 - 52), (WIDTH, HEIGHT))
 
     # the bill of materials
     bx, by, bw = 642, 46, WIDTH - 642 - 26
@@ -805,7 +819,24 @@ def build(theme):
     note = [text(74, HEIGHT - 22, 'Not one robot: the parts I keep reaching for, across my projects.', 12, 'tx dim')]
 
     drawing = ''.join(body) + ''.join(bom) + ''.join(note)
+    return sheet(theme, WIDTH, HEIGHT, drawing, drop, clip, L, rx=15)
 
+
+LABEL = ('What I build with, as an exploded assembly drawing of a composite robot: a tracked chassis, '
+         'motors and ESCs, servos, a 6-DoF arm, a Jetson Orin, a Raspberry Pi 5, an ESP32, an Arduino, '
+         'a camera, a 3D LiDAR, an IMU and GNSS, with ROS 2 and Nav2, OpenCV, MediaPipe, PX4 and '
+         'Betaflight, in C, C++ and Python.')
+
+
+def sheet(theme, W, H, drawing, drop, clip, L, rx, size=None, shift=('.75', '.2')):
+    """
+    The drawing on its sheet, plotted twice by the two pens, with the layers'
+    close-and-open timing. `size` is the SVG's width and height attributes when
+    they differ from its viewBox (the phone copy is drawn at twice its units);
+    `shift` is how far out of register the two pens print, x and y.
+    """
+    t = SAGE[theme]
+    m, g = t['fringe'][1], t['fringe'][0]
     # timing: rest open, close, rest closed, open again -- 15 s, 24 beats at 96 BPM
     keys = []
     for _, _, i in L:
@@ -818,14 +849,11 @@ def build(theme):
         keys.append(f'.L{i} {{ animation: c{i} 15s infinite; }}')
 
     if theme == 'light':
-        blend, sheet = 'multiply', t['bg']
+        blend, paper = 'multiply', t['bg']
     else:
-        blend, sheet = 'screen', t['bg']
-    label = ('What I build with, as an exploded assembly drawing of a composite robot: a tracked chassis, '
-             'motors and ESCs, servos, a 6-DoF arm, a Jetson Orin, a Raspberry Pi 5, an ESP32, an Arduino, '
-             'a camera, a 3D LiDAR, an IMU and GNSS, with ROS 2 and Nav2, OpenCV, MediaPipe, PX4 and '
-             'Betaflight, in C, C++ and Python.')
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" font-family="{FONT}" role="img" aria-label="{esc(label)}">
+        blend, paper = 'screen', t['bg']
+    sw, sh = size or (W, H)
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{sw}" height="{sh}" viewBox="0 0 {W} {H}" font-family="{FONT}" role="img" aria-label="{esc(LABEL)}">
 <style>
 text {{ white-space: pre; }}
 .t0 {{ fill: var(--t0); }} .t1 {{ fill: var(--t1); }} .t2 {{ fill: var(--t2); }}
@@ -838,19 +866,72 @@ text {{ white-space: pre; }}
 .tx {{ fill: var(--pen); }}
 .dim {{ opacity: .62; }}
 .pen {{ mix-blend-mode: {blend}; }}
-.pm {{ transform: translate(-.75px, -.2px); }}
-.pg {{ transform: translate(.75px, .2px); }}
+.pm {{ transform: translate(-{shift[0]}px, -{shift[1]}px); }}
+.pg {{ transform: translate({shift[0]}px, {shift[1]}px); }}
 {chr(10).join(keys)}
 .bal {{ animation: bal 15s infinite; }}
 @keyframes bal {{ 0%, 28% {{ opacity: 1; }} 36%, 88% {{ opacity: 0; }} 96%, 100% {{ opacity: 1; }} }}
 @media (prefers-reduced-motion: reduce) {{ .L1, .L2, .L3, .L4, .bal {{ animation: none; }} }}
 </style>
 <defs>{clip}<g id="dwg">{drawing}</g></defs>
-<rect x=".5" y=".5" width="{WIDTH - 1}" height="{HEIGHT - 1}" rx="15" fill="{sheet}" stroke="{t['edge']}"/>
+<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="{rx}" fill="{paper}" stroke="{t['edge']}"/>
 <use href="#dwg" class="pen pm" style="{pen_vars(theme, m)}"/>
 <use href="#dwg" class="pen pg" style="{pen_vars(theme, g)}"/>
 </svg>
 """
+
+
+# ── the phone sheet ─────────────────────────────────────────────────────────
+# The README shows this copy when the screen is 640 px wide or less: the same
+# assembly, now full width on top with its balloons either side, and the bill
+# of materials as a list underneath. 320 units wide, drawn at twice that, so on
+# a 375 px phone (a 293 px README column) one unit is about 0.92 px.
+PHONE_W = 320
+PAD = 12
+ROW = 16
+
+
+def wrap(s, cols):
+    lines, line = [], ''
+    for word in s.split():
+        if line and len(line) + 1 + len(word) > cols:
+            lines.append(line)
+            line = word
+        else:
+            line = f'{line} {word}'.strip()
+    return lines + [line]
+
+
+def build_phone(theme):
+    robot = (60, 14, 200, 269)
+    body, drop, clip, L = assembly(robot, (PHONE_W, 2000), balloon_x=lambda left, right: (PAD + 14, PHONE_W - PAD - 14))
+    bx, bw = PAD, PHONE_W - 2 * PAD
+    by = robot[1] + robot[3] + 26
+    bom = [text(bx, by - 9, 'BILL OF MATERIALS', 12, 'tx', weight=700, track=1.5),
+           text(bx + bw, by - 9, 'QTY 1 EACH', 11, 'tx dim', 'end'),
+           f'<path class="ln" d="M{bx},{by}H{bx + bw}"/>']
+    cols = (bx + 12, bx + 34, bx + 158)        # item (centred), part, role
+    y = by + 19
+    for group, title in ((BOM, None), (SOFTWARE, 'FIRMWARE · SOFTWARE')):
+        if title:
+            y += 3
+            bom.append(text(bx, y, title, 11, 'tx dim', track=1))
+            bom.append(f'<path class="fn" d="M{bx},{y + 6}H{bx + bw}"/>')
+            y += 21
+        for item, part, role in group:
+            bom.append(text(cols[0], y, item, 11, 'tx', 'middle', weight=700))
+            bom.append(text(cols[1], y, part, 12, 'tx', weight=700))
+            bom.append(text(cols[2], y, role, 11, 'tx dim'))
+            y += ROW
+    bom.append(f'<path class="ln" d="M{bx},{y - 9}H{bx + bw}"/>')
+    y += 10
+    for line in wrap('Not one robot: the parts I keep reaching for, across my projects.', int(bw / (12 * ADVANCE))):
+        bom.append(text(bx, y, line, 12, 'tx dim'))
+        y += 16
+    H = round(y - 16 + PAD + 2)
+    return sheet(theme, PHONE_W, H, ''.join(body) + ''.join(bom), drop,
+                 clip.replace('V2010H', f'V{H + 10}H'), L, rx=12, size=(2 * PHONE_W, 2 * H),
+                 shift=('.4', '.1'))      # small type stays crisp: the pens sit closer
 
 
 def main():
@@ -860,6 +941,10 @@ def main():
         with open(OUT.format(theme), 'w', encoding='utf-8') as f:
             f.write(svg)
         print(f'wrote {OUT.format(theme)} ({len(svg) / 1024:.1f} KB)')
+        svg = build_phone(theme)
+        with open(OUT.format(f'phone-{theme}'), 'w', encoding='utf-8') as f:
+            f.write(svg)
+        print(f'wrote {OUT.format(f"phone-{theme}")} ({len(svg) / 1024:.1f} KB)')
 
 
 if __name__ == '__main__':

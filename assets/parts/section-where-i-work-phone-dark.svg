@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="80" viewBox="0 0 320 40" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="Where I work">
+<text x="2" y="27" font-size="18" fill="#343b35" textLength="10.8">-</text>
+<g style="mix-blend-mode:screen" opacity=".85"><text x="23.6" y="27" font-size="18" textLength="129.6" lengthAdjust="spacingAndGlyphs" text-anchor="start" fill="#e08fd0" transform="translate(-.8 0)">Where I work</text><text x="23.6" y="27" font-size="18" textLength="129.6" lengthAdjust="spacingAndGlyphs" text-anchor="start" fill="#a6e68f" transform="translate(.8 0)">Where I work</text></g><text x="23.6" y="27" font-size="18" textLength="129.6" lengthAdjust="spacingAndGlyphs" text-anchor="start" fill="#b7d3a8">Where I work</text>
+<line x1="164" y1="21.24" x2="318" y2="21.24" stroke="#343b35" stroke-width="1.5"/>
+</svg>

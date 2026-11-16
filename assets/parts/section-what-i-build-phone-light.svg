@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="80" viewBox="0 0 320 40" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="What I build">
+<text x="2" y="27" font-size="18" fill="#c7c7bb" textLength="10.8">-</text>
+<g style="mix-blend-mode:multiply" opacity=".85"><text x="23.6" y="27" font-size="18" textLength="129.6" lengthAdjust="spacingAndGlyphs" text-anchor="start" fill="#a03f8c" transform="translate(-.8 0)">What I build</text><text x="23.6" y="27" font-size="18" textLength="129.6" lengthAdjust="spacingAndGlyphs" text-anchor="start" fill="#4b8a35" transform="translate(.8 0)">What I build</text></g><text x="23.6" y="27" font-size="18" textLength="129.6" lengthAdjust="spacingAndGlyphs" text-anchor="start" fill="#4d6b40">What I build</text>
+<line x1="164" y1="21.24" x2="318" y2="21.24" stroke="#c7c7bb" stroke-width="1.5"/>
+</svg>

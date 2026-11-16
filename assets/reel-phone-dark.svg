@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="840" viewBox="0 0 320 420" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="What I build, and for whom: Demining, People who sign, Airports, Students, Voters, Researchers, Drones">
+<style>
+text { white-space: pre; }
+@media (prefers-reduced-motion: reduce) { .scene { opacity: 0 !important; filter: none !important; } .s0 { opacity: 1 !important; } }
+</style>
+<defs>
+<marker id="j" viewBox="-3 -3 6 6" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse"><circle r="2.6" fill="#b7d3a8"/></marker>
+</defs>
+<rect x=".5" y=".5" width="319" height="419" rx="12" fill="#0b0d0c" stroke="#1f2621"/>
+
+<filter id="f0" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="0;0;5;5;0;0" keyTimes="0.00000;0.08929;0.10714;0.96429;0.98214;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-0.5;-0.5;-7;-7;-0.5;-0.5" keyTimes="0.00000;0.08929;0.10714;0.96429;0.98214;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="0.5;0.5;7;7;0.5;0.5" keyTimes="0.00000;0.08929;0.10714;0.96429;0.98214;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s0" filter="url(#f0)" opacity="1"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0.00000;0.08929;0.10714;0.96429;0.98214;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="63.3" lengthAdjust="spacingAndGlyphs">ROBOTICS</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">01/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<clipPath id="ground"><rect x="0" y="0" width="240" height="192"/></clipPath>
+<line x1="4" y1="192" x2="236" y2="192"/>
+<line x1="4" y1="206" x2="236" y2="206" stroke-dasharray="2 7" stroke-opacity=".4"/>
+<g clip-path="url(#ground)">
+  <g><animateTransform attributeName="transform" dur="5s" repeatCount="indefinite" values="-16 36 122;4 36 122;4 36 122;-16 36 122;-16 36 122" keyTimes="0.00000;0.38000;0.72000;0.92000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" type="rotate" begin="-1.25s"/>
+    <path d="M36 122 L201.0 163.1 L191.3 191.1 Z" fill="#b7d3a8" fill-opacity=".14" stroke="none"/>
+    <line x1="36" y1="122" x2="196.1" y2="177.1" stroke-opacity=".5" stroke-width="1.2"/>
+  </g>
+</g>
+<ellipse cx="176" cy="200" rx="8" ry="3.5" stroke-dasharray="3 3"/>
+<circle cx="176" cy="199" r="4" stroke-width="1.5" opacity="0"><animate attributeName="r" dur="5s" repeatCount="indefinite" values="4;4;18;4;18;18" keyTimes="0.00000;0.42000;0.62000;0.63000;0.82000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;0.9;0;0.9;0;0" keyTimes="0.00000;0.42000;0.44000;0.62000;0.64000;0.82000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle>
+<rect x="16" y="150" width="74" height="26" rx="5"/>
+<circle cx="30" cy="184" r="8"/><circle cx="76" cy="184" r="8"/>
+<line x1="36" y1="150" x2="36" y2="127"/>
+<circle cx="36" cy="122" r="5" fill="#0b0d0c"/>
+<polyline points="88,152 100,134 90,124 82,136" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="88,152 100,134 90,124 82,136;88,152 100,134 90,124 82,136;88,152 122,130 154,148 172,182;88,152 122,130 154,148 172,182;88,152 100,134 90,124 82,136;88,152 100,134 90,124 82,136" keyTimes="0.00000;0.48000;0.68000;0.82000;0.94000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="105.6" lengthAdjust="spacingAndGlyphs">Demining</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="280.8" lengthAdjust="spacingAndGlyphs">Landmine detection and extraction robot</text>
+<text x="12" y="327" font-size="12" fill="#7d867c" text-anchor="start" textLength="252" lengthAdjust="spacingAndGlyphs">A mine-detection rover with a 6-DoF</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="252" lengthAdjust="spacingAndGlyphs">extraction arm, for a Lebanese Army</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="230.4" lengthAdjust="spacingAndGlyphs">initiative; I built its autonomy</text>
+<text x="12" y="375" font-size="12" fill="#7d867c" text-anchor="start" textLength="64.8" lengthAdjust="spacingAndGlyphs">software.</text>
+</g>
+<filter id="f1" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="5;5;0;0;5;5" keyTimes="0.00000;0.10714;0.12500;0.23214;0.25000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-7;-7;-0.5;-0.5;-7;-7" keyTimes="0.00000;0.10714;0.12500;0.23214;0.25000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="7;7;0.5;0.5;7;7" keyTimes="0.00000;0.10714;0.12500;0.23214;0.25000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s1" filter="url(#f1)" opacity="0"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0.00000;0.10714;0.12500;0.23214;0.25000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="120" lengthAdjust="spacingAndGlyphs">COMPUTER VISION</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">02/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="-12" y="36" width="140" height="186" rx="6" stroke-dasharray="4 5" stroke-opacity=".45" stroke-width="1.2"/>
+<polyline points="35,165 52,120 70,114 88,118 104,128" stroke-opacity=".6"/><polyline points="68,212 35,165 22,145 14,128 8,112" marker-start="url(#j)" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="68,212 35,165 22,145 14,128 8,112;68,212 35,165 22,145 14,128 8,112;68,212 35,165 20,156 6,150 -6,146;68,212 35,165 20,156 6,150 -6,146;68,212 35,165 22,145 14,128 8,112;68,212 35,165 22,145 14,128 8,112" keyTimes="0.00000;0.20000;0.38000;0.68000;0.86000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline><polyline points="68,212 52,120 48,92 46,72 45,54" marker-start="url(#j)" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="68,212 52,120 48,92 46,72 45,54;68,212 52,120 48,92 46,72 45,54;68,212 52,120 51,92 50,72 49,52;68,212 52,120 51,92 50,72 49,52;68,212 52,120 48,92 46,72 45,54;68,212 52,120 48,92 46,72 45,54" keyTimes="0.00000;0.20000;0.38000;0.68000;0.86000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline><polyline points="68,212 70,114 70,84 70,62 70,44" marker-start="url(#j)" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="68,212 70,114 70,84 70,62 70,44;68,212 70,114 70,84 70,62 70,44;68,212 70,114 73,100 67,95 63,103;68,212 70,114 73,100 67,95 63,103;68,212 70,114 70,84 70,62 70,44;68,212 70,114 70,84 70,62 70,44" keyTimes="0.00000;0.20000;0.38000;0.68000;0.86000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline><polyline points="68,212 88,118 91,90 93,70 94,54" marker-start="url(#j)" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="68,212 88,118 91,90 93,70 94,54;68,212 88,118 91,90 93,70 94,54;68,212 88,118 90,104 84,100 80,108;68,212 88,118 90,104 84,100 80,108;68,212 88,118 91,90 93,70 94,54;68,212 88,118 91,90 93,70 94,54" keyTimes="0.00000;0.20000;0.38000;0.68000;0.86000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline><polyline points="68,212 104,128 110,106 114,90 117,76" marker-start="url(#j)" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="68,212 104,128 110,106 114,90 117,76;68,212 104,128 110,106 114,90 117,76;68,212 104,128 106,116 100,113 97,121;68,212 104,128 106,116 100,113 97,121;68,212 104,128 110,106 114,90 117,76;68,212 104,128 110,106 114,90 117,76" keyTimes="0.00000;0.20000;0.38000;0.68000;0.86000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline>
+<path d="M132 124 H140 M136 119 L141 124 L136 129" stroke-width="1.6"/>
+<rect x="144" y="98" width="92" height="52" rx="8"/>
+<rect x="150" y="110" height="7" rx="3.5" fill="#eef1ec" stroke="none" width="0"><animate attributeName="width" dur="5s" repeatCount="indefinite" values="0;0;62;62" keyTimes="0.00000;0.40000;0.56000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></rect><rect x="150" y="127" height="7" rx="3.5" fill="#eef1ec" stroke="none" width="0"><animate attributeName="width" dur="5s" repeatCount="indefinite" values="0;0;38;38" keyTimes="0.00000;0.54000;0.70000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></rect><line x1="196" y1="124" x2="196" y2="138" stroke="#eef1ec" stroke-width="1.5"><animate attributeName="opacity" values="1;0;1" dur="1.25s" repeatCount="indefinite"/></line>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="198" lengthAdjust="spacingAndGlyphs">People who sign</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="57.6" lengthAdjust="spacingAndGlyphs">OmniSign</text>
+<text x="12" y="327" font-size="12" fill="#7d867c" text-anchor="start" textLength="288" lengthAdjust="spacingAndGlyphs">Recognizes Lebanese Sign Language from a</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="266.4" lengthAdjust="spacingAndGlyphs">camera in real time, the alphabet and</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="295.2" lengthAdjust="spacingAndGlyphs">everyday words, and turns it into text on</text>
+<text x="12" y="375" font-size="12" fill="#7d867c" text-anchor="start" textLength="266.4" lengthAdjust="spacingAndGlyphs">phones, the web, and offline devices.</text>
+</g>
+<filter id="f2" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="5;5;0;0;5;5" keyTimes="0.00000;0.25000;0.26786;0.37500;0.39286;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-7;-7;-0.5;-0.5;-7;-7" keyTimes="0.00000;0.25000;0.26786;0.37500;0.39286;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="7;7;0.5;0.5;7;7" keyTimes="0.00000;0.25000;0.26786;0.37500;0.39286;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s2" filter="url(#f2)" opacity="0"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0.00000;0.25000;0.26786;0.37500;0.39286;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="120" lengthAdjust="spacingAndGlyphs">EMBEDDED VISION</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">03/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<clipPath id="surface"><polygon points="36,226 104,40 136,40 204,226"/></clipPath>
+<polygon points="36,226 104,40 136,40 204,226" fill="#b7d3a8" fill-opacity=".05" stroke="none"/>
+<line x1="36" y1="226" x2="104" y2="40"/>
+<line x1="204" y1="226" x2="136" y2="40"/>
+<line x1="120" y1="200" x2="120" y2="44" stroke-dasharray="12 10" stroke-opacity=".55"/>
+<rect x="66" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="80" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="94" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="108" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="122" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="136" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="150" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/><rect x="164" y="208" width="6" height="14" rx="1" fill="#b7d3a8" fill-opacity=".5" stroke="none"/>
+<g clip-path="url(#surface)"><g><animateTransform attributeName="transform" dur="5s" repeatCount="indefinite" values="30 34 116;-22 34 116;30 34 116;30 34 116" keyTimes="0.00000;0.44000;0.88000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" type="rotate" begin="-1.25s"/>
+  <path d="M34 116 L252.8 93.0 L252.8 139.0 Z" fill="#b7d3a8" fill-opacity=".2" stroke="none"/>
+</g></g>
+<circle cx="41.4" cy="211.1" r="2.5" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0s" repeatCount="indefinite"/></circle><circle cx="198.6" cy="211.1" r="2.5" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0s" repeatCount="indefinite"/></circle><circle cx="51.0" cy="185.1" r="2.3" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0.3125s" repeatCount="indefinite"/></circle><circle cx="189.0" cy="185.1" r="2.3" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0.3125s" repeatCount="indefinite"/></circle><circle cx="60.5" cy="159.0" r="2.1" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0.625s" repeatCount="indefinite"/></circle><circle cx="179.5" cy="159.0" r="2.1" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0.625s" repeatCount="indefinite"/></circle><circle cx="70.0" cy="133.0" r="1.9" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0.9375s" repeatCount="indefinite"/></circle><circle cx="170.0" cy="133.0" r="1.9" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="0.9375s" repeatCount="indefinite"/></circle><circle cx="79.5" cy="107.0" r="1.7" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="1.25s" repeatCount="indefinite"/></circle><circle cx="160.5" cy="107.0" r="1.7" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="1.25s" repeatCount="indefinite"/></circle><circle cx="89.0" cy="80.9" r="1.5" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="1.5625s" repeatCount="indefinite"/></circle><circle cx="151.0" cy="80.9" r="1.5" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="1.5625s" repeatCount="indefinite"/></circle><circle cx="98.6" cy="54.9" r="1.3" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="1.875s" repeatCount="indefinite"/></circle><circle cx="141.4" cy="54.9" r="1.3" fill="#b7d3a8" stroke="none" opacity=".3"><animate attributeName="opacity" values=".25;1;.25;.25" keyTimes="0;.12;.3;1" dur="2.5s" begin="1.875s" repeatCount="indefinite"/></circle>
+<line x1="22" y1="226" x2="22" y2="122"/>
+<line x1="10" y1="226" x2="34" y2="226" stroke-opacity=".6"/>
+<rect x="12" y="108" width="24" height="15" rx="3"/>
+<circle cx="34" cy="116" r="3" fill="#b7d3a8" stroke="none"/>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="105.6" lengthAdjust="spacingAndGlyphs">Airports</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="295.2" lengthAdjust="spacingAndGlyphs">Runway Surface Monitoring System, Oreyeon</text>
+<text x="12" y="327" font-size="12" fill="#7d867c" text-anchor="start" textLength="295.2" lengthAdjust="spacingAndGlyphs">At Oreyeon, I work on embedded perception</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="252" lengthAdjust="spacingAndGlyphs">and real-time vision for its Runway</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="187.2" lengthAdjust="spacingAndGlyphs">Surface Monitoring System.</text>
+</g>
+<filter id="f3" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="5;5;0;0;5;5" keyTimes="0.00000;0.39286;0.41071;0.51786;0.53571;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-7;-7;-0.5;-0.5;-7;-7" keyTimes="0.00000;0.39286;0.41071;0.51786;0.53571;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="7;7;0.5;0.5;7;7" keyTimes="0.00000;0.39286;0.41071;0.51786;0.53571;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s3" filter="url(#f3)" opacity="0"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0.00000;0.39286;0.41071;0.51786;0.53571;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="136.2" lengthAdjust="spacingAndGlyphs">ROBOTICS · VISION</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">04/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="6" y1="214" x2="234" y2="214" stroke-opacity=".6"/>
+<path d="M30 172 H76 M52 172 V214 M30 172 L26 128" stroke-opacity=".7"/>
+<path d="M60 168 L94 170 L94 212" stroke-opacity=".8"/>
+<polyline points="60,168 76,146 94,128" marker-start="url(#j)" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="60,168 76,146 94,128;60,168 76,146 94,128;60,168 62,142 64,116;60,168 62,142 64,116;60,168 76,146 94,128;60,168 76,146 94,128" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline>
+<polyline points="94,128 110,146 132,150" marker-mid="url(#j)" marker-end="url(#j)"><animate attributeName="points" dur="5s" repeatCount="indefinite" values="94,128 110,146 132,150;94,128 110,146 132,150;64,116 88,134 128,140;64,116 88,134 128,140;94,128 110,146 132,150;94,128 110,146 132,150" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline>
+<circle r="11" cx="104" cy="116"><animate attributeName="cx" dur="5s" repeatCount="indefinite" values="104;104;66;66;104;104" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><animate attributeName="cy" dur="5s" repeatCount="indefinite" values="116;116;100;100;116;116" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle>
+<line x1="170" y1="214" x2="170" y2="178" stroke-width="5"/>
+<g><animateTransform attributeName="transform" dur="5s" repeatCount="indefinite" values="0 0;0 0;0 -8;0 -8;0 0;0 0" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" type="translate" begin="-1.25s"/>
+  <line x1="170" y1="184" x2="170" y2="152" stroke-width="3"/>
+  <g><animateTransform attributeName="transform" dur="5s" repeatCount="indefinite" values="0 170 150;0 170 150;-9 170 150;-9 170 150;0 170 150;0 170 150" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" type="rotate" begin="-1.25s"/>
+    <line x1="120" y1="150" x2="222" y2="150" stroke-width="3.5"/>
+    <path d="M214 150 L222 106" stroke-opacity=".8"/>
+    <rect x="213" y="96" width="17" height="10" rx="2"/>
+    <circle cx="130" cy="158" r="4.5" stroke="none" fill="#e08fd0"><animate attributeName="fill" dur="5s" repeatCount="indefinite" values="#e08fd0;#e08fd0;#a6e68f;#a6e68f;#e08fd0;#e08fd0" keyTimes="0.00000;0.24000;0.48000;0.76000;0.90000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle>
+  </g>
+</g>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="105.6" lengthAdjust="spacingAndGlyphs">Students</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="230.4" lengthAdjust="spacingAndGlyphs">BEMO, the smart interactive desk</text>
+<text x="12" y="327" font-size="12" fill="#7d867c" text-anchor="start" textLength="288" lengthAdjust="spacingAndGlyphs">A desk that sees how you sit and adjusts</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="266.4" lengthAdjust="spacingAndGlyphs">its own height and tilt, with instant</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="237.6" lengthAdjust="spacingAndGlyphs">light feedback and a dashboard of</text>
+<text x="12" y="375" font-size="12" fill="#7d867c" text-anchor="start" textLength="151.2" lengthAdjust="spacingAndGlyphs">longer-term patterns.</text>
+</g>
+<filter id="f4" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="5;5;0;0;5;5" keyTimes="0.00000;0.53571;0.55357;0.66071;0.67857;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-7;-7;-0.5;-0.5;-7;-7" keyTimes="0.00000;0.53571;0.55357;0.66071;0.67857;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="7;7;0.5;0.5;7;7" keyTimes="0.00000;0.53571;0.55357;0.66071;0.67857;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s4" filter="url(#f4)" opacity="0"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0.00000;0.53571;0.55357;0.66071;0.67857;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="79.5" lengthAdjust="spacingAndGlyphs">CIVIC TECH</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">05/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="14" y="14" width="34" height="18" rx="5" fill="#b7d3a8" fill-opacity="0" stroke-width="1.3"><animate attributeName="fill-opacity" values=".35;0;0;.35" keyTimes="0;.33;.66;1" calcMode="discrete" dur="5s" begin="-1.25s" repeatCount="indefinite"/></rect><text x="31" y="27" font-size="11" text-anchor="middle" fill="#eef1ec" stroke="none">AR</text><rect x="52" y="14" width="34" height="18" rx="5" fill="#b7d3a8" fill-opacity="0" stroke-width="1.3"><animate attributeName="fill-opacity" values="0;.35;0;0" keyTimes="0;.33;.66;1" calcMode="discrete" dur="5s" begin="-1.25s" repeatCount="indefinite"/></rect><text x="69" y="27" font-size="11" text-anchor="middle" fill="#eef1ec" stroke="none">EN</text><rect x="90" y="14" width="34" height="18" rx="5" fill="#b7d3a8" fill-opacity="0" stroke-width="1.3"><animate attributeName="fill-opacity" values="0;0;.35;0" keyTimes="0;.33;.66;1" calcMode="discrete" dur="5s" begin="-1.25s" repeatCount="indefinite"/></rect><text x="107" y="27" font-size="11" text-anchor="middle" fill="#eef1ec" stroke="none">FR</text>
+<rect x="14" y="40" width="150" height="132" rx="10"/>
+<circle cx="40" cy="72" r="12"/>
+<rect x="60" y="64" width="80" height="8" rx="4" fill="#eef1ec" stroke="none"/>
+<rect x="60" y="78" width="54" height="6" rx="3" fill="#7d867c" stroke="none"/>
+<rect x="28" y="104" width="120" height="7" rx="3.5" fill="#b7d3a8" fill-opacity=".55" stroke="none"/>
+<rect x="28" y="119" height="7" rx="3.5" fill="#b7d3a8" fill-opacity=".55" stroke="none" width="70"><animate attributeName="width" dur="5s" repeatCount="indefinite" values="70;70;104;104" keyTimes="0.00000;0.48000;0.60000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></rect>
+<rect x="28" y="134" width="96" height="7" rx="3.5" fill="#b7d3a8" fill-opacity=".55" stroke="none"/>
+<path d="M164 122 C186 122 182 82 200 82" stroke-dasharray="3 4" stroke-width="1.5"/>
+<path d="M200 56 H222 L232 66 V104 H200 Z M222 56 V66 H232" stroke-width="1.6"/>
+<path d="M206 76 H226 M206 85 H226 M206 94 H220" stroke-opacity=".6" stroke-width="1.4"/>
+<line x1="18" y1="206" x2="226" y2="206" stroke-opacity=".6"/>
+<circle cx="34" cy="206" r="4.5" fill="#0b0d0c"/><circle cx="74" cy="206" r="4.5" fill="#0b0d0c"/><circle cx="114" cy="206" r="4.5" fill="#0b0d0c"/><circle cx="154" cy="206" r="4.5" fill="#0b0d0c"/>
+<circle cx="194" cy="206" r="4.5" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.48000;0.58000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle>
+<circle cx="194" cy="206" r="5" stroke-width="1.4" opacity="0"><animate attributeName="r" dur="5s" repeatCount="indefinite" values="5;5;16;16" keyTimes="0.00000;0.48000;0.72000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;0.8;0;0" keyTimes="0.00000;0.48000;0.50000;0.72000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle>
+<text x="194" y="228" font-size="11" text-anchor="middle" fill="#7d867c" stroke="none">now</text>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="79.2" lengthAdjust="spacingAndGlyphs">Voters</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="43.2" lengthAdjust="spacingAndGlyphs">Daleel</text>
+<text x="12" y="327" font-size="12" fill="#7d867c" text-anchor="start" textLength="266.4" lengthAdjust="spacingAndGlyphs">Lebanese election information you can</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="280.8" lengthAdjust="spacingAndGlyphs">trace back to its source, kept with its</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="266.4" lengthAdjust="spacingAndGlyphs">full history, in Arabic, English, and</text>
+<text x="12" y="375" font-size="12" fill="#7d867c" text-anchor="start" textLength="50.4" lengthAdjust="spacingAndGlyphs">French.</text>
+</g>
+<filter id="f5" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="5;5;0;0;5;5" keyTimes="0.00000;0.67857;0.69643;0.80357;0.82143;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-7;-7;-0.5;-0.5;-7;-7" keyTimes="0.00000;0.67857;0.69643;0.80357;0.82143;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="7;7;0.5;0.5;7;7" keyTimes="0.00000;0.67857;0.69643;0.80357;0.82143;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s5" filter="url(#f5)" opacity="0"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0.00000;0.67857;0.69643;0.80357;0.82143;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="176.7" lengthAdjust="spacingAndGlyphs">RESEARCH &amp; DEVELOPMENT</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">06/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M0 196 C40 170 70 188 110 172 C150 156 180 178 240 160"/>
+<path d="M40 146 L22 210 M40 146 L58 210 M40 146 L40 212" stroke-opacity=".8"/>
+<rect x="28" y="126" width="24" height="20" rx="3"/>
+<line x1="40" y1="126" x2="40" y2="110"/><circle cx="40" cy="105" r="5"/>
+<line x1="52" y1="134" x2="226.2" y2="147.6" stroke-dasharray="3 5" stroke-opacity=".5" stroke-width="1.2"/>
+<g opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.20000;0.24000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><circle cx="81.6" cy="178.8" r="3.2" fill="#b7d3a8" stroke="none"/><line x1="81.6" y1="172.8" x2="81.6" y2="162.8" stroke-width="1.2" stroke-opacity=".6"/></g><g opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.29000;0.33000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><circle cx="133.1" cy="166.3" r="3.2" fill="#b7d3a8" stroke="none"/><line x1="133.1" y1="160.3" x2="133.1" y2="150.3" stroke-width="1.2" stroke-opacity=".6"/></g><g opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.38000;0.42000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><circle cx="161.6" cy="166.4" r="3.2" fill="#b7d3a8" stroke="none"/><line x1="161.6" y1="160.4" x2="161.6" y2="150.4" stroke-width="1.2" stroke-opacity=".6"/></g><g opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.47000;0.51000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><circle cx="193.0" cy="167.5" r="3.2" fill="#b7d3a8" stroke="none"/><line x1="193.0" y1="161.5" x2="193.0" y2="151.5" stroke-width="1.2" stroke-opacity=".6"/></g><g opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.56000;0.60000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/><circle cx="226.2" cy="163.6" r="3.2" fill="#b7d3a8" stroke="none"/><line x1="226.2" y1="157.6" x2="226.2" y2="147.6" stroke-width="1.2" stroke-opacity=".6"/></g>
+<rect x="128" y="30" width="106" height="66" rx="8"/>
+<path d="M138 86 H226 M138 86 V40" stroke-opacity=".45" stroke-width="1.2"/>
+<polyline points="140,80 161,52.1172 182,52.2091 203,54.7254 224,46" stroke-dasharray="99.8" stroke-dashoffset="99.8"><animate attributeName="stroke-dashoffset" dur="5s" repeatCount="indefinite" values="99.79728752484499;99.79728752484499;0;0" keyTimes="0.00000;0.24000;0.68000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></polyline>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="145.2" lengthAdjust="spacingAndGlyphs">Researchers</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="244.8" lengthAdjust="spacingAndGlyphs">Research Assistant and Development</text>
+<text x="12" y="321" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="115.2" lengthAdjust="spacingAndGlyphs">Engineer, CNRS-L</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="280.8" lengthAdjust="spacingAndGlyphs">At CNRS-L, I develop its data analysis,</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="288" lengthAdjust="spacingAndGlyphs">embedded, vision and surveying projects.</text>
+</g>
+<filter id="f6" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b"><animate attributeName="stdDeviation" dur="35s" repeatCount="indefinite" values="5;5;0;0;5;5" keyTimes="0.00000;0.82143;0.83929;0.94643;0.96429;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="-7;-7;-0.5;-0.5;-7;-7" keyTimes="0.00000;0.82143;0.83929;0.94643;0.96429;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feOffset in="b" dx=".5" result="r"><animate attributeName="dx" dur="35s" repeatCount="indefinite" values="7;7;0.5;0.5;7;7" keyTimes="0.00000;0.82143;0.83929;0.94643;0.96429;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/></feOffset>
+  <feFlood flood-color="#e08fd0"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="#a6e68f"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="screen" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s6" filter="url(#f6)" opacity="0"><animate attributeName="opacity" dur="35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0.00000;0.82143;0.83929;0.94643;0.96429;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1"/>
+  <text x="12" y="24" font-size="11" fill="#7d867c" text-anchor="start" textLength="63.3" lengthAdjust="spacingAndGlyphs">EMBEDDED</text>
+  <text x="308" y="24" font-size="11" fill="#7d867c" text-anchor="end" textLength="39" lengthAdjust="spacingAndGlyphs">07/07</text>
+  <g transform="translate(40 22)" fill="none" stroke="#b7d3a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<line x1="8" y1="214" x2="232" y2="214" stroke-opacity=".6"/>
+<path d="M190 214 V200 L202 190 L214 200 V214" stroke-width="1.6"/>
+<circle cx="26" cy="34" r="3" fill="#b7d3a8" stroke="none"/>
+<path d="M34 40 A10 10 0 0 1 32 50 M40 38 A16 16 0 0 1 36 56" stroke-opacity=".5" stroke-width="1.2"/>
+<circle cx="132" cy="150" r="2.4" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.52000;0.55000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle><circle cx="146" cy="162" r="2.4" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.57000;0.60000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle><circle cx="160" cy="172" r="2.4" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.62000;0.65000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle><circle cx="174" cy="180" r="2.4" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.67000;0.70000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle><circle cx="188" cy="186" r="2.4" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.72000;0.75000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle><circle cx="200" cy="190" r="2.4" fill="#b7d3a8" stroke="none" opacity="0"><animate attributeName="opacity" dur="5s" repeatCount="indefinite" values="0;0;1;1" keyTimes="0.00000;0.77000;0.80000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" begin="-1.25s"/></circle>
+<g><animateTransform attributeName="transform" dur="5s" repeatCount="indefinite" values="0 0;0 -6;0 0;0 -6;0 0" keyTimes="0.00000;0.24000;0.50000;0.74000;1.00000" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" type="translate" begin="-1.25s"/>
+  <path d="M52 100 V70 M47 76 L52 70 L57 76" stroke-width="1.6"><animate attributeName="opacity" values=".45;1;.45" dur="1.25s" repeatCount="indefinite"/></path><text x="60" y="80" font-size="11" fill="#b7d3a8" stroke="none">T</text><path d="M176 100 V70 M171 76 L176 70 L181 76" stroke-width="1.6"><animate attributeName="opacity" values=".45;1;.45" dur="1.25s" repeatCount="indefinite"/></path><text x="184" y="80" font-size="11" fill="#b7d3a8" stroke="none">T</text>
+  <ellipse cx="52" cy="106" rx="26" ry="3" fill="#b7d3a8" fill-opacity=".25" stroke-opacity=".7">
+    <animate attributeName="rx" values="26;22;26" dur="0.3125s" repeatCount="indefinite"/></ellipse>
+  <ellipse cx="176" cy="106" rx="26" ry="3" fill="#b7d3a8" fill-opacity=".25" stroke-opacity=".7">
+    <animate attributeName="rx" values="22;26;22" dur="0.3125s" repeatCount="indefinite"/></ellipse>
+  <rect x="46" y="108" width="12" height="12" rx="2"/><rect x="170" y="108" width="12" height="12" rx="2"/>
+  <line x1="58" y1="124" x2="170" y2="124" stroke-width="3"/>
+  <rect x="86" y="116" width="56" height="14" rx="4"/>
+  <rect x="94" y="102" width="40" height="12" rx="2" fill="#b7d3a8" fill-opacity=".2"/>
+  <path d="M142 128 L152 134 L148 140 L138 134 Z" stroke-width="1.5"/>
+  <line x1="92" y1="116" x2="84" y2="98" stroke-width="1.5"/>
+  <path d="M114 132 V166 M109 160 L114 166 L119 160" stroke-width="1.6"/>
+  <text x="122" y="164" font-size="11" fill="#b7d3a8" stroke="none">W</text>
+</g>
+  </g>
+  <text x="12" y="283" font-size="22" fill="#eef1ec" text-anchor="start" textLength="79.2" lengthAdjust="spacingAndGlyphs">Drones</text>
+<text x="12" y="305" font-size="12" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="208.8" lengthAdjust="spacingAndGlyphs">5-inch carbon-fiber FPV drone</text>
+<text x="12" y="327" font-size="12" fill="#7d867c" text-anchor="start" textLength="295.2" lengthAdjust="spacingAndGlyphs">A 5-inch carbon-fiber FPV drone, designed</text>
+<text x="12" y="343" font-size="12" fill="#7d867c" text-anchor="start" textLength="259.2" lengthAdjust="spacingAndGlyphs">and built around thrust, weight, and</text>
+<text x="12" y="359" font-size="12" fill="#7d867c" text-anchor="start" textLength="244.8" lengthAdjust="spacingAndGlyphs">current calculations, and tuned in</text>
+<text x="12" y="375" font-size="12" fill="#7d867c" text-anchor="start" textLength="187.2" lengthAdjust="spacingAndGlyphs">Betaflight down to GPS and</text>
+<text x="12" y="391" font-size="12" fill="#7d867c" text-anchor="start" textLength="108" lengthAdjust="spacingAndGlyphs">return-to-home.</text>
+</g>
+<rect x="12" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="46" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="80" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="114" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="148" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="182" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="216" y="407" width="26" height="3" rx="1.5" fill="#343b35"/><rect x="12" y="406" width="26" height="5" rx="2.5" fill="#b7d3a8"><animate attributeName="x" dur="35s" repeatCount="indefinite" calcMode="discrete" values="12;46;80;114;148;182;216;12" keyTimes="0;0.10714;0.25000;0.39286;0.53571;0.67857;0.82143;0.96429"/></rect>
+</svg>

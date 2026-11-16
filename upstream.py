@@ -10,6 +10,10 @@ PROJECTS, one card each, so README.md can link each card to its own place:
     betaflight   my merged pull requests, beside a blackbox-style gyro log
     openfront    my merged pull requests, beside territories spreading on a map
 
+and a phone twin of each, assets/upstream-<project>-phone-light.svg and -dark.svg,
+which README.md shows instead on screens up to 640 px wide: the same instrument
+and facts stacked into one column, so nothing shrinks to a third of its size.
+
 The pull requests and easyPID's version are read from GitHub on every run, so
 a newly merged fix shows up the next morning. The scope trace is computed, not
 drawn: Pid below is a port of easyPID's own update step, run against a
@@ -196,8 +200,9 @@ def simulate(antiwindup):
 
 # ── drawing helpers ─────────────────────────────────────────────────────────
 def text(x, y, s, size, fill, weight=None, anchor='start', track=False):
-    """A label stretched to a fixed width, so any fallback monospace fits."""
-    width = len(s) * size * (ADVANCE + (.16 if track else 0))
+    """A label stretched to a fixed width, so any fallback monospace fits.
+    `track` spreads the letters: True for the cards' kickers, or a fraction of the size."""
+    width = len(s) * size * (ADVANCE + (.16 if track is True else track or 0))
     adjust = 'spacing' if track else 'spacingAndGlyphs'
     bold = f' font-weight="{weight}"' if weight else ''
     return (f'<text x="{x:g}" y="{y:g}" font-size="{size}" fill="{fill}"{bold} '
@@ -248,8 +253,9 @@ def graticule(x, y, w, h, s, cols=10, rows=8):
 
 
 # ── the three screens ───────────────────────────────────────────────────────
-def scope(t, theme, x, y, w, h):
-    """easyPID's step response, swept across a two-channel scope."""
+def scope(t, theme, x, y, w, h, lab=10, compact=False):
+    """easyPID's step response, swept across a two-channel scope; `lab` sizes its labels,
+    and `compact` (the phone card) puts CH2's label at the right, clear of the saturated drive."""
     s = SCREEN[theme]
     on, off = simulate(True), simulate(False)
     mx, top, split = 14, y + 18, y + h * 0.68
@@ -312,8 +318,9 @@ def scope(t, theme, x, y, w, h):
 <filter id="ep-glow" x="-2" y="-2" width="5" height="5"><feGaussianBlur stdDeviation="3"/></filter>
 <filter id="ep-soft" x="-.1" y="-.2" width="1.2" height="1.4"><feGaussianBlur stdDeviation="2.2"/></filter>"""
 
-    labels = (text(x + mx, y + 14, 'CH1  position', 10, s['label']) +
-              text(x + mx, split + 9, 'CH2  drive  ±1', 10, s['label']))
+    labels = (text(x + mx, y + 14, 'CH1  position', lab, s['label']) +
+              (text(x1, split + lab - 1, 'CH2  drive  ±1', lab, s['label'], anchor='end') if compact else
+               text(x + mx, split + lab - 1, 'CH2  drive  ±1', lab, s['label'])))
     live = f"""<g class="live"><g clip-path="url(#ep-sweep)">
 <animate attributeName="opacity" values="1;1;0" keyTimes="0;.875;1" {cycle(sweep)}/>
 {traces}</g>{beam}</g>"""
@@ -321,18 +328,20 @@ def scope(t, theme, x, y, w, h):
     return defs, graticule(x, y, w, h, s) + labels + live + still
 
 
-def blackbox(t, theme, x, y, w, h):
-    """A blackbox-style log of three gyro axes chasing their setpoints, scrolling."""
+def blackbox(t, theme, x, y, w, h, lab=10, compact=False):
+    """A blackbox-style log of three gyro axes chasing their setpoints, scrolling.
+    `compact` (the phone card, where the lanes are short) sets the axis names on
+    small plates above the traces instead of beneath them."""
     s = SCREEN[theme]
     rnd = random.Random(15705)
     period = 360                            # px of log before it repeats exactly
     lanes = ('roll', 'pitch', 'yaw')
     lane_h = (h - 20) / 3
     grid = [f'M{x},{y + 10 + lane_h * i:.1f}H{x + w}' for i in range(1, 3)]
-    grid += [f'M{x + 10 + i * period / 8:.1f},{y}V{y + h}' for i in range(1, 8)]
+    grid += [f'M{x + 10 + i * period / 8:.1f},{y}V{y + h}' for i in range(1, 8) if 10 + i * period / 8 < w]
     out = [f'<path d="{"".join(grid)}" stroke="{s["grid"]}" fill="none"/>']
 
-    log = []
+    log, names = [], []
     for i, name in enumerate(lanes):
         amp = (lane_h / 2 - 6) * (.55 if name == 'yaw' else 1)
         harmonics = [(k, rnd.uniform(.3, 1) / k ** .7, rnd.uniform(0, 2 * math.pi))
@@ -357,7 +366,13 @@ def blackbox(t, theme, x, y, w, h):
         gyro_d = path([(x + 10 + u, mid - amp * gyro(u)) for u in span])
         log.append(f'<path d="{set_d}" stroke="{colour}" stroke-width="1.1" opacity=".42" fill="none"/>'
                    f'<path d="{gyro_d}" stroke="{colour}" stroke-width="1.6" fill="none" stroke-linejoin="round"/>')
-        out.append(text(x + 12, mid - lane_h / 2 + 14, name, 10, s['label']))
+        if compact:
+            base = mid - lane_h / 2 + 3 + lab
+            names.append(f'<rect x="{x + 7}" y="{base - lab * .85:.1f}" width="{len(name) * lab * ADVANCE + 10:g}" '
+                         f'height="{lab + 3:g}" rx="3" fill="{s["bg"]}" opacity=".88"/>'
+                         + text(x + 12, base, name, lab, s['label']))
+        else:
+            out.append(text(x + 12, mid - lane_h / 2 + 4 + lab, name, lab, s['label']))
 
     scroll = (f'<animateTransform attributeName="transform" type="translate" values="0 0;-{period} 0" '
               f'dur="{CYCLE * 1.5:g}s" repeatCount="indefinite"/>')
@@ -366,18 +381,27 @@ def blackbox(t, theme, x, y, w, h):
     body = ''.join(log)
     out.append(f'<g clip-path="url(#bb-clip)"><g class="live">{scroll}{body}</g>'
                f'<g class="still">{body}</g></g>')
+    out += names
     out.append(f'<path d="M{head},{y + 6}V{y + h - 6}" stroke="{t["dele"]}" stroke-width="1.2" opacity=".75"/>'
                f'<path d="M{head - 4},{y + 6}h8l-4,5z" fill="{t["dele"]}" opacity=".75"/>')
     return defs, ''.join(out)
 
 
-def territory(t, theme, x, y, w, h):
-    """Three players' territories spreading across a pixel map until they meet."""
+def territory(t, theme, x, y, w, h, lab=10, buckets=20, compact=False):
+    """Three players' territories spreading across a pixel map until they meet,
+    in `buckets` waves. `compact` (the phone card's wide, short screen) also
+    prefers a world whose land is spread evenly from left to right."""
     s = SCREEN[theme]
     cell = 6
     cols, rows = int((w - 14) // cell), int((h - 14) // cell)
     ox, oy = x + (w - cols * cell) / 2, y + (h - rows * cell) / 2
-    land, seeds, arrival, owner = min((world(cols, rows, n) for n in range(48)), key=lambda m: m[4])[:4]
+    def fairness(m):
+        if not compact:
+            return m[4]
+        thirds = [sum(1 for c, _ in m[0] if int(3 * c / cols) == k) / len(m[0]) for k in range(3)]
+        return m[4] + 2 * (max(thirds) - min(thirds))
+
+    land, seeds, arrival, owner = min((world(cols, rows, n) for n in range(48)), key=fairness)[:4]
     horizon = sorted(arrival.values())[int(len(arrival) * .88)]     # some land stays neutral
     claimed = {k: v / horizon for k, v in arrival.items() if v <= horizon}
 
@@ -413,7 +437,6 @@ def territory(t, theme, x, y, w, h):
             f'fill="{s["axis"]}"/></pattern>')
     out = [f'<rect x="{ox:g}" y="{oy:g}" width="{cols * cell}" height="{rows * cell}" fill="url(#of-sea)"/>',
            f'<path d="{runs(land)}" fill="{s["axis"]}"/>']
-    buckets = 20
     live, still = [], []
     for p, colour in enumerate(colours):
         mine = [k for k in claimed if owner[k] == p]
@@ -546,13 +569,9 @@ def label(p, facts):
     return f'{p["name"]}: {len(prs)} merged pull requests of mine. {listed}.'
 
 
-def build(p, facts, theme, h):
-    t = SAGE[theme]
-    defs, screen = SCREENS[p['key']](t, theme, PAD, PAD, SCREEN_W, h - 2 * PAD)
-    body, _ = content(p, facts, t)
-    s = SCREEN[theme]
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(label(p, facts))}">
-<style>
+def style(t):
+    """The cards' shared CSS: the lens fringe breathing, and a still frame for reduced motion."""
+    return f"""<style>
 text {{ white-space: pre; }}
 .fringe {{ mix-blend-mode: {t['blend']}; opacity: .85; }}
 .fm {{ transform: translateX(-.9px); animation: fm 9s ease-in-out infinite; }}
@@ -565,13 +584,104 @@ text {{ white-space: pre; }}
   .live {{ display: none !important; }}
   .still {{ display: inline !important; }}
 }}
-</style>
+</style>"""
+
+
+def build(p, facts, theme, h):
+    t = SAGE[theme]
+    defs, screen = SCREENS[p['key']](t, theme, PAD, PAD, SCREEN_W, h - 2 * PAD)
+    body, _ = content(p, facts, t)
+    s = SCREEN[theme]
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(label(p, facts))}">
+{style(t)}
 <defs>{defs}</defs>
 <rect x=".5" y=".5" width="{WIDTH - 1}" height="{h - 1}" rx="15" fill="{t['bg']}" stroke="{t['edge']}"/>
 <rect x="{PAD}" y="{PAD}" width="{SCREEN_W}" height="{h - 2 * PAD}" rx="10" fill="{s['bg']}"/>
 {screen}
 <rect x="{PAD + .5}" y="{PAD + .5}" width="{SCREEN_W - 1}" height="{h - 2 * PAD - 1}" rx="10" fill="none" stroke="{t['edge']}"/>
 {header(p, facts, t)}
+{''.join(body)}
+</svg>
+"""
+
+
+# ── the phone card ──────────────────────────────────────────────────────────
+# On a phone GitHub gives the README about 293 px, so the 985 px cards above
+# would shrink to a third and their text to 5 px. The phone card is drawn on
+# a 320-unit canvas (1 unit is about 0.92 px there) and stacks the same parts:
+# the instrument full width on top, then the header, then the text. It is
+# written at twice its size so it fills a wider phone without blurring.
+PHONE_OUT = 'assets/upstream-{}-phone-{}.svg'
+P_W = 320
+P_PAD = 10                   # card edge to screen
+P_SCREEN_H = 136
+P_X, P_R = 16, P_W - 16      # the text column
+P_BODY = 13                  # pull request titles
+P_PROSE = 12                 # easyPID's paragraph
+P_SMALL = 11                 # dates, captions, kickers: the smallest type on the card
+
+
+def phone_header(p, facts, t, y):
+    """Kicker, name and the big figure, starting below the screen at y; returns (svg, rule y)."""
+    if p['key'] == 'easypid':
+        figure, under = f'v{facts["easypid"]}', 'latest release ↗'
+    else:
+        n = len(facts[p['key']])
+        figure, under = str(n), f'merged pull request{"s" if n != 1 else ""} ↗'
+    kicker, name, rule = y + 24, y + 53, y + 79
+    return (text(P_X, kicker, p['kicker'].upper(), P_SMALL, t['muted'], track=.04) +
+            text(P_X, name, p['name'], 22, t['ink'], 700) +
+            fringed(P_R, name, figure, 28, t['brand'], t) +
+            text(P_R, name + 16, under, P_SMALL, t['key'], anchor='end') +
+            f'<line x1="{P_X}" y1="{rule}" x2="{P_R}" y2="{rule}" stroke="{t["edge"]}"/>'), rule
+
+
+def phone_content(p, facts, t, y):
+    """The text under the header, from baseline y; returns (svg parts, last baseline)."""
+    out = []
+    if p['key'] == 'easypid':
+        for k, line in enumerate(wrap(p['about'], int((P_R - P_X) // (P_PROSE * ADVANCE)))):
+            y += 0 if k == 0 else 17
+            out.append(text(P_X, y, line, P_PROSE, t['fg']))
+        y += 6
+        for line in wrap(p['caption'], int((P_R - P_X) // (P_SMALL * ADVANCE))):
+            y += 14
+            out.append(text(P_X, y, line, P_SMALL, t['muted']))
+        return out, y
+    cols = int((P_R - P_X) // (P_BODY * ADVANCE))
+    for i, pr in enumerate(facts[p['key']][:MAX_PRS]):
+        y += 0 if i == 0 else 30
+        out.append(text(P_X, y, f'#{pr["number"]}', P_BODY, t['key'], 700))
+        out.append(text(P_R, y, f'merged {day(pr["merged"])}', P_SMALL, t['muted'], anchor='end'))
+        prefix = re.match(r'^[a-z]+(\([^)]*\))?!?: ', pr['title'])
+        prefix = prefix.group(0) if prefix else ''
+        for k, line in enumerate(wrap(pr['title'], cols)):
+            y += 20 if k == 0 else 18
+            if k == 0 and prefix and line.startswith(prefix):
+                out.append(text(P_X, y, prefix.rstrip(), P_BODY, t['muted']))
+                out.append(text(P_X + len(prefix) * P_BODY * ADVANCE, y, line[len(prefix):], P_BODY, t['ink']))
+            else:
+                out.append(text(P_X, y, line, P_BODY, t['ink']))
+    return out, y
+
+
+def build_phone(p, facts, theme):
+    t = SAGE[theme]
+    s = SCREEN[theme]
+    sw = P_W - 2 * P_PAD
+    extra = dict(buckets=12) if p['key'] == 'openfront' else {}
+    defs, screen = SCREENS[p['key']](t, theme, P_PAD, P_PAD, sw, P_SCREEN_H, lab=P_SMALL, compact=True, **extra)
+    head, rule = phone_header(p, facts, t, P_PAD + P_SCREEN_H)
+    body, last = phone_content(p, facts, t, rule + 24)
+    h = last + 14
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{2 * P_W}" height="{2 * h}" viewBox="0 0 {P_W} {h}" font-family="{FONT}" role="img" aria-label="{esc(label(p, facts))}">
+{style(t)}
+<defs>{defs}</defs>
+<rect x=".5" y=".5" width="{P_W - 1}" height="{h - 1}" rx="12" fill="{t['bg']}" stroke="{t['edge']}"/>
+<rect x="{P_PAD}" y="{P_PAD}" width="{sw}" height="{P_SCREEN_H}" rx="8" fill="{s['bg']}"/>
+{screen}
+<rect x="{P_PAD + .5}" y="{P_PAD + .5}" width="{sw - 1}" height="{P_SCREEN_H - 1}" rx="8" fill="none" stroke="{t['edge']}"/>
+{head}
 {''.join(body)}
 </svg>
 """
@@ -585,42 +695,82 @@ RANK_OUT = 'assets/upstream-rank-{}.svg'
 RANK_BAKED = 15
 
 
+RANK_PHONE_OUT = 'assets/upstream-rank-phone-{}.svg'
+RANK_PHONE_MAX = 290         # px: the pill is drawn 1:1, and a phone's README is about 293 px
+
+
+def rank_phone_svg(n, t):
+    """
+    The rank pill for phones, where the one-line pill would be 435 px: the
+    rank large and fringed like the cards' figures, the rest on two lines.
+    """
+    num, top, bottom = f'#{n}', 'in Lebanon by public commits', 'committers.top ↗'
+    small, h = 12, 46
+    pad_l, gap, pad_r = 14, 11, 16
+    text_w = max(len(top), len(bottom)) * small * ADVANCE
+    size = min(22, (RANK_PHONE_MAX - pad_l - gap - text_w - pad_r) / (len(num) * ADVANCE))
+    num_w = len(num) * size * ADVANCE
+    w = pad_l + num_w + gap + text_w + pad_r
+    tx = pad_l + num_w + gap
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w:g}" height="{h}" viewBox="0 0 {w:g} {h}" font-family="{FONT}" role="img" aria-label="{esc(f'{num} {top} · committers.top')}">
+<style>text {{ white-space: pre; }}</style>
+<rect x=".75" y=".75" width="{w - 1.5:g}" height="{h - 1.5:g}" rx="{(h - 1.5) / 2:g}" fill="{t['bg']}" stroke="{t['edge']}" stroke-width="1.5"/>
+<g style="mix-blend-mode:{t['blend']}" opacity=".85">{text(pad_l - .8, h / 2 + size * .35, num, round(size, 2), t['fringe'][1], 700)}{text(pad_l + .8, h / 2 + size * .35, num, round(size, 2), t['fringe'][0], 700)}</g>
+{text(pad_l, h / 2 + size * .35, num, round(size, 2), t['brand'], 700)}
+<line x1="{tx - gap / 2 - .5:g}" y1="11" x2="{tx - gap / 2 - .5:g}" y2="{h - 11}" stroke="{t['edge']}" stroke-width="1.5"/>
+{text(tx, 20, top, small, t['ink'])}
+{text(tx, 36, bottom, small, t['key'])}
+</svg>
+"""
+
+
 def rank():
     from parts import link_svg
-    outputs = [RANK_OUT.format(theme) for theme in SAGE]
+    outputs = {RANK_OUT.format(theme): theme for theme in SAGE}
+    outputs.update({RANK_PHONE_OUT.format(theme): theme for theme in SAGE})
+    write = list(outputs)
     try:
         r = requests.get(RANK_URL, timeout=20)
         r.raise_for_status()
         n = int(re.search(r'Lebanon #(\d+)', r.text).group(1))
     except Exception as e:                  # the site, the network, or a new badge layout
-        if all(os.path.exists(f) for f in outputs):
+        write = [f for f in outputs if not os.path.exists(f)]
+        if not write:
             print(f'upstream.py: could not read the committers.top rank ({e}); the pill stays as it was')
             return
         n = RANK_BAKED
-    for theme, t in SAGE.items():
-        with open(RANK_OUT.format(theme), 'w', encoding='utf-8') as f:
-            f.write(link_svg(f'#{n} in Lebanon by public commits · committers.top ↗', t, primary=False))
+    for path in write:
+        t = SAGE[outputs[path]]
+        svg = (rank_phone_svg(n, t) if '-phone-' in path else
+               link_svg(f'#{n} in Lebanon by public commits · committers.top ↗', t, primary=False))
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(svg)
     print(f'committers.top  #{n} in Lebanon')
 
 
 def main():
     rank()
-    outputs = [OUT.format(p['key'], theme) for p in PROJECTS for theme in SAGE]
+    outputs = [out.format(p['key'], theme) for out in (OUT, PHONE_OUT) for p in PROJECTS for theme in SAGE]
+    write = set(outputs)
     try:
         live = fetch()
     except Exception as e:                  # the API, the network, or no token
-        if all(os.path.exists(f) for f in outputs):
+        write = {f for f in outputs if not os.path.exists(f)}
+        if not write:
             print(f'upstream.py: could not read GitHub ({e}); the cards stay as they were')
             return
-        print(f'upstream.py: could not read GitHub ({e}); drawing the baked facts')
+        print(f'upstream.py: could not read GitHub ({e}); drawing the baked facts where a card is missing')
         live = {}
     facts = merged_with_baked(live)
     h = max(MIN_H, *(content(p, facts, SAGE['light'])[1] + 34 for p in PROJECTS))
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     for p in PROJECTS:
         for theme in SAGE:
-            with open(OUT.format(p['key'], theme), 'w', encoding='utf-8') as f:
-                f.write(build(p, facts, theme, h))
+            for path, draw in ((OUT.format(p['key'], theme), lambda: build(p, facts, theme, h)),
+                               (PHONE_OUT.format(p['key'], theme), lambda: build_phone(p, facts, theme))):
+                if path in write:
+                    with open(path, 'w', encoding='utf-8') as f:
+                        f.write(draw())
         shown = facts[p['key']] if p['key'] != 'easypid' else f'v{facts["easypid"]}'
         print(f'{p["name"]:11} {len(shown) if isinstance(shown, list) else shown}'
               f'{" merged" if isinstance(shown, list) else ""}')

@@ -150,17 +150,153 @@ def build(repos, login, t, theme, days=DAYS, curated=False):
 """
 
 
+# The phone version: the same light, turned to fall down a narrow screen. The
+# beam comes in from the top left, the prism throws a spectrum onto a strip
+# that spans the card -- each repository's slice as wide as its share -- and
+# a list underneath names every slice with its count. 320 units wide, drawn
+# at 2x so it fills a phone's README column.
+PHONE_OUT = 'assets/prism-phone-{}.svg'
+PW = 320
+ADVANCE = .6
+
+
+def ptext(x, y, s, size, fill, anchor='start', weight=None, extra=''):
+    """A label stretched to its exact monospace width, whatever font the viewer falls back to."""
+    bold = f' font-weight="{weight}"' if weight else ''
+    return (f'<text x="{x:g}" y="{y:g}" font-size="{size:g}" fill="{fill}" text-anchor="{anchor}"{bold}{extra} '
+            f'textLength="{len(s) * size * ADVANCE:.1f}" lengthAdjust="spacingAndGlyphs">{esc(s)}</text>')
+
+
+def wrap(text, chars):
+    lines, line = [], ''
+    for word in text.split():
+        if line and len(line) + 1 + len(word) > chars:
+            lines.append(line)
+            line = word
+        else:
+            line = f'{line} {word}'.strip()
+    return lines + [line] if line else lines
+
+
+def build_phone(repos, login, t, theme, days=DAYS, curated=False):
+    total = sum(n for _, n in repos)
+    shown, rest = repos[:BANDS], repos[BANDS:]
+    bands = [(name.split('/', 1)[1] if name.lower().startswith(login.lower() + '/') else name, n, i)
+             for i, (name, n) in enumerate(shown)]
+    if rest:
+        bands.append((f'{len(rest)} more {"repository" if len(rest) == 1 else "repositories"}',
+                      sum(n for _, n in rest), None))
+    shares = [n / total if total else 1 / len(bands) for _, n, _ in bands] if bands else []
+    spectrum = SPECTRUM[theme]
+    colour = [spectrum[min(i, len(spectrum) - 1)] if i is not None else t['muted'] for _, _, i in bands]
+    m, g = t['fringe'][1], t['fringe'][0]
+    L, R = 14, PW - 14
+
+    # The headline, fitted to the width, then what was counted, wrapped.
+    what = 'my robotics, embedded and vision repositories' if curated else 'public repositories'
+    first = f'{total:,} commits in the last {days} days' if total else f'No commits in the last {days} days'
+    size = min(15, (R - L) / (len(first) * ADVANCE))
+    lead = f'{total:,}' if total else ''
+    head = (f'<text x="{L}" y="32" font-size="{size:.2f}" fill="{t["fg"]}" textLength="{len(first) * size * ADVANCE:.1f}" '
+            f'lengthAdjust="spacingAndGlyphs"><tspan fill="{t["key"]}" font-weight="700">{lead}</tspan>{esc(first[len(lead):])}</text>')
+    sub = wrap(f'to {what}', int((R - L) / (12 * ADVANCE)))
+    head += ''.join(ptext(L, 52 + k * 17, s, 12, t['muted']) for k, s in enumerate(sub))
+
+    # The optics: an equilateral prism, the beam entering its left face and
+    # leaving through its base, then fanning down onto the strip.
+    oy = 52 + (len(sub) - 1) * 17 + 30
+    side = 112
+    A = (162, oy)
+    BL, BR = (A[0] - side / 2, oy + side * .866), (A[0] + side / 2, oy + side * .866)
+    p_in = lerp(BL, A, .52)
+    base_y = BL[1]
+    exit_x, exit_w = A[0] + 12, 14
+    beam_start = (L, oy + 8)
+    strip_y = base_y + 104
+    strip_h = 9
+
+    # Each slice on the strip is as wide as its share; a slice gets at least
+    # MIN units so the smallest still shows. `scale` is the largest that fits.
+    gap, MIN = 3, 7
+    room = (R - L) - gap * max(0, len(bands) - 1)
+    lo, hi = 0.0, float(room)
+    for _ in range(40):
+        scale = (lo + hi) / 2
+        lo, hi = (scale, hi) if sum(max(MIN, s * scale) for s in shares) <= room else (lo, scale)
+    scale = lo
+    fans, slices = [], []
+    x, ex = L, exit_x - exit_w / 2
+    for k, (share, c) in enumerate(zip(shares, colour)):
+        w = max(MIN, share * scale)
+        ew = exit_w * share
+        fans.append(f'<path class="band" d="M{ex:.1f} {base_y:.1f} L{ex + ew:.1f} {base_y:.1f} L{x + w:.1f} {strip_y:.1f} '
+                    f'L{x:.1f} {strip_y:.1f} Z" fill="{c}" style="animation-delay:{-k * 0.9:.1f}s"/>')
+        slices.append(f'<rect x="{x:.1f}" y="{strip_y:.1f}" width="{w:.1f}" height="{strip_h}" rx="2" fill="{c}"/>')
+        x += w + gap
+        ex += ew
+
+    # The list: a ray of each colour, the repository, a dotted leader, the count.
+    rows = []
+    y0, pitch = strip_y + strip_h + 34, 23
+    for k, ((label, n, i), c) in enumerate(zip(bands, colour)):
+        y = y0 + k * pitch
+        name = ptext(L + 26, y, label, 12, t['ink'] if i is not None else t['muted'])
+        count = ptext(R, y, str(n), 13, c, anchor='end', weight=700)
+        lead_x0 = L + 26 + len(label) * 12 * ADVANCE + 6
+        lead_x1 = R - len(str(n)) * 13 * ADVANCE - 6
+        leader = (f'<line x1="{lead_x0:.1f}" y1="{y - 3.5:.1f}" x2="{lead_x1:.1f}" y2="{y - 3.5:.1f}" stroke="{t["cc"]}" '
+                  f'stroke-width="1" stroke-dasharray="1 3.5"/>' if lead_x1 - lead_x0 > 8 else '')
+        rows.append(f'<rect x="{L}" y="{y - 7.5:.1f}" width="18" height="5" rx="2.5" fill="{c}"/>{name}{leader}{count}')
+    height = round((y0 + (len(bands) - 1) * pitch if bands else strip_y + strip_h) + 22)
+
+    prism = f'M{A[0]:g} {A[1]:g} L{BR[0]:.1f} {BR[1]:.1f} L{BL[0]:.1f} {BL[1]:.1f} Z'
+    glint = lerp(A, BL, .2), lerp(A, BL, .5)
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{PW * 2}" height="{height * 2}" viewBox="0 0 {PW} {height}" font-family="{FONT}" role="img" aria-label="{total} commits to {what} in the last {days} days, by repository: {esc(', '.join(f'{b[0]} {b[1]}' for b in bands))}">
+<style>
+text {{ white-space: pre; }}
+.photons {{ stroke-dasharray: 3 18; animation: flow 2.5s linear infinite; }}
+.band {{ opacity: .74; animation: breathe 5s ease-in-out infinite; }}
+@keyframes flow {{ to {{ stroke-dashoffset: -42; }} }}
+@keyframes breathe {{ 0%, 100% {{ opacity: .64; }} 50% {{ opacity: .9; }} }}
+@media (prefers-reduced-motion: reduce) {{ .photons, .band {{ animation: none; }} }}
+</style>
+<rect x=".5" y=".5" width="{PW - 1}" height="{height - 1}" rx="12" fill="{t['bg']}" stroke="{t['edge']}"/>
+{head}
+{ptext(L, beam_start[1] - 10, f'{days} days of commits', 11, t['muted'])}
+<line x1="{beam_start[0]}" y1="{beam_start[1]:.1f}" x2="{p_in[0]:.1f}" y2="{p_in[1]:.1f}" stroke="{t['ink']}" stroke-width="9" stroke-linecap="round" opacity=".08"/>
+<line x1="{beam_start[0]}" y1="{beam_start[1]:.1f}" x2="{p_in[0]:.1f}" y2="{p_in[1]:.1f}" stroke="{t['ink']}" stroke-width="2.6" stroke-linecap="round" opacity=".85"/>
+<line class="photons" x1="{beam_start[0]}" y1="{beam_start[1]:.1f}" x2="{p_in[0]:.1f}" y2="{p_in[1]:.1f}" stroke="{t['bg']}" stroke-width="2.6" stroke-linecap="round" opacity=".7"/>
+{''.join(fans) if total else ''}
+<line x1="{p_in[0]:.1f}" y1="{p_in[1]:.1f}" x2="{exit_x:.1f}" y2="{base_y:.1f}" stroke="{t['ink']}" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+<g fill="none" stroke-width="1.5" stroke-linejoin="round">
+  <g style="mix-blend-mode:{t['blend']}" opacity=".85">
+    <path d="{prism}" stroke="{m}" transform="translate(-1 0)"/>
+    <path d="{prism}" stroke="{g}" transform="translate(1 0)"/>
+  </g>
+  <path d="{prism}" stroke="{t['brand']}" fill="{t['brand']}" fill-opacity=".07"/>
+  <path d="M{glint[0][0]:.1f} {glint[0][1]:.1f} L{glint[1][0]:.1f} {glint[1][1]:.1f}" stroke="{t['ink']}" stroke-opacity=".35" transform="translate(7 2)"/>
+</g>
+<line x1="{L}" y1="{strip_y + strip_h + 12:.1f}" x2="{R}" y2="{strip_y + strip_h + 12:.1f}" stroke="{t['edge']}"/>
+{''.join(slices) if total else ''}
+{''.join(rows) if total else ''}
+</svg>
+"""
+
+
 def main():
     try:
         repos, login, days, curated = repositories()
     except (requests.RequestException, RuntimeError, KeyError, TypeError) as e:
-        print(f'warning: could not read recent commits ({e}); {OUT.format("*")} left as they are')
+        print(f'warning: could not read recent commits ({e}); {OUT.format("*")} and '
+              f'{PHONE_OUT.format("*")} left as they are')
         return
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     for theme, t in SAGE.items():
         with open(OUT.format(theme), 'w', encoding='utf-8') as f:
             f.write(build(repos, login, t, theme, days, curated))
-    print(f'wrote {OUT.format("light")} and {OUT.format("dark")}: '
+        with open(PHONE_OUT.format(theme), 'w', encoding='utf-8') as f:
+            f.write(build_phone(repos, login, t, theme, days, curated))
+    print(f'wrote {OUT.format("light")} and {OUT.format("dark")} (and the phone pair): '
           f'{sum(n for _, n in repos)} commits across {len(repos)} public repositories')
 
 

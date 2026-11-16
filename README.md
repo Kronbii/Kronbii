@@ -1,10 +1,10 @@
 <p align="center">
 <a href="https://github.com/Kronbii/Kronbii">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/sight-dark.svg"><img alt="Rami Kronbi: embedded robotics and vision engineer, seen through a vision pipeline: my portrait as edges, keypoints and a face detection, beside a readout of my tools, languages, contacts and GitHub stats." src="assets/sight-light.svg"></picture>
+  <picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/sight-dark.svg"><img alt="Rami Kronbi: embedded robotics and vision engineer, seen through a vision pipeline: my portrait as edges, keypoints and a face detection, beside a readout of my tools, languages, contacts and GitHub stats." src="assets/sight-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/sight-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/sight-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 </a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/headline-dark.svg"><img alt="I build for society. Robotics, embedded systems, computer vision." src="assets/parts/headline-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/headline-dark.svg"><img alt="I build for society. Robotics, embedded systems, computer vision." src="assets/parts/headline-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/headline-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/headline-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
 <p align="center">
 <!-- links:start -->
@@ -21,21 +21,21 @@
 
 <br/>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-where-i-work-dark.svg"><img alt="Where I work" src="assets/parts/section-where-i-work-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-where-i-work-dark.svg"><img alt="Where I work" src="assets/parts/section-where-i-work-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-where-i-work-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/section-where-i-work-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
 <p align="center">
 <!-- work:start -->
-<a href="https://oreyeon.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/work-oreyeon-dark.svg"><img alt="Oreyeon, Airside intelligence · Coimbra, Portugal: Embedded Systems, Robotics and Vision Engineer" src="assets/parts/work-oreyeon-light.svg"></picture></a>
+<a href="https://oreyeon.com"><picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/work-oreyeon-dark.svg"><img alt="Oreyeon, Airside intelligence · Coimbra, Portugal: Embedded Systems, Robotics and Vision Engineer" src="assets/parts/work-oreyeon-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/work-oreyeon-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/work-oreyeon-phone-light.svg"><img alt="" src="assets/blank.svg"></picture></a>
 <br/>
-<a href="https://cnrs.edu.lb"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/work-cnrs-l-dark.svg"><img alt="CNRS-L, National Council for Scientific Research, Lebanon: Research Assistant and Development Engineer" src="assets/parts/work-cnrs-l-light.svg"></picture></a>
+<a href="https://cnrs.edu.lb"><picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/work-cnrs-l-dark.svg"><img alt="CNRS-L, National Council for Scientific Research, Lebanon: Research Assistant and Development Engineer" src="assets/parts/work-cnrs-l-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/work-cnrs-l-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/work-cnrs-l-phone-light.svg"><img alt="" src="assets/blank.svg"></picture></a>
 <!-- work:end -->
 </p>
 
 <br/>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-dark.svg"><img alt="What I build" src="assets/parts/section-what-i-build-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-dark.svg"><img alt="What I build" src="assets/parts/section-what-i-build-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/section-what-i-build-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/reel-dark.svg"><img alt="What I build, one short scene each: a demining robot, sign-language recognition, runway safety at Oreyeon, a posture-aware classroom desk, election information for voters, R&D at CNRS-L, and a 5-inch FPV drone." src="assets/reel-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/reel-dark.svg"><img alt="What I build, one short scene each: a demining robot, sign-language recognition, runway safety at Oreyeon, a posture-aware classroom desk, election information for voters, R&D at CNRS-L, and a 5-inch FPV drone." src="assets/reel-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/reel-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/reel-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
 <p align="center">
 <!-- who:start -->
@@ -48,37 +48,34 @@
 
 <br/>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-with-dark.svg"><img alt="What I build with" src="assets/parts/section-what-i-build-with-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-with-dark.svg"><img alt="What I build with" src="assets/parts/section-what-i-build-with-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-with-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/section-what-i-build-with-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/explode-dark.svg"><img alt="What I build with, as an exploded assembly drawing of a robot with a bill of materials: sensors, compute, firmware and actuators." src="assets/explode-light.svg"></picture>
-
-<br/>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-lately-dark.svg"><img alt="Lately" src="assets/parts/section-lately-light.svg"></picture>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/prism-dark.svg"><img alt="My last 90 days of commits to my robotics, embedded and vision repositories, drawn as a beam of light that a prism splits into one band per repository." src="assets/prism-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/explode-dark.svg"><img alt="What I build with, as an exploded assembly drawing of a robot with a bill of materials: sensors, compute, firmware and actuators." src="assets/explode-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/explode-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/explode-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
 <br/>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-open-source-dark.svg"><img alt="Open source" src="assets/parts/section-open-source-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-lately-dark.svg"><img alt="Lately" src="assets/parts/section-lately-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-lately-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/section-lately-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
+
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/prism-dark.svg"><img alt="My last 90 days of commits to my robotics, embedded and vision repositories, drawn as a beam of light that a prism splits into one band per repository." src="assets/prism-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/prism-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/prism-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
+
+<br/>
+
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-open-source-dark.svg"><img alt="Open source" src="assets/parts/section-open-source-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-open-source-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/section-open-source-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
 <p align="center">
-<a href="https://github.com/Kronbii/easyPID"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-easypid-dark.svg"><img alt="easyPID, my PID controller library on the Arduino Library Manager, beside a scope tracing its step response with anti-windup on and off." src="assets/upstream-easypid-light.svg"></picture></a>
+<a href="https://github.com/Kronbii/easyPID"><picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-easypid-dark.svg"><img alt="easyPID, my PID controller library on the Arduino Library Manager, beside a scope tracing its step response with anti-windup on and off." src="assets/upstream-easypid-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-easypid-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/upstream-easypid-phone-light.svg"><img alt="" src="assets/blank.svg"></picture></a>
 <br/>
-<a href="https://github.com/betaflight/betaflight/pulls?q=is%3Apr+author%3AKronbii"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-betaflight-dark.svg"><img alt="Betaflight: my merged pull requests to the flight controller firmware, beside a blackbox-style gyro log." src="assets/upstream-betaflight-light.svg"></picture></a>
+<a href="https://github.com/betaflight/betaflight/pulls?q=is%3Apr+author%3AKronbii"><picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-betaflight-dark.svg"><img alt="Betaflight: my merged pull requests to the flight controller firmware, beside a blackbox-style gyro log." src="assets/upstream-betaflight-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-betaflight-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/upstream-betaflight-phone-light.svg"><img alt="" src="assets/blank.svg"></picture></a>
 <br/>
-<a href="https://github.com/openfrontio/OpenFrontIO/pulls?q=is%3Apr+author%3AKronbii"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-openfront-dark.svg"><img alt="OpenFront: my merged pull requests to the real-time strategy game, beside territories spreading across a map." src="assets/upstream-openfront-light.svg"></picture></a>
+<a href="https://github.com/openfrontio/OpenFrontIO/pulls?q=is%3Apr+author%3AKronbii"><picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-openfront-dark.svg"><img alt="OpenFront: my merged pull requests to the real-time strategy game, beside territories spreading across a map." src="assets/upstream-openfront-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-openfront-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/upstream-openfront-phone-light.svg"><img alt="" src="assets/blank.svg"></picture></a>
 </p>
 
-<p align="center"><a href="https://committers.top/lebanon"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-rank-dark.svg"><img alt="My rank among the most active GitHub users in Lebanon by public commits, on committers.top" src="assets/upstream-rank-light.svg"></picture></a></p>
+<p align="center"><a href="https://committers.top/lebanon"><picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-rank-dark.svg"><img alt="My rank among the most active GitHub users in Lebanon by public commits, on committers.top" src="assets/upstream-rank-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-rank-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/upstream-rank-phone-light.svg"><img alt="" src="assets/blank.svg"></picture></a></p>
 
 <br/>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-contributions-dark.svg"><img alt="Contributions" src="assets/parts/section-contributions-light.svg"></picture>
+<picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-contributions-dark.svg"><img alt="Contributions" src="assets/parts/section-contributions-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-contributions-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/parts/section-contributions-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/flight-dark.svg">
-    <img alt="My GitHub contributions over the last year, with a small quadcopter flying a survey pattern across the grid and revealing each day as it passes." src="assets/flight-light.svg">
-  </picture>
+  <picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/flight-dark.svg"><img alt="My GitHub contributions over the last year, with a small quadcopter flying a survey pattern across the grid and revealing each day as it passes." src="assets/flight-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/flight-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/flight-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
 </p>

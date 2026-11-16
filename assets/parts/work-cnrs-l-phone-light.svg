@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="685" viewBox="0 0 320 342.5" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="CNRS-L, National Council for Scientific Research, Lebanon: Research Assistant and Development Engineer. Lebanon's principal public institution for scientific research, founded in 1962 and working under the authority of the President of the Council of Ministers. It runs the National Centers for Geophysics, Marine Sciences, Remote Sensing, and Natural Hazards and Early Warning, and the Lebanese Atomic Energy Commission, and is Lebanon's contact point for EU research programmes, with partners including the European Commission, ESA and NASA.">
+<style>
+text { white-space: pre; }
+.fm { animation: fm 9s ease-in-out -3s infinite; }
+.fg { animation: fg 9s ease-in-out -3s infinite; }
+@keyframes fm { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-1.4px); } }
+@keyframes fg { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(1.4px); } }
+@media (prefers-reduced-motion: reduce) { .fm, .fg { animation: none; } }
+</style>
+<rect x=".5" y=".5" width="319" height="341.5" rx="12" fill="#f4f4ef" stroke="#deded5"/>
+<g style="mix-blend-mode:multiply" opacity=".85"><g class="fm"><text x="13" y="40" font-size="26" fill="#a03f8c" text-anchor="start" font-weight="700" textLength="31.2" lengthAdjust="spacingAndGlyphs">02</text></g><g class="fg"><text x="15" y="40" font-size="26" fill="#4b8a35" text-anchor="start" font-weight="700" textLength="31.2" lengthAdjust="spacingAndGlyphs">02</text></g></g><text x="14" y="40" font-size="26" fill="#4d6b40" text-anchor="start" font-weight="700" textLength="31.2" lengthAdjust="spacingAndGlyphs">02</text>
+<text x="55.2" y="40" font-size="22" fill="#161a16" text-anchor="start" font-weight="700" textLength="79.2" lengthAdjust="spacingAndGlyphs">CNRS-L</text>
+<text x="306" y="40" font-size="11" fill="#4d6b40" text-anchor="end" textLength="85.8" lengthAdjust="spacingAndGlyphs">cnrs.edu.lb ↗</text>
+<text x="14" y="60" font-size="11" fill="#646b63" text-anchor="start" textLength="132" lengthAdjust="spacingAndGlyphs">National Council for</text>
+<text x="14" y="75" font-size="11" fill="#646b63" text-anchor="start" textLength="184.8" lengthAdjust="spacingAndGlyphs">Scientific Research, Lebanon</text>
+<text x="14" y="97" font-size="13" fill="#4d6b40" text-anchor="start" textLength="171.6" lengthAdjust="spacingAndGlyphs">Research Assistant and</text>
+<text x="14" y="114" font-size="13" fill="#4d6b40" text-anchor="start" textLength="156" lengthAdjust="spacingAndGlyphs">Development Engineer</text>
+<line x1="14" y1="126" x2="306" y2="126" stroke="#deded5"/>
+<text x="14" y="145" font-size="12" fill="#3e443e" text-anchor="start" textLength="273.6" lengthAdjust="spacingAndGlyphs">Lebanon's principal public institution</text>
+<text x="14" y="161.5" font-size="12" fill="#3e443e" text-anchor="start" textLength="288" lengthAdjust="spacingAndGlyphs">for scientific research, founded in 1962</text>
+<text x="14" y="178" font-size="12" fill="#3e443e" text-anchor="start" textLength="273.6" lengthAdjust="spacingAndGlyphs">and working under the authority of the</text>
+<text x="14" y="194.5" font-size="12" fill="#3e443e" text-anchor="start" textLength="273.6" lengthAdjust="spacingAndGlyphs">President of the Council of Ministers.</text>
+<text x="14" y="211" font-size="12" fill="#3e443e" text-anchor="start" textLength="230.4" lengthAdjust="spacingAndGlyphs">It runs the National Centers for</text>
+<text x="14" y="227.5" font-size="12" fill="#3e443e" text-anchor="start" textLength="252" lengthAdjust="spacingAndGlyphs">Geophysics, Marine Sciences, Remote</text>
+<text x="14" y="244" font-size="12" fill="#3e443e" text-anchor="start" textLength="273.6" lengthAdjust="spacingAndGlyphs">Sensing, and Natural Hazards and Early</text>
+<text x="14" y="260.5" font-size="12" fill="#3e443e" text-anchor="start" textLength="280.8" lengthAdjust="spacingAndGlyphs">Warning, and the Lebanese Atomic Energy</text>
+<text x="14" y="277" font-size="12" fill="#3e443e" text-anchor="start" textLength="259.2" lengthAdjust="spacingAndGlyphs">Commission, and is Lebanon's contact</text>
+<text x="14" y="293.5" font-size="12" fill="#3e443e" text-anchor="start" textLength="273.6" lengthAdjust="spacingAndGlyphs">point for EU research programmes, with</text>
+<text x="14" y="310" font-size="12" fill="#3e443e" text-anchor="start" textLength="223.2" lengthAdjust="spacingAndGlyphs">partners including the European</text>
+<text x="14" y="326.5" font-size="12" fill="#3e443e" text-anchor="start" textLength="180" lengthAdjust="spacingAndGlyphs">Commission, ESA and NASA.</text>
+</svg>

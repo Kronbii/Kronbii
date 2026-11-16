@@ -5,7 +5,8 @@ Draws the What I build reel: one short scene per project, in turn.
 
 Reads [[readme.who]] in profile.toml and writes assets/reel-light.svg and
 assets/reel-dark.svg, plus the row of project links under the reel in
-README.md (between the who markers).
+README.md (between the who markers). It also writes assets/reel-phone-light.svg
+and -dark.svg: the same reel stacked for a phone, each drawing above its text.
 
 Each scene is a small line drawing of what the project does, beside who it is
 for and the discipline it belongs to. Scenes come into focus out of the green/magenta fringe -- a blur and a
@@ -405,6 +406,109 @@ def build(who, t):
 """
 
 
+# ── the phone reel ──────────────────────────────────────────────────────────
+# The README shows this copy when the screen is 640 px wide or less. It is the
+# same reel stacked: each drawing above its text, at type a phone can read. The
+# canvas is 320 units wide, drawn at twice that, so on a 375 px phone (a 293 px
+# README column) one unit is about 0.92 px.
+PHONE_W = 320
+PAD = 12
+ADVANCE = .6
+DRAW_Y = 22                 # where each 240-unit drawing box starts (its top rows are empty)
+DRAW_X = (PHONE_W - 240) / 2
+TEXT_Y = DRAW_Y + 239       # the drawings end by y 232 of their box, the ballot's label by 230
+LINE = 16
+
+
+def label(x, y, s, size, fill, anchor='start', track=0, weight=None):
+    """Text squeezed or stretched to exactly its monospace width."""
+    w = len(s) * size * ADVANCE + max(0, len(s) - 1) * track
+    bold = f' font-weight="{weight}"' if weight else ''
+    return (f'<text x="{x:g}" y="{y:g}" font-size="{size}" fill="{fill}" text-anchor="{anchor}"{bold} '
+            f'textLength="{w:g}" lengthAdjust="spacingAndGlyphs">{esc(s)}</text>')
+
+
+def phone_text(w, t):
+    """The words under a phone scene, and the height they need."""
+    cols = int((PHONE_W - 2 * PAD) / (12 * ADVANCE))
+    y = TEXT_Y + 22
+    out = [label(PAD, y, w['for'], 22, t['ink'])]
+    y += 22
+    for line in wrap(w['project'], cols):
+        out.append(label(PAD, y, line, 12, t['key'], weight=700))
+        y += LINE
+    y += 6
+    for line in wrap(w['line'], cols):
+        out.append(label(PAD, y, line, 12, t['muted']))
+        y += LINE
+    return '\n'.join(out), y - LINE
+
+
+def phone_drawing(fn, t):
+    """A scene's drawing with its small labels raised to phone size."""
+    import re
+    return re.sub(r'font-size="(9|10)"', 'font-size="11"', fn(t))
+
+
+def build_phone(who, t):
+    n = len(who)
+    dur = n * SCENE
+    m, g = t['fringe'][1], t['fringe'][0]
+    words = [phone_text(w, t) for w in who]
+    bottom = max(b for _, b in words)
+    pip_y = bottom + 16
+    height = round(pip_y + 3 + 10)
+    scenes = []
+    for k, w in enumerate(who):
+        a, b = k * SCENE - LEAD, (k + 1) * SCENE - LEAD
+        if k == 0:
+            rack = lambda far, near: [(0, near), (b - FOCUS, near), (b, far), (dur - LEAD, far),
+                                      (dur - LEAD + FOCUS, near), (dur, near)]
+        else:
+            rack = lambda far, near: [(0, far), (a, far), (a + FOCUS, near), (b - FOCUS, near), (b, far), (dur, far)]
+        blur, shift, seen = rack(5, 0), rack(7, .5), rack(0, 1)
+        kicker = w.get('kicker', '').upper()
+        scenes.append(f"""
+<filter id="f{k}" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="b">{anim('stdDeviation', blur, dur)}</feGaussianBlur>
+  <feOffset in="b" dx="-.5" result="l">{anim('dx', [(s, -v) for s, v in shift], dur)}</feOffset>
+  <feOffset in="b" dx=".5" result="r">{anim('dx', shift, dur)}</feOffset>
+  <feFlood flood-color="{m}"/><feComposite in2="l" operator="in" result="lm"/>
+  <feFlood flood-color="{g}"/><feComposite in2="r" operator="in" result="rg"/>
+  <feBlend in="lm" in2="rg" mode="{'screen' if t['blend'] == 'screen' else 'multiply'}" result="fringe"/>
+  <feMerge><feMergeNode in="fringe"/><feMergeNode in="b"/></feMerge>
+</filter>
+<g class="scene s{k}" filter="url(#f{k})" opacity="{1 if k == 0 else 0}">{anim('opacity', seen, dur)}
+  {label(PAD, 24, kicker, 11, t['muted'], track=1.5)}
+  {label(PHONE_W - PAD, 24, f'{k + 1:02d}/{n:02d}', 11, t['muted'], 'end', track=1.5)}
+  <g transform="translate({DRAW_X:g} {DRAW_Y})" fill="none" stroke="{t['brand']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{phone_drawing(SCENES[w['scene']], t)}
+  </g>
+  {words[k][0]}
+</g>""")
+
+    pip_w, pip_gap = 26, 8
+    pips = ''.join(f'<rect x="{PAD + i * (pip_w + pip_gap)}" y="{pip_y:g}" width="{pip_w}" height="3" rx="1.5" fill="{t["cc"]}"/>'
+                   for i in range(n))
+    cursor = (f'<rect x="{PAD}" y="{pip_y - 1:g}" width="{pip_w}" height="5" rx="2.5" fill="{t["brand"]}">'
+              f'<animate attributeName="x" dur="{dur:g}s" repeatCount="indefinite" calcMode="discrete" '
+              f'values="{";".join(str(PAD + i * (pip_w + pip_gap)) for i in [*range(n), 0])}" '
+              f'keyTimes="0;{";".join(f"{(i * SCENE - LEAD) / dur:.5f}" for i in range(1, n + 1))}"/></rect>')
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{2 * PHONE_W}" height="{2 * height}" viewBox="0 0 {PHONE_W} {height}" font-family="{FONT}" role="img" aria-label="What I build, and for whom: {esc(', '.join(w['for'] for w in who))}">
+<style>
+text {{ white-space: pre; }}
+@media (prefers-reduced-motion: reduce) {{ .scene {{ opacity: 0 !important; filter: none !important; }} .s0 {{ opacity: 1 !important; }} }}
+</style>
+<defs>
+<marker id="j" viewBox="-3 -3 6 6" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse"><circle r="2.6" fill="{t['brand']}"/></marker>
+</defs>
+<rect x=".5" y=".5" width="{PHONE_W - 1}" height="{height - 1}" rx="12" fill="{t['bg']}" stroke="{t['edge']}"/>
+{''.join(scenes)}
+{pips}{cursor}
+</svg>
+"""
+
+
 def main():
     with open(CONFIG, 'rb') as f:
         who = tomllib.load(f).get('readme', {}).get('who', [])
@@ -416,6 +520,8 @@ def main():
     for theme, t in SAGE.items():
         with open(OUT.format(theme), 'w', encoding='utf-8') as f:
             f.write(build(who, t))
+        with open(OUT.format(f'phone-{theme}'), 'w', encoding='utf-8') as f:
+            f.write(build_phone(who, t))
 
     with open(README, encoding='utf-8') as f:
         text = f.read()
@@ -432,7 +538,7 @@ def main():
         _, tail = rest.split(WHO_END, 1)
         with open(README, 'w', encoding='utf-8') as f:
             f.write(f'{head}{WHO_START}\n{row}\n{WHO_END}{tail}')
-    print(f'wrote {OUT.format("light")} and {OUT.format("dark")}: {len(who)} scenes, '
+    print(f'wrote {OUT.format("light")} and {OUT.format("dark")}, and their phone twins: {len(who)} scenes, '
           f'{len(who) * SCENE:g} s a loop')
 
 

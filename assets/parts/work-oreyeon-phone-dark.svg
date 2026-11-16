@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="424" viewBox="0 0 320 212" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="Oreyeon, Airside intelligence · Coimbra, Portugal: Embedded Systems, Robotics and Vision Engineer. An airside intelligence company. Its Runway Surface Monitoring System detects, geolocates and reports foreign object debris and pavement damage on airport runways in real time.">
+<style>
+text { white-space: pre; }
+.fm { animation: fm 9s ease-in-out 0s infinite; }
+.fg { animation: fg 9s ease-in-out 0s infinite; }
+@keyframes fm { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-1.4px); } }
+@keyframes fg { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(1.4px); } }
+@media (prefers-reduced-motion: reduce) { .fm, .fg { animation: none; } }
+</style>
+<rect x=".5" y=".5" width="319" height="211" rx="12" fill="#0b0d0c" stroke="#1f2621"/>
+<g style="mix-blend-mode:screen" opacity=".85"><g class="fm"><text x="13" y="40" font-size="26" fill="#e08fd0" text-anchor="start" font-weight="700" textLength="31.2" lengthAdjust="spacingAndGlyphs">01</text></g><g class="fg"><text x="15" y="40" font-size="26" fill="#a6e68f" text-anchor="start" font-weight="700" textLength="31.2" lengthAdjust="spacingAndGlyphs">01</text></g></g><text x="14" y="40" font-size="26" fill="#b7d3a8" text-anchor="start" font-weight="700" textLength="31.2" lengthAdjust="spacingAndGlyphs">01</text>
+<text x="55.2" y="40" font-size="22" fill="#eef1ec" text-anchor="start" font-weight="700" textLength="92.4" lengthAdjust="spacingAndGlyphs">Oreyeon</text>
+<text x="306" y="40" font-size="11" fill="#b7d3a8" text-anchor="end" textLength="85.8" lengthAdjust="spacingAndGlyphs">oreyeon.com ↗</text>
+<text x="14" y="60" font-size="11" fill="#7d867c" text-anchor="start" textLength="264" lengthAdjust="spacingAndGlyphs">Airside intelligence · Coimbra, Portugal</text>
+<text x="14" y="82" font-size="13" fill="#b7d3a8" text-anchor="start" textLength="202.8" lengthAdjust="spacingAndGlyphs">Embedded Systems, Robotics</text>
+<text x="14" y="99" font-size="13" fill="#b7d3a8" text-anchor="start" textLength="148.2" lengthAdjust="spacingAndGlyphs">and Vision Engineer</text>
+<line x1="14" y1="111" x2="306" y2="111" stroke="#1f2621"/>
+<text x="14" y="130" font-size="12" fill="#b9c0b8" text-anchor="start" textLength="259.2" lengthAdjust="spacingAndGlyphs">An airside intelligence company. Its</text>
+<text x="14" y="146.5" font-size="12" fill="#b9c0b8" text-anchor="start" textLength="230.4" lengthAdjust="spacingAndGlyphs">Runway Surface Monitoring System</text>
+<text x="14" y="163" font-size="12" fill="#b9c0b8" text-anchor="start" textLength="280.8" lengthAdjust="spacingAndGlyphs">detects, geolocates and reports foreign</text>
+<text x="14" y="179.5" font-size="12" fill="#b9c0b8" text-anchor="start" textLength="259.2" lengthAdjust="spacingAndGlyphs">object debris and pavement damage on</text>
+<text x="14" y="196" font-size="12" fill="#b9c0b8" text-anchor="start" textLength="208.8" lengthAdjust="spacingAndGlyphs">airport runways in real time.</text>
+</svg>
