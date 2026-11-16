@@ -98,7 +98,3 @@
     <img alt="My GitHub contributions over the last year, with a small quadcopter flying a survey pattern across the grid and revealing each day as it passes." src="assets/flight-light.svg">
   </picture>
 </p>
-
-<br/>
-
-<p align="center"><sub>This page redraws itself every morning: the card's stats, the prism and the survey flight all come from <a href="https://github.com/Kronbii/Kronbii">small Python scripts in this repository</a>.</sub></p>
