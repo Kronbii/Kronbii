@@ -1,9 +1,6 @@
 <p align="center">
 <a href="https://github.com/Kronbii/Kronbii">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Kronbii/Kronbii/main/dark_mode.svg">
-    <img alt="Rami Kronbi: embedded robotics and vision engineer. An ASCII portrait beside a neofetch-style card of tools, languages, contacts and GitHub stats." src="https://raw.githubusercontent.com/Kronbii/Kronbii/main/light_mode.svg">
-  </picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/sight-dark.svg"><img alt="Rami Kronbi: embedded robotics and vision engineer, seen through a vision pipeline: my portrait as edges, keypoints and a face detection, beside a readout of my tools, languages, contacts and GitHub stats." src="assets/sight-light.svg"></picture>
 </a>
 </p>
 
@@ -42,9 +39,18 @@
 
 <p align="center">
 <!-- who:start -->
-<a href="https://ramikronbi.com/projects/landmine-detection-extraction-robot">Landmine detection and extraction robot</a> · <a href="https://ramikronbi.com/projects/omnisign-lebanese-sign-language">OmniSign</a> · <a href="https://ramikronbi.com/projects/posture-aware-classroom-desk">BEMO, the smart interactive desk</a> · <a href="https://ramikronbi.com/projects/five-inch-carbon-fiber-fpv-drone">5-inch carbon-fiber FPV drone</a>
+<a href="https://ramikronbi.com/projects/landmine-detection-extraction-robot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/who-landmine-detection-and-extraction-robot-dark.svg"><img alt="Landmine detection and extraction robot" src="assets/parts/who-landmine-detection-and-extraction-robot-light.svg"></picture></a>
+<a href="https://ramikronbi.com/projects/omnisign-lebanese-sign-language"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/who-omnisign-dark.svg"><img alt="OmniSign" src="assets/parts/who-omnisign-light.svg"></picture></a>
+<a href="https://ramikronbi.com/projects/posture-aware-classroom-desk"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/who-bemo-the-smart-interactive-desk-dark.svg"><img alt="BEMO, the smart interactive desk" src="assets/parts/who-bemo-the-smart-interactive-desk-light.svg"></picture></a>
+<a href="https://ramikronbi.com/projects/five-inch-carbon-fiber-fpv-drone"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/who-5-inch-carbon-fiber-fpv-drone-dark.svg"><img alt="5-inch carbon-fiber FPV drone" src="assets/parts/who-5-inch-carbon-fiber-fpv-drone-light.svg"></picture></a>
 <!-- who:end -->
 </p>
+
+<br/>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-what-i-build-with-dark.svg"><img alt="What I build with" src="assets/parts/section-what-i-build-with-light.svg"></picture>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/explode-dark.svg"><img alt="What I build with, as an exploded assembly drawing of a robot with a bill of materials: sensors, compute, firmware and actuators." src="assets/explode-light.svg"></picture>
 
 <br/>
 
@@ -56,37 +62,15 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/parts/section-open-source-dark.svg"><img alt="Open source" src="assets/parts/section-open-source-light.svg"></picture>
 
-<table>
-  <tr>
-    <td width="50" align="center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" width="38" alt="Arduino logo"/>
-    </td>
-    <td>
-      <b>Arduino Library Manager</b><br/>
-      Author of <a href="https://github.com/Kronbii/easyPID"><b>easyPID</b></a>, a production-grade multi-instance PID controller library for embedded systems
-    </td>
-  </tr>
-  <tr>
-    <td width="50" align="center">
-      <img src="assets/logos/betaflight.svg" width="38" height="38" alt="Betaflight logo"/>
-    </td>
-    <td>
-      <b>Betaflight</b><br/>
-      Contributor to the open-source flight controller firmware project
-    </td>
-  </tr>
-  <tr>
-    <td width="50" align="center">
-      <img src="assets/logos/openfront.png" width="38" height="38" alt="OpenFront logo"/>
-    </td>
-    <td>
-      <b>OpenFront</b><br/>
-      Contributor to the open-source real-time strategy game
-    </td>
-  </tr>
-</table>
+<p align="center">
+<a href="https://github.com/Kronbii/easyPID"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-easypid-dark.svg"><img alt="easyPID, my PID controller library on the Arduino Library Manager, beside a scope tracing its step response with anti-windup on and off." src="assets/upstream-easypid-light.svg"></picture></a>
+<br/>
+<a href="https://github.com/betaflight/betaflight/pulls?q=is%3Apr+author%3AKronbii"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-betaflight-dark.svg"><img alt="Betaflight: my merged pull requests to the flight controller firmware, beside a blackbox-style gyro log." src="assets/upstream-betaflight-light.svg"></picture></a>
+<br/>
+<a href="https://github.com/openfrontio/OpenFrontIO/pulls?q=is%3Apr+author%3AKronbii"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-openfront-dark.svg"><img alt="OpenFront: my merged pull requests to the real-time strategy game, beside territories spreading across a map." src="assets/upstream-openfront-light.svg"></picture></a>
+</p>
 
-<a href="https://committers.top/lebanon"><img src="https://user-badge.committers.top/lebanon/Kronbii.svg" alt="committers.top Lebanon rank" /></a>
+<p align="center"><a href="https://committers.top/lebanon"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/upstream-rank-dark.svg"><img alt="My rank among the most active GitHub users in Lebanon by public commits, on committers.top" src="assets/upstream-rank-light.svg"></picture></a></p>
 
 <br/>
 

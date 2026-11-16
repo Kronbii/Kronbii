@@ -420,7 +420,14 @@ def main():
     with open(README, encoding='utf-8') as f:
         text = f.read()
     if WHO_START in text and WHO_END in text:
-        row = ' · '.join(f'<a href="{w["href"]}">{esc(w["project"])}</a>' for w in who if w.get('href'))
+        # One pill per project that has a page, drawn like the link pills.
+        from parts import OUT as PARTS, link_svg, picture, slug
+        linked = [w for w in who if w.get('href')]
+        for w in linked:
+            for theme, t in SAGE.items():
+                with open(f'{PARTS}/who-{slug(w["project"])}-{theme}.svg', 'w', encoding='utf-8') as f:
+                    f.write(link_svg(f'{w["project"]} ↗', t, primary=False))
+        row = '\n'.join(picture(f'who-{slug(w["project"])}', w['project'], w['href']) for w in linked)
         head, rest = text.split(WHO_START, 1)
         _, tail = rest.split(WHO_END, 1)
         with open(README, 'w', encoding='utf-8') as f:

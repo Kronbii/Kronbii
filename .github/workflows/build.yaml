@@ -40,6 +40,10 @@ jobs:
           # A literal fallback here would silently shadow the config file.
           BIRTHDAY: ${{ secrets.BIRTHDAY }}
         run: python today.py
+      # Draws the top card from the numbers today.py just wrote into
+      # dark_mode.svg, so it runs right after it. No API calls of its own.
+      - name: Redraw the machine-sight card
+        run: python sight.py
       # Both leave their output as it was and exit cleanly if the API is down,
       # so neither can stop the stats above from being committed.
       - name: Redraw the contribution flight
@@ -52,6 +56,11 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || github.token }}
           USER_NAME: Kronbii
         run: python prism.py
+      - name: Redraw the open-source cards
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || github.token }}
+          USER_NAME: Kronbii
+        run: python upstream.py
       - name: Commit
         run: |-
           git add .

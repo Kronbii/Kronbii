@@ -64,36 +64,109 @@ def section_svg(label, t):
 """
 
 
+# The headline's last word is drawn as a crowd of dots rather than as text, so
+# its glyphs come from this font, not from whatever the viewer falls back to.
+# DejaVu Sans Mono is what Menlo was cut from, so it sits well beside the
+# monospace the rest of the line falls back to on most machines.
+CROWD_FONTS = ('/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf',
+               '/Library/Fonts/DejaVuSansMono-Bold.ttf', 'DejaVuSansMono-Bold.ttf')
+
+
+def crowd(word, size, pitch):
+    """
+    Dots that draw `word`, as (x, y, r) from the start of its baseline: the
+    glyphs are rendered four times over, sampled on a staggered grid, and each
+    dot is sized by how much of its cell the letter covers.
+    """
+    from PIL import Image, ImageDraw, ImageFont
+    for path in CROWD_FONTS:
+        try:
+            font = ImageFont.truetype(path, size * 4)
+            break
+        except OSError:
+            continue
+    else:
+        raise SystemExit(f'parts.py: none of {CROWD_FONTS} is installed; the headline needs one')
+    left, top, right, bottom = font.getbbox(word, anchor='ls')
+    pad = 8 * 4
+    img = Image.new('L', (right - left + 2 * pad, bottom - top + 2 * pad), 0)
+    ox, oy = pad - left, pad - top                  # the baseline origin, in pixels
+    ImageDraw.Draw(img).text((ox, oy), word, font=font, fill=255, anchor='ls')
+    px = img.load()
+    cell = pitch * 4
+    dots = []
+    row = 0
+    y = cell / 2
+    while y < img.height:
+        x = cell / 2 + (cell / 2 if row % 2 else 0)
+        while x < img.width:
+            x0, y0 = int(x - cell / 2), int(y - cell / 2)
+            total = n = 0
+            for yy in range(max(0, y0), min(img.height, int(y0 + cell))):
+                for xx in range(max(0, x0), min(img.width, int(x0 + cell))):
+                    total += px[xx, yy]
+                    n += 1
+            cover = total / (255 * n) if n else 0
+            if cover > .22:
+                dots.append(((x - ox) / 4, (y - oy) / 4, pitch * .5 * cover ** .5))
+            x += cell
+        y += cell * .866                            # rows of a hexagonal packing
+        row += 1
+    return dots, font.getlength(word) / 4
+
+
 def headline_svg(headline, subline, t):
     """
-    The bold line under the card. Its last word is set in the brand colour and
-    slowly racks in and out of the fringe, the way ramikronbi.com treats one
-    word of a heading. The fringe copies repeat the whole line with only that
-    word painted, so they line up whatever font the viewer falls back to.
+    The bold line under the card. Its last word arrives as a crowd: a few
+    hundred dots, scattered across the band when the image loads, walk in and
+    settle into the letters -- society, made of people. Then the green and
+    magenta fringe racks in around it and slowly breathes, the way
+    ramikronbi.com treats one word of a heading.
+
+    Every dot rests at its place in the word, and the animation only says
+    where it starts from, so reduced motion (or no CSS at all) shows the word.
     """
+    import random
     lead, _, word = headline.rpartition(' ')
     lead = lead + ' ' if lead else ''
-    h, cx = 132, WIDTH / 2
+    h, size, base = 132, 54, 70
     m, g = t['fringe'][1], t['fringe'][0]
-
-    def line(word_fill, lead_fill='none'):
-        return (f'<text x="{cx:g}" y="70" text-anchor="middle" font-size="54" font-weight="700">'
-                f'<tspan fill="{lead_fill}">{esc(lead)}</tspan><tspan fill="{word_fill}">{esc(word)}</tspan></text>')
-
+    dots, word_w = crowd(word, size, 3.1)
+    lead_w = len(lead) * size * ADVANCE
+    x0 = (WIDTH - lead_w - word_w) / 2
+    wx = x0 + lead_w
+    rnd = random.Random(word)                       # the same crowd every build
+    circles = []
+    for x, y, r in dots:
+        tx, ty = wx + x, base + y
+        sx, sy = rnd.uniform(24, WIDTH - 24), rnd.uniform(10, h - 10)
+        delay = .35 + rnd.uniform(0, .75) + .5 * (x / word_w)
+        circles.append(f'<circle cx="{tx:.1f}" cy="{ty:.1f}" r="{r:.2f}" '
+                       f'style="--x:{sx - tx:.0f}px;--y:{sy - ty:.0f}px;animation-delay:{delay:.2f}s"/>')
+    settle = 2.0 + .35 + .75 + .5                   # the last dot lands
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(headline)}. {esc(subline)}">
 <style>
 text {{ white-space: pre; }}
-.fringe {{ mix-blend-mode: {t['blend']}; opacity: .9; }}
-.fm {{ transform: translateX(-1.2px); animation: fm 9s ease-in-out infinite; }}
-.fg {{ transform: translateX(1.2px); animation: fg 9s ease-in-out infinite; }}
-@keyframes fm {{ 0%, 100% {{ transform: translateX(-.9px); }} 50% {{ transform: translateX(-2.4px); }} }}
-@keyframes fg {{ 0%, 100% {{ transform: translateX(.9px); }} 50% {{ transform: translateX(2.4px); }} }}
-@media (prefers-reduced-motion: reduce) {{ .fm, .fg {{ animation: none; }} }}
+.crowd circle {{ animation: walk 2s cubic-bezier(.2,.75,.25,1) both; }}
+@keyframes walk {{ from {{ transform: translate(var(--x), var(--y)); opacity: .35; }} to {{ transform: none; opacity: 1; }} }}
+.fringe {{ mix-blend-mode: {t['blend']}; }}
+.fm {{ transform: translateX(-.6px); animation: fin {settle:.2f}s both, fm 9s ease-in-out {settle:.2f}s infinite; }}
+.fg {{ transform: translateX(.6px); animation: fin {settle:.2f}s both, fg 9s ease-in-out {settle:.2f}s infinite; }}
+@keyframes fin {{ 0%, 70% {{ opacity: 0; }} 100% {{ opacity: .9; }} }}
+@keyframes fm {{ 0%, 100% {{ transform: translateX(-.6px); opacity: .9; }} 50% {{ transform: translateX(-1.5px); opacity: .9; }} }}
+@keyframes fg {{ 0%, 100% {{ transform: translateX(.6px); opacity: .9; }} 50% {{ transform: translateX(1.5px); opacity: .9; }} }}
+.sub {{ animation: sub 1.2s ease-out {settle - .6:.2f}s both; }}
+@keyframes sub {{ from {{ opacity: 0; transform: translateY(4px); }} to {{ opacity: 1; transform: none; }} }}
+@media (prefers-reduced-motion: reduce) {{ .crowd circle, .fm, .fg, .sub {{ animation: none; }} .fm, .fg {{ opacity: .9; }} }}
 </style>
-<g class="fringe fm">{line(m)}</g>
-<g class="fringe fg">{line(g)}</g>
-{line(t['brand'], t['ink'])}
-<text x="{cx:g}" y="108" text-anchor="middle" font-size="17" letter-spacing="1" fill="{t['muted']}">{esc(subline)}</text>
+<defs><g id="crowd" class="crowd">
+{chr(10).join(circles)}
+</g></defs>
+<g class="fringe fm" fill="{m}"><use href="#crowd"/></g>
+<g class="fringe fg" fill="{g}"><use href="#crowd"/></g>
+<text x="{x0:g}" y="{base}" font-size="{size}" font-weight="700" fill="{t['ink']}" textLength="{len(lead.rstrip()) * size * ADVANCE:g}" lengthAdjust="spacingAndGlyphs">{esc(lead.rstrip())}</text>
+<use href="#crowd" fill="{t['brand']}"/>
+<text class="sub" x="{WIDTH / 2:g}" y="108" text-anchor="middle" font-size="17" letter-spacing="1" fill="{t['muted']}">{esc(subline)}</text>
 </svg>
 """
 
@@ -123,8 +196,15 @@ def work_svg(i, job, t):
     lines = '\n'.join(f'<text x="150" y="{150 + 21 * k}" font-size="14" fill="{t["fg"]}">{esc(l)}</text>'
                       for k, l in enumerate(about))
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(job['org'])}, {esc(job['full'])}: {esc(job['role'])}. {esc(job['about'])}">
+<style>
+.fm {{ animation: fm 9s ease-in-out {-3 * i}s infinite; }}
+.fg {{ animation: fg 9s ease-in-out {-3 * i}s infinite; }}
+@keyframes fm {{ 0%, 100% {{ transform: translateX(0); }} 50% {{ transform: translateX(-1.6px); }} }}
+@keyframes fg {{ 0%, 100% {{ transform: translateX(0); }} 50% {{ transform: translateX(1.6px); }} }}
+@media (prefers-reduced-motion: reduce) {{ .fm, .fg {{ animation: none; }} }}
+</style>
 <rect x=".5" y=".5" width="{WIDTH - 1}" height="{h - 1}" rx="15" fill="{t['bg']}" stroke="{t['edge']}"/>
-<g style="mix-blend-mode:{t['blend']}" opacity=".85">{index(m, -1.2)}{index(g, 1.2)}</g>{index(t['brand'], 0)}
+<g style="mix-blend-mode:{t['blend']}" opacity=".85"><g class="fm">{index(m, -1.2)}</g><g class="fg">{index(g, 1.2)}</g></g>{index(t['brand'], 0)}
 <text x="150" y="62" font-size="30" font-weight="700" fill="{t['ink']}">{esc(job['org'])}</text>
 <text x="150" y="88" font-size="13" letter-spacing=".5" fill="{t['muted']}">{esc(job['full'])}</text>
 <text x="150" y="120" font-size="18" fill="{t['key']}">{esc(job['role'])}</text>

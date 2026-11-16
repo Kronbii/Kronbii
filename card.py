@@ -242,8 +242,61 @@ def art_lines(path, cols, rows):
     return lines + [''] * (rows - len(lines))
 
 
+# ── the boot ────────────────────────────────────────────────────────────────
+# When the card loads, the portrait is read out like a rolling-shutter camera
+# sensor -- a bright line sweeps down and the rows appear behind it, out of
+# focus -- while the info column types itself in. Then the fringe racks into
+# focus and the mark appears. About two and a half seconds, once.
+#
+# Everything is CSS, so prefers-reduced-motion can switch it off, and it is
+# built from curtains that *cover* finished content: each one carries
+# transform="scale(0)" as its resting state, so a renderer that ignores the
+# animations shows the finished card rather than a blank one.
+READ_START, READ_TIME = .15, 1.5          # the shutter sweep, seconds
+TYPE_START, TYPE_STEP, TYPE_TIME = .35, .06, .3
+FOCUSED = READ_START + READ_TIME + .9     # fringe fully racked in
+
+
+def boot_css(rows):
+    last = TYPE_START + TYPE_STEP * (rows - 1) + TYPE_TIME
+    return f"""
+.boot {{transform-box: fill-box;}}
+.shutter {{transform-origin: 50% 100%; animation: shutter {READ_TIME}s linear {READ_START}s both;}}
+.readout {{animation: readout {READ_TIME}s linear {READ_START}s both;}}
+.type {{transform-origin: 100% 50%; animation: type {TYPE_TIME}s steps(16, end) both;}}
+.mk {{animation: mk {FOCUSED:.2f}s ease-out both;}}
+@keyframes shutter {{from {{transform: scaleY(1);}} to {{transform: scaleY(0);}}}}
+@keyframes readout {{0% {{transform: translateY(0); opacity: 1;}} 88% {{opacity: 1;}} 100% {{transform: translateY({HEIGHT - 12}px); opacity: 0;}}}}
+@keyframes type {{from {{transform: scaleX(1);}} to {{transform: scaleX(0);}}}}
+@keyframes mk {{0%, 70% {{opacity: 0;}} 100% {{opacity: 1;}}}}
+/* the whole boot lasts {last:.2f}s */"""
+
+
+def boot(theme, ys):
+    """The curtains and the readout line, drawn over the finished card."""
+    m, g = theme['fringe'][1], theme['fringe'][0]
+    art_w = INFO_X - ART_X - 8
+    bg = theme['bg']
+    rows = '\n'.join(
+        f'<rect class="boot type" transform="scale(0)" style="animation-delay:{TYPE_START + TYPE_STEP * i:.2f}s" '
+        f'x="{INFO_X - 2}" y="{y - 15}" width="{WIDTH - INFO_X - 10}" height="20" fill="{bg}"/>'
+        for i, y in enumerate(ys))
+    line = lambda fill, dx, w: (f'<rect x="{ART_X - 4 + dx}" y="12" width="{art_w}" height="{w}" fill="{fill}"/>')
+    return f"""<g aria-hidden="true">
+<defs><linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="{theme['brand']}" stop-opacity="0"/>
+<stop offset="1" stop-color="{theme['brand']}" stop-opacity=".28"/></linearGradient></defs>
+<rect class="boot shutter" transform="scale(0)" x="2" y="12" width="{INFO_X - 5}" height="{HEIGHT - 14}" fill="{bg}"/>
+<g class="readout" opacity="0">
+<rect x="{ART_X - 4}" y="-58" width="{art_w}" height="70" fill="url(#glow)"/>
+<g style="mix-blend-mode:{theme['blend']}">{line(m, -3, 2)}{line(g, 3, 2)}</g>{line(theme['brand'], 0, 1.5)}
+</g>
+{rows}
+</g>"""
+
+
 def build(cfg, theme):
-    body, y = [], TOP
+    body, ys, y = [], [], TOP
     for chunks, spacer in rows_from(cfg):
         if spacer:
             y += STEP
@@ -252,6 +305,7 @@ def build(cfg, theme):
         if width not in (LINE, 2):          # 2 == a bare '. ' spacer row
             raise SystemExit(f'internal error: line at y={y} is {width} chars, not {LINE}')
         body.append(render(chunks, y))
+        ys.append(y)
         y += STEP
     if y - STEP > HEIGHT - 20:
         raise SystemExit(f'{CONFIG}: too many rows -- the last line falls off the {HEIGHT}px card')
@@ -287,11 +341,14 @@ size-adjust: 109%;
 .cc {{fill: {theme['cc']};}}
 text, tspan {{white-space: pre;}}
 .fringe {{mix-blend-mode: {theme['blend']}; opacity: .9;}}
-.fm {{transform: translateX(-.9px); animation: fm 9s ease-in-out infinite;}}
-.fg {{transform: translateX(.9px); animation: fg 9s ease-in-out infinite;}}
+.fm {{transform: translateX(-.9px); animation: fmIn {FOCUSED:.2f}s cubic-bezier(.2,.7,.2,1) both, fm 9s ease-in-out {FOCUSED:.2f}s infinite;}}
+.fg {{transform: translateX(.9px); animation: fgIn {FOCUSED:.2f}s cubic-bezier(.2,.7,.2,1) both, fg 9s ease-in-out {FOCUSED:.2f}s infinite;}}
+@keyframes fmIn {{0%, 45% {{transform: translateX(-5px);}} 100% {{transform: translateX(-.7px);}}}}
+@keyframes fgIn {{0%, 45% {{transform: translateX(5px);}} 100% {{transform: translateX(.7px);}}}}
 @keyframes fm {{0%, 100% {{transform: translateX(-.7px);}} 50% {{transform: translateX(-2.1px);}}}}
 @keyframes fg {{0%, 100% {{transform: translateX(.7px);}} 50% {{transform: translateX(2.1px);}}}}
-@media (prefers-reduced-motion: reduce) {{.fm, .fg {{animation: none;}}}}
+{boot_css(len(ys))}
+@media (prefers-reduced-motion: reduce) {{.fm, .fg, .boot, .readout, .mk {{animation: none;}}}}
 </style>
 <rect x=".5" y=".5" width="{WIDTH - 1}px" height="{HEIGHT - 1}px" fill="{theme['bg']}" stroke="{theme['edge']}" rx="15"/>
 <defs>
@@ -300,13 +357,14 @@ text, tspan {{white-space: pre;}}
 </text>
 <g id="mark">{mark(ART_X + 12, 20, 40)}</g>
 </defs>
-<g class="fringe fm" fill="{theme['fringe'][1]}"><use href="#art"/><use href="#mark"/></g>
-<g class="fringe fg" fill="{theme['fringe'][0]}"><use href="#art"/><use href="#mark"/></g>
+<g class="fringe fm" fill="{theme['fringe'][1]}"><use href="#art"/><use class="mk" href="#mark"/></g>
+<g class="fringe fg" fill="{theme['fringe'][0]}"><use href="#art"/><use class="mk" href="#mark"/></g>
 <use href="#art" fill="{theme['ink']}"/>
-<use href="#mark" fill="{theme['brand']}"/>
+<use class="mk" href="#mark" fill="{theme['brand']}"/>
 <text x="{INFO_X}" y="{TOP}" fill="{theme['fg']}">
 {chr(10).join(body)}
 </text>
+{boot(theme, ys)}
 </svg>
 """
 

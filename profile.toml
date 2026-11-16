@@ -145,15 +145,15 @@ subject_box = [0.2, 0.2, 0.88, 1.0]
 # width also reserves the column: today.py keeps each line the same total width
 # by reflowing the dots, so leave a little room for these to grow.
 [placeholders]
-age       = "22 years, 7 months, 13 days"
+age       = "22 years, 7 months, 14 days"
 repos     = "84"
 contrib   = "103"
 stars     = "25"
-commits   = "2,212"
+commits   = "2,216"
 followers = "21"
-loc       = "6,909,848"
-loc_add   = "14,716,662"
-loc_del   = "7,806,814"
+loc       = "6,911,953"
+loc_add   = "14,719,164"
+loc_del   = "7,807,211"
 
 # ── the README around the card ──────────────────────────────────────────────
 # parts.py draws these in the card's palette, light and dark: a header image
@@ -166,7 +166,7 @@ loc_del   = "7,806,814"
 headline = "I build for society"
 subline = "Robotics · embedded systems · computer vision"
 
-sections = ["Where I work", "What I build", "Lately", "Open source", "Contributions"]
+sections = ["Where I work", "What I build", "What I build with", "Lately", "Open source", "Contributions"]
 
 # The first link is drawn filled, as the main one.
 links = [
