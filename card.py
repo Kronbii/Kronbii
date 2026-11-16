@@ -39,12 +39,36 @@ def art_grid(size):
     avail_h = HEIGHT - TOP - 20
     return int(avail_w // cell_w), int(avail_h // line_h) + 1, cell_w, line_h
 
-THEMES = {
-    'light_mode.svg': dict(bg='#f6f8fa', fg='#24292f', key='#953800', value='#0a3069',
-                           add='#1a7f37', dele='#cf222e', cc='#c2cfde'),
-    'dark_mode.svg':  dict(bg='#161b22', fg='#c9d1d9', key='#ffa657', value='#a5d6ff',
-                           add='#3fb950', dele='#f85149', cc='#616e7f'),
+# The Sage palette from ramikronbi.com. `fringe` is the green/magenta pair of the
+# site's chromatic aberration, drawn as offset copies behind the portrait and the
+# mark; `blend` is how those copies mix with the card (multiply on paper, screen
+# on black). parts.py and flight.py draw with the same colours.
+SAGE = {
+    'light': dict(bg='#f4f4ef', edge='#deded5', fg='#3e443e', muted='#646b63', ink='#161a16',
+                  key='#4d6b40', value='#161a16', add='#4b8a35', dele='#a03f8c',
+                  cc='#c7c7bb', brand='#4d6b40', brand_ink='#f4f4ef',
+                  fringe=('#4b8a35', '#a03f8c'), blend='multiply',
+                  levels=('#e4e5dc', '#c9d9bd', '#98b78a', '#668c57', '#3b5431')),
+    'dark':  dict(bg='#0b0d0c', edge='#1f2621', fg='#b9c0b8', muted='#7d867c', ink='#eef1ec',
+                  key='#b7d3a8', value='#eef1ec', add='#a6e68f', dele='#e08fd0',
+                  cc='#343b35', brand='#b7d3a8', brand_ink='#10180d',
+                  fringe=('#a6e68f', '#e08fd0'), blend='screen',
+                  levels=('#161c18', '#2a4231', '#45684c', '#7e9e78', '#b7d3a8')),
 }
+THEMES = {'light_mode.svg': SAGE['light'], 'dark_mode.svg': SAGE['dark']}
+
+# Rami's emblem, Rā' (an archer's bird whose far wing is the Arabic ر), from
+# ramikronbi.com. Drawn in a 108x96 box whose top-left corner is (8, 14).
+MARK = ('<path d="M12 19 C20 36 46 49.5 111 54 C66 57.5 40 56 26 44 C20 38.5 15.5 30 12 19 Z"/>'
+        '<path d="M12 98 C20 76.6 46 59.7 111 54 C66 49.6 40 51.5 26 66.6 C20 73.5 15.5 84.2 12 98 Z"/>'
+        '<path d="M44.5 76 L51 79.5 C50 87.5 44 93.5 36 98 C32.5 100 29.5 102.5 26.5 106 '
+        'C29 98 33 92.5 38.5 87.5 C42.5 84 44.6 80.5 44.5 76 Z"/>')
+
+
+def mark(x, y, width):
+    """The emblem as a transform group, `width` px wide with its top-left at (x, y)."""
+    s = width / 108
+    return f'<g transform="translate({x:g} {y:g}) scale({s:.4f}) translate(-8 -14)">{MARK}</g>'
 
 # id -> the {placeholder} name in profile.toml. Every id here is one today.py
 # rewrites; ids ending in _dots are generated alongside.
@@ -221,7 +245,10 @@ def build(cfg, theme):
     art_cfg = cfg.get('art', {})
     size = art_cfg.get('size', INFO_SIZE)
     cols, rows, _, line_h = art_grid(size)
-    # The art's <text> also carries xml:space="preserve": with a blank background
+    # The portrait is defined once and drawn three times: magenta and green
+    # copies drifting either side of it (the fringe, which slowly pulls in and
+    # out of focus), then the portrait itself on top.
+    # Its <text> also carries xml:space="preserve": with a blank background
     # most rows start with spaces, and a renderer that ignores the CSS white-space
     # rule would collapse them and slide the figure against the left edge.
     art = '\n'.join(f'<tspan x="{ART_X}" y="{TOP + line_h * i:g}">{esc(line)}</tspan>'
@@ -244,11 +271,24 @@ size-adjust: 109%;
 .delColor {{fill: {theme['dele']};}}
 .cc {{fill: {theme['cc']};}}
 text, tspan {{white-space: pre;}}
+.fringe {{mix-blend-mode: {theme['blend']}; opacity: .9;}}
+.fm {{transform: translateX(-.9px); animation: fm 9s ease-in-out infinite;}}
+.fg {{transform: translateX(.9px); animation: fg 9s ease-in-out infinite;}}
+@keyframes fm {{0%, 100% {{transform: translateX(-.7px);}} 50% {{transform: translateX(-2.1px);}}}}
+@keyframes fg {{0%, 100% {{transform: translateX(.7px);}} 50% {{transform: translateX(2.1px);}}}}
+@media (prefers-reduced-motion: reduce) {{.fm, .fg {{animation: none;}}}}
 </style>
-<rect width="{WIDTH}px" height="{HEIGHT}px" fill="{theme['bg']}" rx="15"/>
-<text x="{ART_X}" y="{TOP}" fill="{theme['fg']}" class="ascii" font-size="{size}px" xml:space="preserve">
+<rect x=".5" y=".5" width="{WIDTH - 1}px" height="{HEIGHT - 1}px" fill="{theme['bg']}" stroke="{theme['edge']}" rx="15"/>
+<defs>
+<text id="art" x="{ART_X}" y="{TOP}" class="ascii" font-size="{size}px" xml:space="preserve">
 {art}
 </text>
+<g id="mark">{mark(ART_X + 12, 20, 40)}</g>
+</defs>
+<g class="fringe fm" fill="{theme['fringe'][1]}"><use href="#art"/><use href="#mark"/></g>
+<g class="fringe fg" fill="{theme['fringe'][0]}"><use href="#art"/><use href="#mark"/></g>
+<use href="#art" fill="{theme['ink']}"/>
+<use href="#mark" fill="{theme['brand']}"/>
 <text x="{INFO_X}" y="{TOP}" fill="{theme['fg']}">
 {chr(10).join(body)}
 </text>

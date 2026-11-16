@@ -40,6 +40,15 @@ jobs:
           # A literal fallback here would silently shadow the config file.
           BIRTHDAY: ${{ secrets.BIRTHDAY }}
         run: python today.py
+      # Both leave their output as it was and exit cleanly if the site or the
+      # API is down, so neither can stop the stats above from being committed.
+      - name: Update the writing list
+        run: python writing.py
+      - name: Redraw the contribution flight
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || github.token }}
+          USER_NAME: Kronbii
+        run: python flight.py
       - name: Commit
         run: |-
           git add .

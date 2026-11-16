@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83.8" height="30" viewBox="0 0 83.8 30" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="Medium">
+<rect x=".75" y=".75" width="82.3" height="28.5" rx="14.25" fill="#f4f4ef" stroke="#deded5" stroke-width="1.5"/>
+<g style="mix-blend-mode:multiply" opacity=".9"><circle cx="12.8" cy="15.0" r="3.0" fill="#a03f8c"/><circle cx="15.2" cy="15.0" r="3.0" fill="#4b8a35"/></g><circle cx="14" cy="15.0" r="3.0" fill="#4d6b40"/>
+<text x="24" y="19.55" font-size="13" fill="#161a16" textLength="46.8" lengthAdjust="spacingAndGlyphs">Medium</text>
+</svg>

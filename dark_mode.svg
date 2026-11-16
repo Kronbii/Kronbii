@@ -8,15 +8,22 @@ font-display: swap;
 -webkit-size-adjust: 109%;
 size-adjust: 109%;
 }
-.key {fill: #ffa657;}
-.value {fill: #a5d6ff;}
-.addColor {fill: #3fb950;}
-.delColor {fill: #f85149;}
-.cc {fill: #616e7f;}
+.key {fill: #b7d3a8;}
+.value {fill: #eef1ec;}
+.addColor {fill: #a6e68f;}
+.delColor {fill: #e08fd0;}
+.cc {fill: #343b35;}
 text, tspan {white-space: pre;}
+.fringe {mix-blend-mode: screen; opacity: .9;}
+.fm {transform: translateX(-.9px); animation: fm 9s ease-in-out infinite;}
+.fg {transform: translateX(.9px); animation: fg 9s ease-in-out infinite;}
+@keyframes fm {0%, 100% {transform: translateX(-.7px);} 50% {transform: translateX(-2.1px);}}
+@keyframes fg {0%, 100% {transform: translateX(.7px);} 50% {transform: translateX(2.1px);}}
+@media (prefers-reduced-motion: reduce) {.fm, .fg {animation: none;}}
 </style>
-<rect width="985px" height="530px" fill="#161b22" rx="15"/>
-<text x="15" y="30" fill="#c9d1d9" class="ascii" font-size="10px" xml:space="preserve">
+<rect x=".5" y=".5" width="984px" height="529px" fill="#0b0d0c" stroke="#1f2621" rx="15"/>
+<defs>
+<text id="art" x="15" y="30" class="ascii" font-size="10px" xml:space="preserve">
 <tspan x="15" y="30"></tspan>
 <tspan x="15" y="42.5"></tspan>
 <tspan x="15" y="55"></tspan>
@@ -57,12 +64,18 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="492.5">@@@@@@@@@@@@=$$$$$$$$$$$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</tspan>
 <tspan x="15" y="505">@@@@@@@@@@@$!$$$@$$$$$$$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</tspan>
 </text>
-<text x="390" y="30" fill="#c9d1d9">
+<g id="mark"><g transform="translate(27 20) scale(0.3704) translate(-8 -14)"><path d="M12 19 C20 36 46 49.5 111 54 C66 57.5 40 56 26 44 C20 38.5 15.5 30 12 19 Z"/><path d="M12 98 C20 76.6 46 59.7 111 54 C66 49.6 40 51.5 26 66.6 C20 73.5 15.5 84.2 12 98 Z"/><path d="M44.5 76 L51 79.5 C50 87.5 44 93.5 36 98 C32.5 100 29.5 102.5 26.5 106 C29 98 33 92.5 38.5 87.5 C42.5 84 44.6 80.5 44.5 76 Z"/></g></g>
+</defs>
+<g class="fringe fm" fill="#e08fd0"><use href="#art"/><use href="#mark"/></g>
+<g class="fringe fg" fill="#a6e68f"><use href="#art"/><use href="#mark"/></g>
+<use href="#art" fill="#eef1ec"/>
+<use href="#mark" fill="#b7d3a8"/>
+<text x="390" y="30" fill="#b9c0b8">
 <tspan x="390" y="30">rami@kronbii</tspan> -———————————————————————————————————————————-—-
 <tspan x="390" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> .................... </tspan><tspan class="value">Ubuntu 24.04, Windows 11, Android</tspan>
 <tspan x="390" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc" id="age_data_dots"> ...................... </tspan><tspan class="value" id="age_data">22 years, 7 months, 13 days</tspan>
 <tspan x="390" y="90" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> ............................................ </tspan><tspan class="value">Oreyeon</tspan>
-<tspan x="390" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">Systems &amp; Vision Engineer</tspan>
+<tspan x="390" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ...................... </tspan><tspan class="value">Systems &amp; Robotics Engineer</tspan>
 <tspan x="390" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> .......................... </tspan><tspan class="value">VSCode, Neovim, PlatformIO</tspan>
 <tspan x="390" y="150" class="cc">. </tspan>
 <tspan x="390" y="170" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Programming</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">Python, C++, C, JavaScript</tspan>

@@ -30,7 +30,7 @@ rows = [
   { key = "OS",     value = "Ubuntu 24.04, Windows 11, Android" },
   { key = "Uptime", value = "{age}" },
   { key = "Host",   value = "Oreyeon" },
-  { key = "Kernel", value = "Systems & Vision Engineer" },
+  { key = "Kernel", value = "Systems & Robotics Engineer" },
   { key = "IDE",    value = "VSCode, Neovim, PlatformIO" },
 
   { blank = true },
@@ -144,12 +144,33 @@ subject_box = [0.2, 0.2, 0.88, 1.0]
 # width also reserves the column: today.py keeps each line the same total width
 # by reflowing the dots, so leave a little room for these to grow.
 [placeholders]
-age       = "22 years, 4 months, 5 days"
-repos     = "64"
-contrib   = "77"
-stars     = "19"
-commits   = "1,589"
+age       = "22 years, 7 months, 13 days"
+repos     = "84"
+contrib   = "103"
+stars     = "25"
+commits   = "2,212"
 followers = "21"
-loc       = "6,359,006"
-loc_add   = "10,808,490"
-loc_del   = "4,449,484"
+loc       = "6,909,848"
+loc_add   = "14,716,662"
+loc_del   = "7,806,814"
+
+# ── the README around the card ──────────────────────────────────────────────
+# parts.py draws these in the card's palette, light and dark: a header image
+# per section, and a pill per link. It also writes the pill row into README.md
+# (between the links markers), so a link only has to be added here. Run:
+#
+#     python parts.py
+[readme]
+sections = ["Who I build for", "Writing", "Open source", "Contributions"]
+
+# The first link is drawn filled, as the main one.
+links = [
+  { label = "ramikronbi.com", href = "https://ramikronbi.com" },
+  { label = "LinkedIn",       href = "https://linkedin.com/in/rami-kronbi" },
+  { label = "YouTube",        href = "https://www.youtube.com/@RamiKronbi" },
+  { label = "Instagram",      href = "https://instagram.com/ramikronbi" },
+  { label = "DEV",            href = "https://dev.to/ramikronbi" },
+  { label = "Medium",         href = "https://medium.com/@ramikronbi" },
+  { label = "Substack",       href = "https://substack.com/@kronbii" },
+  { label = "Email",          href = "mailto:ramykronby@gmail.com" },
+]
