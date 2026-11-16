@@ -73,7 +73,7 @@ file   = "cache/art.txt"       # generated; safe to hand-edit afterwards
 # means more characters in the same space, so more of the photo survives:
 #   16 -> 38x25   Andrew's original grid
 #   12 -> 50x33
-#   10 -> 60x39   resolves things like backpack straps
+#   10 -> 60x39   resolves eyes and a beard in a head-and-shoulders crop
 #    8 -> 76x49   stops reading as characters, more like a halftone
 size = 10
 
@@ -82,6 +82,13 @@ size = 10
 #   "fill"     fill the panel, cropping whatever falls outside its shape
 #   "contain"  show all of the subject, leaving blank rows above and below
 fit = "fill"
+
+# What the panel frames, as fractions of the photo [left, top, right, bottom].
+# Leave it out to frame the whole subject (padded by `headroom`). Set it for a
+# portrait: framing the whole body leaves the face too small to read. With
+# "fill" only the box's width and centre count -- the panel's shape sets the
+# height. This one is head and shoulders, with a little air above the hair.
+focus = [0.22, 0.17, 0.78, 0.9]
 
 # The characters used, sparse to dense. Must start with a space -- that's the
 # "nothing here" level. More characters means finer shading, but adding dense
@@ -92,36 +99,46 @@ ramp = " .':;!*=%$@"
 
 # How solid the figure is: the lowest ramp level the subject is allowed to use.
 # 0 lets it fade into the background; 0.42 keeps it clearly above the wash; near
-# 1 makes it a flat silhouette with no internal detail.
-density = 0.3
+# 1 makes it a flat silhouette with no internal detail. A face wants it low, so
+# lit skin can go sparse and the eyes, brows and beard stand out against it.
+density = 0.15
 
 # How much of the scene behind you shows: the highest ramp level the background
 # may reach. This is a cliff, not a fade -- anything below about 0.06 rounds
-# away to nothing on an 11-character ramp. Measured on the current photo:
-#   0.00 - 0.05   nothing
-#   0.07          faint scene, ~300 characters
-#   0.10          clear scene, ~900 characters
-#   0.15+         busy enough to compete with the figure
-background = 0.2
+# away to nothing on an 11-character ramp. Bright parts of the scene get the
+# densest wash, so on the current photo (a portrait against a bright sky) any
+# wash fills the sky around the head and competes with the face:
+#   0.00          clean silhouette
+#   0.10          dots across the whole sky
+#   0.20          a solid ' wash; the face gets lost in it
+background = 0.0
 
 # Gamma on the figure's shading. 1.0 is linear. Below 1 pushes it toward solid
 # (less internal detail, stronger silhouette); above 1 opens up the mid-tones so
 # more of the shirt and backpack shading survives.
-shading = 0.8
+shading = 1.0
+
+# Local contrast (a CLAHE clip limit) applied to the photo first. 0 is off. A
+# backlit face has one lit cheek and one in shadow, and without this the whole
+# ramp goes on that difference instead of the features. 1.5 brings out the eyes
+# and jaw; 3 and up turns the skin blotchy.
+contrast = 1.5
 
 # Drop lone lit characters out in the background -- they read as dirt, not
 # scenery. Set false to keep every speck.
 despeckle = true
 
 # Padding around the subject before cropping. 1.0 is a tight crop, 1.06 leaves
-# a little air, 1.3 pulls back.
+# a little air, 1.3 pulls back. Ignored while `focus` is set.
 headroom = 1.06
 
 # The box GrabCut seeds the subject from, as fractions of the photo
 # [left, top, right, bottom]. Everything outside is treated as definite
 # background, so a tight box cuts off whatever pokes out of it. Widen this if
-# part of you is being erased; tighten it if scenery is being kept.
-subject_box = [0.02, 0.24, 0.98, 0.98]
+# part of you is being erased; tighten it if scenery is being kept. Its left edge
+# sits just inside the left shoulder: any wider and the stone wall behind it is
+# kept as part of you.
+subject_box = [0.2, 0.2, 0.88, 1.0]
 
 # Placeholder numbers, shown until the first scheduled run replaces them. Their
 # width also reserves the column: today.py keeps each line the same total width

@@ -221,6 +221,9 @@ def build(cfg, theme):
     art_cfg = cfg.get('art', {})
     size = art_cfg.get('size', INFO_SIZE)
     cols, rows, _, line_h = art_grid(size)
+    # The art's <text> also carries xml:space="preserve": with a blank background
+    # most rows start with spaces, and a renderer that ignores the CSS white-space
+    # rule would collapse them and slide the figure against the left edge.
     art = '\n'.join(f'<tspan x="{ART_X}" y="{TOP + line_h * i:g}">{esc(line)}</tspan>'
                     for i, line in enumerate(
                         art_lines(art_cfg.get('file', 'cache/art.txt'), cols, rows)))
@@ -243,7 +246,7 @@ size-adjust: 109%;
 text, tspan {{white-space: pre;}}
 </style>
 <rect width="{WIDTH}px" height="{HEIGHT}px" fill="{theme['bg']}" rx="15"/>
-<text x="{ART_X}" y="{TOP}" fill="{theme['fg']}" class="ascii" font-size="{size}px">
+<text x="{ART_X}" y="{TOP}" fill="{theme['fg']}" class="ascii" font-size="{size}px" xml:space="preserve">
 {art}
 </text>
 <text x="{INFO_X}" y="{TOP}" fill="{theme['fg']}">

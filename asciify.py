@@ -35,6 +35,8 @@ DEFAULTS = {
     'despeckle': True,
     'headroom': 1.06,
     'subject_box': [0.02, 0.24, 0.98, 0.98],
+    'focus': None,
+    'contrast': 0.0,
 }
 
 
@@ -56,6 +58,14 @@ def settings():
         raise SystemExit(f'{CONFIG}: art.shading must be greater than 0')
     if len(cfg['subject_box']) != 4:
         raise SystemExit(f'{CONFIG}: art.subject_box needs four numbers [x0, y0, x1, y1]')
+    if cfg['focus'] is not None:
+        if len(cfg['focus']) != 4:
+            raise SystemExit(f'{CONFIG}: art.focus needs four numbers [x0, y0, x1, y1]')
+        x0, y0, x1, y1 = cfg['focus']
+        if not (0 <= x0 < x1 <= 1 and 0 <= y0 < y1 <= 1):
+            raise SystemExit(f'{CONFIG}: art.focus must be fractions with x0 < x1 and y0 < y1')
+    if cfg['contrast'] < 0:
+        raise SystemExit(f'{CONFIG}: art.contrast must be 0 (off) or more')
     return cfg
 
 
@@ -86,7 +96,20 @@ def segment(img, box):
     return m
 
 
-def frame(img, mask, cols, rows, cell_w, line_h, fit, headroom):
+def local_contrast(img, strength):
+    """
+    Even out the lighting so faces keep their features. A backlit portrait has a
+    bright cheek and a shadowed one, and a single global contrast stretch spends
+    the whole ramp on that difference; CLAHE stretches each patch on its own, so
+    eyes, brows and beard separate from the skin around them.
+    """
+    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
+    clahe = cv2.createCLAHE(clipLimit=strength, tileGridSize=(8, 8))
+    lab[..., 0] = clahe.apply(lab[..., 0])
+    return cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+
+
+def frame(img, mask, cols, rows, cell_w, line_h, fit, headroom, focus=None):
     """
     Choose the crop and the character block to render it into.
     Returns (img, mask, cols, rows) for that block.
@@ -96,15 +119,25 @@ def frame(img, mask, cols, rows, cell_w, line_h, fit, headroom):
 
       'contain'  show all of the subject, leaving blank rows above and below
       'fill'     fill the panel, cropping whatever falls outside its shape
+
+    Both frame the subject's bounding box, padded by `headroom`. `focus` replaces
+    that box with one chosen by hand, used as-is -- for a portrait, where framing
+    the whole body leaves the face too small to read.
     """
     H, W = mask.shape
-    ys, xs = np.nonzero(mask)
-    pad_x = int((xs.max() - xs.min()) * (headroom - 1))
-    pad_y = int((ys.max() - ys.min()) * (headroom - 1))
+    if focus is not None:
+        fx0, fy0, fx1, fy1 = focus
+        left, right, top, bottom = int(W * fx0), int(W * fx1), int(H * fy0), int(H * fy1)
+        pad_x = pad_y = 0
+    else:
+        ys, xs = np.nonzero(mask)
+        left, right, top, bottom = xs.min(), xs.max(), ys.min(), ys.max()
+        pad_x = int((right - left) * (headroom - 1))
+        pad_y = int((bottom - top) * (headroom - 1))
 
     if fit == 'contain':
-        x0, x1 = max(0, xs.min() - pad_x), min(W, xs.max() + pad_x)
-        y0, y1 = max(0, ys.min() - pad_y), min(H, ys.max() + pad_y)
+        x0, x1 = max(0, left - pad_x), min(W, right + pad_x)
+        y0, y1 = max(0, top - pad_y), min(H, bottom + pad_y)
         img, mask = img[y0:y1, x0:x1], mask[y0:y1, x0:x1]
         h, w = mask.shape
         c = cols
@@ -118,8 +151,8 @@ def frame(img, mask, cols, rows, cell_w, line_h, fit, headroom):
         raise SystemExit(f'art.fit must be "fill" or "contain", not {fit!r}')
 
     aspect = (rows * line_h) / (cols * cell_w)
-    cy, cx = (ys.min() + ys.max()) / 2, (xs.min() + xs.max()) / 2
-    cw = min(W, (xs.max() - xs.min()) + 2 * pad_x)
+    cy, cx = (top + bottom) / 2, (left + right) / 2
+    cw = min(W, (right - left) + 2 * pad_x)
     ch = cw * aspect
     if ch > H:                          # taller than the source: take full height
         ch, cw = H, H / aspect
@@ -132,21 +165,25 @@ def asciify(cfg, cols, rows, cell_w, line_h):
     img = cv2.imread(cfg['source'])
     if img is None:
         raise SystemExit(f'cannot read {cfg["source"]}')
-    img, mask, art_cols, art_rows = frame(img, segment(img, cfg['subject_box']),
-                                          cols, rows, cell_w, line_h,
-                                          cfg['fit'], cfg['headroom'])
+    mask = segment(img, cfg['subject_box'])     # on the untouched photo: GrabCut
+    if cfg['contrast'] > 0:                     # separates by colour, not detail
+        img = local_contrast(img, cfg['contrast'])
+    img, mask, art_cols, art_rows = frame(img, mask, cols, rows, cell_w, line_h,
+                                          cfg['fit'], cfg['headroom'], cfg['focus'])
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float32)
     small = cv2.resize(gray, (art_cols, art_rows), interpolation=cv2.INTER_AREA)
     msk = cv2.resize(mask.astype(np.float32) / 255, (art_cols, art_rows),
                      interpolation=cv2.INTER_AREA)
     inside = msk > 0.5
+    if not inside.any():
+        raise SystemExit('none of the subject is inside art.focus -- move or widen it')
 
     # Stretch contrast within the subject alone, so the backpack, shirt and skin
     # land on different characters instead of all saturating to one.
     lo, hi = np.percentile(small[inside], 5), np.percentile(small[inside], 95)
     subject = np.clip((small - lo) / max(1e-6, hi - lo), 0, 1)
-    outside = small[~inside]
+    outside = small[~inside] if (~inside).any() else small   # a tight focus can be all subject
     background = np.clip((small - outside.min()) / max(1e-6, float(np.ptp(outside))), 0, 1)
 
     # The subject is dark against a bright scene, so invert it: dark pixels
