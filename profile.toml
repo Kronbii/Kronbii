@@ -18,7 +18,8 @@ birthday = "2004-04-02"        # what the {age} / Uptime line counts from
 #   { stats = "…" }              a GitHub stats line (see the bottom of the file)
 #
 # A dot in a key ("Languages.Real") renders the halves as separate highlights,
-# the way Andrew's card does.
+# the way Andrew's card does. **Double stars** in a value set that part in bold
+# brand colour, for what a line should lead with.
 #
 # These values are filled in on every scheduled run by today.py:
 #
@@ -27,16 +28,16 @@ birthday = "2004-04-02"        # what the {age} / Uptime line counts from
 # Whatever you write here is only the placeholder shown until the first run.
 
 rows = [
-  { key = "OS",     value = "Ubuntu 24.04, Windows 11, Android" },
+  { key = "OS",     value = "Ubuntu 24.04, Windows 11, Android, iOS" },
   { key = "Uptime", value = "{age}" },
-  { key = "Host",   value = "Oreyeon" },
-  { key = "Kernel", value = "Systems & Robotics Engineer" },
+  { key = "Host",   value = "Oreyeon, CNRS-L" },
+  { key = "Kernel", value = "Embedded Robotics & Vision Engineer" },
   { key = "IDE",    value = "VSCode, Neovim, PlatformIO" },
 
   { blank = true },
 
-  { key = "Languages.Programming", value = "Python, C++, C, JavaScript" },
-  { key = "Languages.Computer",    value = "HTML, CSS, JSON, YAML, LaTeX" },
+  { key = "Languages.Programming", value = "**C, C++, Python**, MATLAB" },
+  { key = "Languages.Computer",    value = "CMake, Bash, YAML, LaTeX, SQL" },
   { key = "Languages.Real",        value = "English, Arabic, German" },
 
   { blank = true },
@@ -161,7 +162,11 @@ loc_del   = "7,806,814"
 #
 #     python parts.py
 [readme]
-sections = ["Who I build for", "Writing", "Open source", "Contributions"]
+# The bold line under the card, and the line beneath it (parts.py).
+headline = "I build for society"
+subline = "Robotics · embedded systems · computer vision"
+
+sections = ["Where I work", "What I build", "Lately", "Open source", "Contributions"]
 
 # The first link is drawn filled, as the main one.
 links = [
@@ -174,3 +179,94 @@ links = [
   { label = "Substack",       href = "https://substack.com/@kronbii" },
   { label = "Email",          href = "mailto:ramykronby@gmail.com" },
 ]
+
+# The Lately prism (prism.py): commits over the last `prism_days`, to these
+# repositories only. Leave prism_include out to draw every public repository
+# except those in prism_exclude.
+prism_days = 90
+prism_include = [
+  "Kronbii/rotor-fault-recovery", "Kronbii/road-speed-audit",
+  "Kronbii/star-tracker", "Kronbii/360-spherical-stitching", "Kronbii/universal-imu-control-dashboard",
+  "Kronbii/fine-crack-tracing", "Kronbii/thermal-super-resolution", "Kronbii/smart-interactive-desk",
+  "Kronbii/PID-light-tracker", "Kronbii/easyPID", "Kronbii/autonomous-race-car",
+  "Kronbii/CNN-Emotion-Detection", "Kronbii/ROS2-beginner-guide", "betaflight/betaflight",
+]
+prism_exclude = ["Kronbii/Kronbii"]
+
+# Where I work (parts.py): one card per employer, each linking to its site.
+# `about` is how the organization describes itself on its own website.
+[[readme.work]]
+org = "Oreyeon"
+full = "Airside intelligence · Coimbra, Portugal"
+role = "Embedded Systems, Robotics and Vision Engineer"
+href = "https://oreyeon.com"
+site = "oreyeon.com"
+about = "An airside intelligence company. Its Runway Surface Monitoring System detects, geolocates and reports foreign object debris and pavement damage on airport runways in real time."
+
+[[readme.work]]
+org = "CNRS-L"
+full = "National Council for Scientific Research, Lebanon"
+role = "Research Assistant and Development Engineer"
+href = "https://cnrs.edu.lb"
+site = "cnrs.edu.lb"
+about = "Lebanon's principal public institution for scientific research, founded in 1962 and working under the authority of the President of the Council of Ministers. It runs the National Centers for Geophysics, Marine Sciences, Remote Sensing, and Natural Hazards and Early Warning, and the Lebanese Atomic Energy Commission, and is Lebanon's contact point for EU research programmes, with partners including the European Commission, ESA and NASA."
+
+# The What I build reel (reel.py): one scene each, in this order.
+#   kicker   the discipline, shown small above the title
+#   for      who or what it is for, the big title
+#   scene    the drawing: rover, sign, runway, desk, ballot, survey, fpv
+#            (face and road are drawn too, unused for now)
+#   href     optional; entries without one are left out of the link row
+#   line     the project's one line, from ramikronbi.com where it has a page
+[[readme.who]]
+kicker = "Robotics"
+for = "Demining"
+project = "Landmine detection and extraction robot"
+href = "https://ramikronbi.com/projects/landmine-detection-extraction-robot"
+scene = "rover"
+line = "A mine-detection rover with a 6-DoF extraction arm, for a Lebanese Army initiative; I built its autonomy software."
+
+[[readme.who]]
+kicker = "Computer vision"
+for = "People who sign"
+project = "OmniSign"
+href = "https://ramikronbi.com/projects/omnisign-lebanese-sign-language"
+scene = "sign"
+line = "Recognizes Lebanese Sign Language from a camera in real time, the alphabet and everyday words, and turns it into text on phones, the web, and offline devices."
+
+[[readme.who]]
+kicker = "Embedded vision"
+for = "Airports"
+project = "Runway Surface Monitoring System, Oreyeon"
+scene = "runway"
+line = "At Oreyeon, I work on embedded perception and real-time vision for its Runway Surface Monitoring System."
+
+[[readme.who]]
+kicker = "Robotics · vision"
+for = "Students"
+project = "BEMO, the smart interactive desk"
+href = "https://ramikronbi.com/projects/posture-aware-classroom-desk"
+scene = "desk"
+line = "A desk that sees how you sit and adjusts its own height and tilt, with instant light feedback and a dashboard of longer-term patterns."
+
+[[readme.who]]
+kicker = "Civic tech"
+for = "Voters"
+project = "Daleel"
+scene = "ballot"
+line = "Lebanese election information you can trace back to its source, kept with its full history, in Arabic, English, and French."
+
+[[readme.who]]
+kicker = "Research & development"
+for = "Researchers"
+project = "Research Assistant and Development Engineer, CNRS-L"
+scene = "survey"
+line = "At CNRS-L, I develop its data analysis, embedded, vision and surveying projects."
+
+[[readme.who]]
+kicker = "Embedded"
+for = "Drones"
+project = "5-inch carbon-fiber FPV drone"
+href = "https://ramikronbi.com/projects/five-inch-carbon-fiber-fpv-drone"
+scene = "fpv"
+line = "A 5-inch carbon-fiber FPV drone, designed and built around thrust, weight, and current calculations, and tuned in Betaflight down to GPS and return-to-home."

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="985" height="255" viewBox="0 0 985 255" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="CNRS-L, National Council for Scientific Research, Lebanon: Research Assistant and Development Engineer. Lebanon's principal public institution for scientific research, founded in 1962 and working under the authority of the President of the Council of Ministers. It runs the National Centers for Geophysics, Marine Sciences, Remote Sensing, and Natural Hazards and Early Warning, and the Lebanese Atomic Energy Commission, and is Lebanon's contact point for EU research programmes, with partners including the European Commission, ESA and NASA.">
+<rect x=".5" y=".5" width="984" height="254" rx="15" fill="#f4f4ef" stroke="#deded5"/>
+<g style="mix-blend-mode:multiply" opacity=".85"><text x="38.8" y="70" font-size="44" font-weight="700" fill="#a03f8c">02</text><text x="41.2" y="70" font-size="44" font-weight="700" fill="#4b8a35">02</text></g><text x="40" y="70" font-size="44" font-weight="700" fill="#4d6b40">02</text>
+<text x="150" y="62" font-size="30" font-weight="700" fill="#161a16">CNRS-L</text>
+<text x="150" y="88" font-size="13" letter-spacing=".5" fill="#646b63">National Council for Scientific Research, Lebanon</text>
+<text x="150" y="120" font-size="18" fill="#4d6b40">Research Assistant and Development Engineer</text>
+<line x1="150" y1="134" x2="945" y2="134" stroke="#deded5"/>
+<text x="150" y="150" font-size="14" fill="#3e443e">Lebanon's principal public institution for scientific research, founded in 1962 and</text>
+<text x="150" y="171" font-size="14" fill="#3e443e">working under the authority of the President of the Council of Ministers. It runs the</text>
+<text x="150" y="192" font-size="14" fill="#3e443e">National Centers for Geophysics, Marine Sciences, Remote Sensing, and Natural Hazards and</text>
+<text x="150" y="213" font-size="14" fill="#3e443e">Early Warning, and the Lebanese Atomic Energy Commission, and is Lebanon's contact point</text>
+<text x="150" y="234" font-size="14" fill="#3e443e">for EU research programmes, with partners including the European Commission, ESA and NASA.</text>
+<text x="945" y="58" font-size="13" text-anchor="end" fill="#4d6b40">cnrs.edu.lb ↗</text>
+</svg>

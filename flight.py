@@ -9,8 +9,8 @@ assets/flight-dark.svg, in the card's palette.
 Every day starts out blank. The quad flies the grid the way a survey drone
 covers a field -- a lawnmower pattern, one weekday row per pass, turning at
 the ends -- and each day shows its colour as the quad's camera passes over
-it. After the last pass it hovers, the days fade back to blank, and it flies
-home to start again. All of it is SMIL inside the SVG, so it plays in a README
+it. After the last pass it hovers and turns a slow full circle on the spot,
+the days fade back to blank, and it flies home to start again. All of it is SMIL inside the SVG, so it plays in a README
 <img> with no script; a viewer without SMIL sees the finished grid instead.
 
 An API failure leaves the last drawing in place and exits cleanly, so it can
@@ -145,11 +145,14 @@ def build(cal, t):
 <g transform="translate({xa} {row_y(0):g})">
   <animateTransform attributeName="transform" type="translate" dur="{dur:g}s" repeatCount="indefinite" calcMode="linear" values="{values}" keyTimes="{times}"/>
   <rect x="-28" y="-9.5" width="56" height="19" rx="4" fill="{t['brand']}" fill-opacity=".1" stroke="{t['brand']}" stroke-opacity=".4" stroke-dasharray="3 3"/>
-  <g style="mix-blend-mode:{t['blend']}" opacity=".85">
-    <use href="#quad" transform="translate(-1 0)" style="color:{m}"/>
-    <use href="#quad" transform="translate(1 0)" style="color:{g}"/>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" dur="{dur:g}s" repeatCount="indefinite" values="0;0;360;360" keyTimes="0;{kt(end + 0.2)};{kt(end + HOLD - 0.2)};1" calcMode="spline" keySplines="0 0 1 1;0.45 0 0.25 1;0 0 1 1"/>
+    <g style="mix-blend-mode:{t['blend']}" opacity=".85">
+      <use href="#quad" transform="translate(-1 0)" style="color:{m}"/>
+      <use href="#quad" transform="translate(1 0)" style="color:{g}"/>
+    </g>
+    <use href="#quad" style="color:{t['brand']}"/>
   </g>
-  <use href="#quad" style="color:{t['brand']}"/>
 </g>
 </svg>
 """

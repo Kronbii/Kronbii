@@ -100,14 +100,28 @@ def key_chunks(key):
     return out
 
 
+def value_chunks(value, eid=None):
+    """
+    A value, with any **double-starred** part set in bold brand colour -- for
+    the few items a line should lead with. The stars aren't drawn.
+    """
+    parts = value.split('**')
+    if len(parts) % 2 == 0:
+        raise ValueError(f'unmatched ** in "{value}"')
+    chunks = [('em' if i % 2 else 'value', part, None) for i, part in enumerate(parts) if part]
+    if eid:                                 # dynamic values carry no markup
+        chunks = [('value', value, eid)]
+    return chunks
+
+
 def field(key, value, eid=None):
     """A '. Key: ..... value' row, padded to exactly LINE characters."""
-    gap = LINE - 2 - len(key) - 1 - len(value)
+    shown = value.replace('**', '')
+    gap = LINE - 2 - len(key) - 1 - len(shown)
     if gap < 0:
-        raise ValueError(f'"{key}: {value}" is {-gap} characters too long for the card')
+        raise ValueError(f'"{key}: {shown}" is {-gap} characters too long for the card')
     return ([('cc', '. ', None)] + key_chunks(key) + [(None, ':', None),
-            ('cc', dots(gap), f'{eid}_dots' if eid else None),
-            ('value', value, eid)])
+            ('cc', dots(gap), f'{eid}_dots' if eid else None)] + value_chunks(value, eid))
 
 
 def rule(label):
@@ -267,6 +281,7 @@ size-adjust: 109%;
 }}
 .key {{fill: {theme['key']};}}
 .value {{fill: {theme['value']};}}
+.em {{fill: {theme['key']}; font-weight: 700;}}
 .addColor {{fill: {theme['add']};}}
 .delColor {{fill: {theme['dele']};}}
 .cc {{fill: {theme['cc']};}}

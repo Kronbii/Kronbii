@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="985" height="132" viewBox="0 0 985 132" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="I build for society. Robotics · embedded systems · computer vision">
+<style>
+text { white-space: pre; }
+.fringe { mix-blend-mode: multiply; opacity: .9; }
+.fm { transform: translateX(-1.2px); animation: fm 9s ease-in-out infinite; }
+.fg { transform: translateX(1.2px); animation: fg 9s ease-in-out infinite; }
+@keyframes fm { 0%, 100% { transform: translateX(-.9px); } 50% { transform: translateX(-2.4px); } }
+@keyframes fg { 0%, 100% { transform: translateX(.9px); } 50% { transform: translateX(2.4px); } }
+@media (prefers-reduced-motion: reduce) { .fm, .fg { animation: none; } }
+</style>
+<g class="fringe fm"><text x="492.5" y="70" text-anchor="middle" font-size="54" font-weight="700"><tspan fill="none">I build for </tspan><tspan fill="#a03f8c">society</tspan></text></g>
+<g class="fringe fg"><text x="492.5" y="70" text-anchor="middle" font-size="54" font-weight="700"><tspan fill="none">I build for </tspan><tspan fill="#4b8a35">society</tspan></text></g>
+<text x="492.5" y="70" text-anchor="middle" font-size="54" font-weight="700"><tspan fill="#161a16">I build for </tspan><tspan fill="#4d6b40">society</tspan></text>
+<text x="492.5" y="108" text-anchor="middle" font-size="17" letter-spacing="1" fill="#646b63">Robotics · embedded systems · computer vision</text>
+</svg>

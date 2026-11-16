@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="985" height="192" viewBox="0 0 985 192" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="Oreyeon, Airside intelligence · Coimbra, Portugal: Embedded Systems, Robotics and Vision Engineer. An airside intelligence company. Its Runway Surface Monitoring System detects, geolocates and reports foreign object debris and pavement damage on airport runways in real time.">
+<rect x=".5" y=".5" width="984" height="191" rx="15" fill="#f4f4ef" stroke="#deded5"/>
+<g style="mix-blend-mode:multiply" opacity=".85"><text x="38.8" y="70" font-size="44" font-weight="700" fill="#a03f8c">01</text><text x="41.2" y="70" font-size="44" font-weight="700" fill="#4b8a35">01</text></g><text x="40" y="70" font-size="44" font-weight="700" fill="#4d6b40">01</text>
+<text x="150" y="62" font-size="30" font-weight="700" fill="#161a16">Oreyeon</text>
+<text x="150" y="88" font-size="13" letter-spacing=".5" fill="#646b63">Airside intelligence · Coimbra, Portugal</text>
+<text x="150" y="120" font-size="18" fill="#4d6b40">Embedded Systems, Robotics and Vision Engineer</text>
+<line x1="150" y1="134" x2="945" y2="134" stroke="#deded5"/>
+<text x="150" y="150" font-size="14" fill="#3e443e">An airside intelligence company. Its Runway Surface Monitoring System detects, geolocates</text>
+<text x="150" y="171" font-size="14" fill="#3e443e">and reports foreign object debris and pavement damage on airport runways in real time.</text>
+<text x="945" y="58" font-size="13" text-anchor="end" fill="#4d6b40">oreyeon.com ↗</text>
+</svg>

@@ -5,10 +5,13 @@ Draws the pieces of the README around the card, in the card's palette.
 
 From the [readme] table in profile.toml it writes, for light and dark:
 
+    assets/parts/headline-<theme>.svg         the bold line under the card
     assets/parts/section-<name>-<theme>.svg   a header per section
+    assets/parts/work-<org>-<theme>.svg       a card per employer
     assets/parts/link-<name>-<theme>.svg      a pill per link
 
-and rewrites the pill row in README.md between the links markers. Section
+and rewrites the pill row and the employer cards in README.md, between the
+links and work markers. Section
 headers are referenced from README.md by hand, since each one sits above
 content written there.
 
@@ -25,6 +28,7 @@ from card import CONFIG, SAGE, WIDTH, esc
 OUT = 'assets/parts'
 README = 'README.md'
 LINKS_START, LINKS_END = '<!-- links:start -->', '<!-- links:end -->'
+WORK_START, WORK_END = '<!-- work:start -->', '<!-- work:end -->'
 FONT = 'ConsolasFallback,Consolas,Menlo,monospace'
 ADVANCE = 0.6               # monospace advance as a fraction of the font size
 
@@ -56,6 +60,77 @@ def section_svg(label, t):
 <text x="{x0}" y="{y}" font-size="{size}" fill="{t['cc']}" textLength="{dash_w * .5:g}">-</text>
 {fringe_text(x_label, y, label, size, t['key'], t, label_w)}
 <line x1="{x_line:g}" y1="{y - size * .32:g}" x2="{WIDTH - 15}" y2="{y - size * .32:g}" stroke="{t['cc']}" stroke-width="1.5"/>
+</svg>
+"""
+
+
+def headline_svg(headline, subline, t):
+    """
+    The bold line under the card. Its last word is set in the brand colour and
+    slowly racks in and out of the fringe, the way ramikronbi.com treats one
+    word of a heading. The fringe copies repeat the whole line with only that
+    word painted, so they line up whatever font the viewer falls back to.
+    """
+    lead, _, word = headline.rpartition(' ')
+    lead = lead + ' ' if lead else ''
+    h, cx = 132, WIDTH / 2
+    m, g = t['fringe'][1], t['fringe'][0]
+
+    def line(word_fill, lead_fill='none'):
+        return (f'<text x="{cx:g}" y="70" text-anchor="middle" font-size="54" font-weight="700">'
+                f'<tspan fill="{lead_fill}">{esc(lead)}</tspan><tspan fill="{word_fill}">{esc(word)}</tspan></text>')
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(headline)}. {esc(subline)}">
+<style>
+text {{ white-space: pre; }}
+.fringe {{ mix-blend-mode: {t['blend']}; opacity: .9; }}
+.fm {{ transform: translateX(-1.2px); animation: fm 9s ease-in-out infinite; }}
+.fg {{ transform: translateX(1.2px); animation: fg 9s ease-in-out infinite; }}
+@keyframes fm {{ 0%, 100% {{ transform: translateX(-.9px); }} 50% {{ transform: translateX(-2.4px); }} }}
+@keyframes fg {{ 0%, 100% {{ transform: translateX(.9px); }} 50% {{ transform: translateX(2.4px); }} }}
+@media (prefers-reduced-motion: reduce) {{ .fm, .fg {{ animation: none; }} }}
+</style>
+<g class="fringe fm">{line(m)}</g>
+<g class="fringe fg">{line(g)}</g>
+{line(t['brand'], t['ink'])}
+<text x="{cx:g}" y="108" text-anchor="middle" font-size="17" letter-spacing="1" fill="{t['muted']}">{esc(subline)}</text>
+</svg>
+"""
+
+
+def wrap(text, width):
+    lines, line = [], ''
+    for word in text.split():
+        if line and len(line) + 1 + len(word) > width:
+            lines.append(line)
+            line = word
+        else:
+            line = f'{line} {word}'.strip()
+    return lines + [line]
+
+
+def work_svg(i, job, t):
+    """
+    One employer, as a card the width of the profile card: a fringed index
+    number, the organization and what it is, my role, and how the organization
+    describes itself. README.md wraps it in a link to the organization's site.
+    """
+    about = wrap(job['about'], 90)
+    h = 150 + 21 * len(about)
+    m, g = t['fringe'][1], t['fringe'][0]
+    num = f'{i + 1:02d}'
+    index = lambda fill, dx: (f'<text x="{40 + dx}" y="70" font-size="44" font-weight="700" fill="{fill}">{num}</text>')
+    lines = '\n'.join(f'<text x="150" y="{150 + 21 * k}" font-size="14" fill="{t["fg"]}">{esc(l)}</text>'
+                      for k, l in enumerate(about))
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(job['org'])}, {esc(job['full'])}: {esc(job['role'])}. {esc(job['about'])}">
+<rect x=".5" y=".5" width="{WIDTH - 1}" height="{h - 1}" rx="15" fill="{t['bg']}" stroke="{t['edge']}"/>
+<g style="mix-blend-mode:{t['blend']}" opacity=".85">{index(m, -1.2)}{index(g, 1.2)}</g>{index(t['brand'], 0)}
+<text x="150" y="62" font-size="30" font-weight="700" fill="{t['ink']}">{esc(job['org'])}</text>
+<text x="150" y="88" font-size="13" letter-spacing=".5" fill="{t['muted']}">{esc(job['full'])}</text>
+<text x="150" y="120" font-size="18" fill="{t['key']}">{esc(job['role'])}</text>
+<line x1="150" y1="134" x2="{WIDTH - 40}" y2="134" stroke="{t['edge']}"/>
+{lines}
+<text x="{WIDTH - 40}" y="58" font-size="13" text-anchor="end" fill="{t['key']}">{esc(job['site'])} ↗</text>
 </svg>
 """
 
@@ -102,11 +177,23 @@ def main():
         readme = tomllib.load(f).get('readme', {})
     os.makedirs(OUT, exist_ok=True)
 
+    if readme.get('headline'):
+        for theme, t in SAGE.items():
+            with open(f'{OUT}/headline-{theme}.svg', 'w', encoding='utf-8') as f:
+                f.write(headline_svg(readme['headline'], readme.get('subline', ''), t))
+        print(f'headline {readme["headline"]!r}')
+
     for label in readme.get('sections', []):
         for theme, t in SAGE.items():
             with open(f'{OUT}/section-{slug(label)}-{theme}.svg', 'w', encoding='utf-8') as f:
                 f.write(section_svg(label, t))
         print(f'section  {label:18} -> {picture("section-" + slug(label), label)}')
+
+    jobs = readme.get('work', [])
+    for i, job in enumerate(jobs):
+        for theme, t in SAGE.items():
+            with open(f'{OUT}/work-{slug(job["org"])}-{theme}.svg', 'w', encoding='utf-8') as f:
+                f.write(work_svg(i, job, t))
 
     links = readme.get('links', [])
     for i, link in enumerate(links):
@@ -116,15 +203,21 @@ def main():
 
     with open(README, encoding='utf-8') as f:
         text = f.read()
-    if LINKS_START in text and LINKS_END in text:
-        row = '\n'.join(picture(f'link-{slug(l["label"])}', l['label'], l['href']) for l in links)
-        head, rest = text.split(LINKS_START, 1)
-        _, tail = rest.split(LINKS_END, 1)
-        with open(README, 'w', encoding='utf-8') as f:
-            f.write(f'{head}{LINKS_START}\n{row}\n{LINKS_END}{tail}')
-        print(f'wrote {len(links)} links into {README}')
-    else:
-        print(f'{README} has no {LINKS_START} ... {LINKS_END} markers; links not written')
+    blocks = [
+        (LINKS_START, LINKS_END, '\n'.join(picture(f'link-{slug(l["label"])}', l['label'], l['href']) for l in links)),
+        (WORK_START, WORK_END, '\n<br/>\n'.join(
+            picture(f'work-{slug(j["org"])}', f'{j["org"]}, {j["full"]}: {j["role"]}', j['href']) for j in jobs)),
+    ]
+    for start, end, body in blocks:
+        if start in text and end in text:
+            head, rest = text.split(start, 1)
+            _, tail = rest.split(end, 1)
+            text = f'{head}{start}\n{body}\n{end}{tail}'
+        else:
+            print(f'{README} has no {start} ... {end} markers; skipped')
+    with open(README, 'w', encoding='utf-8') as f:
+        f.write(text)
+    print(f'wrote {len(links)} links and {len(jobs)} employers into {README}')
 
 
 if __name__ == '__main__':
