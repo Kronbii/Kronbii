@@ -1,6 +1,9 @@
 <p align="center">
 <a href="https://github.com/Kronbii/Kronbii">
-  <picture><source media="(max-width: 640px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/sight-dark.svg"><img alt="Rami Kronbi: embedded robotics and vision engineer, seen through a vision pipeline: my portrait as edges, keypoints and a face detection, beside a readout of my tools, languages, contacts and GitHub stats." src="assets/sight-light.svg"></picture><picture><source media="(min-width: 641px)" srcset="assets/blank.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/sight-phone-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/sight-phone-light.svg"><img alt="" src="assets/blank.svg"></picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Kronbii/Kronbii/main/dark_mode.svg">
+    <img alt="Rami Kronbi: embedded robotics and vision engineer. An ASCII portrait beside a neofetch-style card of tools, languages, contacts and GitHub stats." src="https://raw.githubusercontent.com/Kronbii/Kronbii/main/light_mode.svg">
+  </picture>
 </a>
 </p>
 
