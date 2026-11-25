@@ -141,6 +141,14 @@ headroom = 1.06
 # kept as part of you.
 subject_box = [0.42, 0.22, 0.94, 1.0]
 
+# Boxes [left, top, right, bottom] that are never you, whatever GrabCut says.
+# This one is the branches below the left hand, beside the legs.
+exclude = [[0.42, 0.63, 0.525, 1.0]]
+
+# An outline drawn by hand (white is you), used instead of GrabCut when the
+# file exists. Delete it, or this line, to go back to the automatic outline.
+mask = "cache/mask.png"
+
 # Placeholder numbers, shown until the first scheduled run replaces them. Their
 # width also reserves the column: today.py keeps each line the same total width
 # by reflowing the dots, so leave a little room for these to grow.

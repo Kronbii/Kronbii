@@ -15,6 +15,7 @@ background land on the same characters. Instead we cut the subject out with
 GrabCut, give it the dense end of the ramp, and push the background down to a
 faint wash so the silhouette carries the image.
 """
+import os
 import sys
 import tomllib
 
@@ -37,6 +38,8 @@ DEFAULTS = {
     'subject_box': [0.02, 0.24, 0.98, 0.98],
     'focus': None,
     'contrast': 0.0,
+    'exclude': [],
+    'mask': '',
 }
 
 
@@ -165,7 +168,14 @@ def asciify(cfg, cols, rows, cell_w, line_h):
     img = cv2.imread(cfg['source'])
     if img is None:
         raise SystemExit(f'cannot read {cfg["source"]}')
-    mask = segment(img, cfg['subject_box'])     # on the untouched photo: GrabCut
+    if cfg['mask'] and os.path.exists(cfg['mask']):   # drawn by hand: white is you
+        drawn = cv2.imread(cfg['mask'], cv2.IMREAD_GRAYSCALE)
+        mask = np.where(cv2.resize(drawn, img.shape[1::-1], interpolation=cv2.INTER_NEAREST) > 127, 255, 0).astype(np.uint8)
+    else:
+        mask = segment(img, cfg['subject_box'])     # on the untouched photo: GrabCut
+    h, w = mask.shape
+    for x0, y0, x1, y1 in cfg['exclude']:       # scenery GrabCut kept as part of you
+        mask[int(y0 * h):int(y1 * h), int(x0 * w):int(x1 * w)] = 0
     if cfg['contrast'] > 0:                     # separates by colour, not detail
         img = local_contrast(img, cfg['contrast'])
     img, mask, art_cols, art_rows = frame(img, mask, cols, rows, cell_w, line_h,
