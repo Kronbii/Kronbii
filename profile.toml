@@ -89,7 +89,7 @@ fit = "fill"
 # portrait: framing the whole body leaves the face too small to read. With
 # "fill" only the box's width and centre count -- the panel's shape sets the
 # height. This one is head and shoulders, with a little air above the hair.
-focus = [0.22, 0.17, 0.78, 0.9]
+focus = [0.40, 0.2, 0.96, 1.0]
 
 # The characters used, sparse to dense. Must start with a space -- that's the
 # "nothing here" level. More characters means finer shading, but adding dense
@@ -139,21 +139,21 @@ headroom = 1.06
 # part of you is being erased; tighten it if scenery is being kept. Its left edge
 # sits just inside the left shoulder: any wider and the stone wall behind it is
 # kept as part of you.
-subject_box = [0.2, 0.2, 0.88, 1.0]
+subject_box = [0.42, 0.22, 0.94, 1.0]
 
 # Placeholder numbers, shown until the first scheduled run replaces them. Their
 # width also reserves the column: today.py keeps each line the same total width
 # by reflowing the dots, so leave a little room for these to grow.
 [placeholders]
-age       = "22 years, 7 months, 14 days"
-repos     = "84"
-contrib   = "103"
-stars     = "25"
-commits   = "2,216"
-followers = "21"
-loc       = "6,911,953"
-loc_add   = "14,719,164"
-loc_del   = "7,807,211"
+age       = "22 years, 7 months, 23 days"
+repos     = "85"
+contrib   = "104"
+stars     = "26"
+commits   = "2,233"
+followers = "24"
+loc       = "6,973,089"
+loc_add   = "14,784,146"
+loc_del   = "7,811,057"
 
 # ── the README around the card ──────────────────────────────────────────────
 # parts.py draws these in the card's palette, light and dark: a header image

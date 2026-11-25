@@ -117,16 +117,10 @@ def crowd(word, size, pitch):
 
 def headline_svg(headline, subline, t):
     """
-    The bold line under the card. Its last word arrives as a crowd: a few
-    hundred dots, scattered across the band when the image loads, walk in and
-    settle into the letters -- society, made of people. Then the green and
-    magenta fringe racks in around it and slowly breathes, the way
-    ramikronbi.com treats one word of a heading.
-
-    Every dot rests at its place in the word, and the animation only says
-    where it starts from, so reduced motion (or no CSS at all) shows the word.
+    The bold line under the card. Its last word is drawn as a crowd: a few
+    hundred dots forming the letters -- society, made of people -- with the
+    green and magenta fringe around it. Still, with no animation.
     """
-    import random
     lead, _, word = headline.rpartition(' ')
     lead = lead + ' ' if lead else ''
     h, size, base = 132, 54, 70
@@ -135,29 +129,16 @@ def headline_svg(headline, subline, t):
     lead_w = len(lead) * size * ADVANCE
     x0 = (WIDTH - lead_w - word_w) / 2
     wx = x0 + lead_w
-    rnd = random.Random(word)                       # the same crowd every build
     circles = []
     for x, y, r in dots:
         tx, ty = wx + x, base + y
-        sx, sy = rnd.uniform(24, WIDTH - 24), rnd.uniform(10, h - 10)
-        delay = .35 + rnd.uniform(0, .75) + .5 * (x / word_w)
-        circles.append(f'<circle cx="{tx:.1f}" cy="{ty:.1f}" r="{r:.2f}" '
-                       f'style="--x:{sx - tx:.0f}px;--y:{sy - ty:.0f}px;animation-delay:{delay:.2f}s"/>')
-    settle = 2.0 + .35 + .75 + .5                   # the last dot lands
+        circles.append(f'<circle cx="{tx:.1f}" cy="{ty:.1f}" r="{r:.2f}"/>')
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{h}" viewBox="0 0 {WIDTH} {h}" font-family="{FONT}" role="img" aria-label="{esc(headline)}. {esc(subline)}">
 <style>
 text {{ white-space: pre; }}
-.crowd circle {{ animation: walk 2s cubic-bezier(.2,.75,.25,1) both; }}
-@keyframes walk {{ from {{ transform: translate(var(--x), var(--y)); opacity: .35; }} to {{ transform: none; opacity: 1; }} }}
-.fringe {{ mix-blend-mode: {t['blend']}; }}
-.fm {{ transform: translateX(-.6px); animation: fin {settle:.2f}s both, fm 9s ease-in-out {settle:.2f}s infinite; }}
-.fg {{ transform: translateX(.6px); animation: fin {settle:.2f}s both, fg 9s ease-in-out {settle:.2f}s infinite; }}
-@keyframes fin {{ 0%, 70% {{ opacity: 0; }} 100% {{ opacity: .9; }} }}
-@keyframes fm {{ 0%, 100% {{ transform: translateX(-.6px); opacity: .9; }} 50% {{ transform: translateX(-1.5px); opacity: .9; }} }}
-@keyframes fg {{ 0%, 100% {{ transform: translateX(.6px); opacity: .9; }} 50% {{ transform: translateX(1.5px); opacity: .9; }} }}
-.sub {{ animation: sub 1.2s ease-out {settle - .6:.2f}s both; }}
-@keyframes sub {{ from {{ opacity: 0; transform: translateY(4px); }} to {{ opacity: 1; transform: none; }} }}
-@media (prefers-reduced-motion: reduce) {{ .crowd circle, .fm, .fg, .sub {{ animation: none; }} .fm, .fg {{ opacity: .9; }} }}
+.fringe {{ mix-blend-mode: {t['blend']}; opacity: .9; }}
+.fm {{ transform: translateX(-.6px); }}
+.fg {{ transform: translateX(.6px); }}
 </style>
 <defs><g id="crowd" class="crowd">
 {chr(10).join(circles)}
@@ -259,41 +240,26 @@ def headline_phone_svg(headline, subline, t):
     The headline at phone size, in two lines: the lead words, then the last
     word as its own crowd, large, so it still reads as people on a small
     screen. Fewer, larger dots than the desktop crowd (about half as many),
-    each a little smaller than its cell so they read as people, not strokes;
-    the same walk in, the same fringe racking in and breathing, and the same
-    rest: every dot sits in its letter, so reduced motion shows the word.
+    each a little smaller than its cell so they read as people, not strokes,
+    and the same still fringe.
     """
-    import random
     lead, _, word = headline.rpartition(' ')
     h, lead_size, size = 128, 28, 50
     lead_base, base, sub_base, sub_size = 32, 84, 117, 11
     m, g = t['fringe'][1], t['fringe'][0]
     dots, word_w = crowd(word, size, 4.1)
     wx = (PHONE_W - word_w) / 2
-    rnd = random.Random(word + ' phone')
     circles = []
     for x, y, r in dots:
         tx, ty = wx + x, base + y
-        sx, sy = rnd.uniform(12, PHONE_W - 12), rnd.uniform(8, h - 8)
-        delay = .35 + rnd.uniform(0, .75) + .5 * (x / word_w)
-        circles.append(f'<circle cx="{tx:.1f}" cy="{ty:.1f}" r="{r * .8:.2f}" '
-                       f'style="--x:{sx - tx:.0f}px;--y:{sy - ty:.0f}px;animation-delay:{delay:.2f}s"/>')
-    settle = 2.0 + .35 + .75 + .5
+        circles.append(f'<circle cx="{tx:.1f}" cy="{ty:.1f}" r="{r * .8:.2f}"/>')
     sub_w = len(subline) * sub_size * ADVANCE
     return f"""{phone_root(h, f'{esc(headline)}. {esc(subline)}')}
 <style>
 text {{ white-space: pre; }}
-.crowd circle {{ animation: walk 2s cubic-bezier(.2,.75,.25,1) both; }}
-@keyframes walk {{ from {{ transform: translate(var(--x), var(--y)); opacity: .35; }} to {{ transform: none; opacity: 1; }} }}
-.fringe {{ mix-blend-mode: {t['blend']}; }}
-.fm {{ transform: translateX(-.5px); animation: fin {settle:.2f}s both, fm 9s ease-in-out {settle:.2f}s infinite; }}
-.fg {{ transform: translateX(.5px); animation: fin {settle:.2f}s both, fg 9s ease-in-out {settle:.2f}s infinite; }}
-@keyframes fin {{ 0%, 70% {{ opacity: 0; }} 100% {{ opacity: .9; }} }}
-@keyframes fm {{ 0%, 100% {{ transform: translateX(-.5px); opacity: .9; }} 50% {{ transform: translateX(-1.1px); opacity: .9; }} }}
-@keyframes fg {{ 0%, 100% {{ transform: translateX(.5px); opacity: .9; }} 50% {{ transform: translateX(1.1px); opacity: .9; }} }}
-.sub {{ animation: sub 1.2s ease-out {settle - .6:.2f}s both; }}
-@keyframes sub {{ from {{ opacity: 0; transform: translateY(4px); }} to {{ opacity: 1; transform: none; }} }}
-@media (prefers-reduced-motion: reduce) {{ .crowd circle, .fm, .fg, .sub {{ animation: none; }} .fm, .fg {{ opacity: .9; }} }}
+.fringe {{ mix-blend-mode: {t['blend']}; opacity: .9; }}
+.fm {{ transform: translateX(-.5px); }}
+.fg {{ transform: translateX(.5px); }}
 </style>
 <defs><g id="crowd" class="crowd">
 {chr(10).join(circles)}

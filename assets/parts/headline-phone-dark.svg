@@ -1,277 +1,269 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="256" viewBox="0 0 320 128" font-family="ConsolasFallback,Consolas,Menlo,monospace" role="img" aria-label="I build for society. Robotics · embedded systems · computer vision">
 <style>
 text { white-space: pre; }
-.crowd circle { animation: walk 2s cubic-bezier(.2,.75,.25,1) both; }
-@keyframes walk { from { transform: translate(var(--x), var(--y)); opacity: .35; } to { transform: none; opacity: 1; } }
-.fringe { mix-blend-mode: screen; }
-.fm { transform: translateX(-.5px); animation: fin 3.60s both, fm 9s ease-in-out 3.60s infinite; }
-.fg { transform: translateX(.5px); animation: fin 3.60s both, fg 9s ease-in-out 3.60s infinite; }
-@keyframes fin { 0%, 70% { opacity: 0; } 100% { opacity: .9; } }
-@keyframes fm { 0%, 100% { transform: translateX(-.5px); opacity: .9; } 50% { transform: translateX(-1.1px); opacity: .9; } }
-@keyframes fg { 0%, 100% { transform: translateX(.5px); opacity: .9; } 50% { transform: translateX(1.1px); opacity: .9; } }
-.sub { animation: sub 1.2s ease-out 3.00s both; }
-@keyframes sub { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .crowd circle, .fm, .fg, .sub { animation: none; } .fm, .fg { opacity: .9; } }
+.fringe { mix-blend-mode: screen; opacity: .9; }
+.fm { transform: translateX(-.5px); }
+.fg { transform: translateX(.5px); }
 </style>
 <defs><g id="crowd" class="crowd">
-<circle cx="159.4" cy="44.4" r="1.39" style="--x:68px;--y:-1px;animation-delay:1.00s"/>
-<circle cx="163.5" cy="44.4" r="1.24" style="--x:-65px;--y:-6px;animation-delay:1.16s"/>
-<circle cx="157.3" cy="48.0" r="1.11" style="--x:11px;--y:49px;animation-delay:0.72s"/>
-<circle cx="161.4" cy="48.0" r="1.64" style="--x:-17px;--y:33px;animation-delay:1.24s"/>
-<circle cx="165.5" cy="48.0" r="0.84" style="--x:-100px;--y:70px;animation-delay:1.21s"/>
-<circle cx="159.4" cy="51.5" r="1.21" style="--x:-135px;--y:19px;animation-delay:1.01s"/>
-<circle cx="163.5" cy="51.5" r="1.07" style="--x:68px;--y:-0px;animation-delay:0.71s"/>
-<circle cx="216.8" cy="51.5" r="1.60" style="--x:-34px;--y:62px;animation-delay:0.89s"/>
-<circle cx="220.9" cy="51.5" r="1.50" style="--x:65px;--y:-24px;animation-delay:1.13s"/>
-<circle cx="71.2" cy="55.1" r="0.79" style="--x:193px;--y:50px;animation-delay:0.69s"/>
-<circle cx="99.9" cy="55.1" r="0.80" style="--x:-67px;--y:37px;animation-delay:1.06s"/>
-<circle cx="132.7" cy="55.1" r="0.80" style="--x:-22px;--y:14px;animation-delay:0.65s"/>
-<circle cx="190.1" cy="55.1" r="0.80" style="--x:100px;--y:-38px;animation-delay:1.22s"/>
-<circle cx="214.7" cy="55.1" r="1.14" style="--x:-76px;--y:30px;animation-delay:1.07s"/>
-<circle cx="218.8" cy="55.1" r="1.64" style="--x:-183px;--y:8px;animation-delay:1.30s"/>
-<circle cx="222.9" cy="55.1" r="1.01" style="--x:-9px;--y:-36px;animation-delay:0.98s"/>
-<circle cx="61.0" cy="58.6" r="0.99" style="--x:15px;--y:40px;animation-delay:0.57s"/>
-<circle cx="65.1" cy="58.6" r="1.59" style="--x:33px;--y:0px;animation-delay:0.82s"/>
-<circle cx="69.2" cy="58.6" r="1.64" style="--x:182px;--y:23px;animation-delay:0.99s"/>
-<circle cx="73.3" cy="58.6" r="1.64" style="--x:-20px;--y:-36px;animation-delay:0.45s"/>
-<circle cx="77.4" cy="58.6" r="1.48" style="--x:46px;--y:-33px;animation-delay:0.66s"/>
-<circle cx="93.8" cy="58.6" r="1.43" style="--x:-10px;--y:7px;animation-delay:1.04s"/>
-<circle cx="97.9" cy="58.6" r="1.64" style="--x:78px;--y:-3px;animation-delay:0.65s"/>
-<circle cx="102.0" cy="58.6" r="1.64" style="--x:2px;--y:35px;animation-delay:0.77s"/>
-<circle cx="106.1" cy="58.6" r="1.41" style="--x:190px;--y:-5px;animation-delay:1.12s"/>
-<circle cx="126.6" cy="58.6" r="1.48" style="--x:-52px;--y:55px;animation-delay:0.93s"/>
-<circle cx="130.7" cy="58.6" r="1.64" style="--x:67px;--y:22px;animation-delay:0.76s"/>
-<circle cx="134.8" cy="58.6" r="1.64" style="--x:-110px;--y:11px;animation-delay:0.87s"/>
-<circle cx="138.9" cy="58.6" r="1.51" style="--x:143px;--y:22px;animation-delay:0.86s"/>
-<circle cx="151.2" cy="58.6" r="1.28" style="--x:-27px;--y:22px;animation-delay:0.88s"/>
-<circle cx="155.3" cy="58.6" r="1.59" style="--x:97px;--y:51px;animation-delay:1.22s"/>
-<circle cx="159.4" cy="58.6" r="1.59" style="--x:57px;--y:56px;animation-delay:0.84s"/>
-<circle cx="163.5" cy="58.6" r="1.39" style="--x:-13px;--y:33px;animation-delay:0.88s"/>
-<circle cx="184.0" cy="58.6" r="1.40" style="--x:15px;--y:-15px;animation-delay:0.89s"/>
-<circle cx="188.1" cy="58.6" r="1.64" style="--x:103px;--y:18px;animation-delay:0.71s"/>
-<circle cx="192.2" cy="58.6" r="1.64" style="--x:-172px;--y:28px;animation-delay:0.73s"/>
-<circle cx="196.3" cy="58.6" r="1.50" style="--x:-123px;--y:-45px;animation-delay:1.22s"/>
-<circle cx="208.6" cy="58.6" r="1.27" style="--x:88px;--y:-49px;animation-delay:0.90s"/>
-<circle cx="212.7" cy="58.6" r="1.59" style="--x:-105px;--y:-9px;animation-delay:1.14s"/>
-<circle cx="216.8" cy="58.6" r="1.64" style="--x:-179px;--y:54px;animation-delay:0.86s"/>
-<circle cx="220.9" cy="58.6" r="1.63" style="--x:70px;--y:-46px;animation-delay:1.10s"/>
-<circle cx="225.0" cy="58.6" r="1.59" style="--x:54px;--y:1px;animation-delay:1.22s"/>
-<circle cx="229.1" cy="58.6" r="1.59" style="--x:-84px;--y:-38px;animation-delay:1.09s"/>
-<circle cx="237.3" cy="58.6" r="1.07" style="--x:32px;--y:57px;animation-delay:1.05s"/>
-<circle cx="241.4" cy="58.6" r="1.59" style="--x:54px;--y:-19px;animation-delay:1.38s"/>
-<circle cx="245.5" cy="58.6" r="0.93" style="--x:-186px;--y:23px;animation-delay:0.99s"/>
-<circle cx="257.8" cy="58.6" r="1.55" style="--x:-48px;--y:2px;animation-delay:1.51s"/>
-<circle cx="261.9" cy="58.6" r="1.48" style="--x:-107px;--y:-43px;animation-delay:1.59s"/>
-<circle cx="58.9" cy="62.2" r="1.05" style="--x:34px;--y:30px;animation-delay:1.11s"/>
-<circle cx="63.0" cy="62.2" r="1.64" style="--x:234px;--y:-13px;animation-delay:0.91s"/>
-<circle cx="67.1" cy="62.2" r="1.24" style="--x:143px;--y:3px;animation-delay:1.04s"/>
-<circle cx="71.2" cy="62.2" r="0.94" style="--x:96px;--y:52px;animation-delay:1.00s"/>
-<circle cx="75.3" cy="62.2" r="1.18" style="--x:183px;--y:18px;animation-delay:0.45s"/>
-<circle cx="79.4" cy="62.2" r="0.90" style="--x:25px;--y:-42px;animation-delay:0.46s"/>
-<circle cx="91.7" cy="62.2" r="1.62" style="--x:60px;--y:54px;animation-delay:0.72s"/>
-<circle cx="95.8" cy="62.2" r="1.53" style="--x:-12px;--y:30px;animation-delay:0.73s"/>
-<circle cx="99.9" cy="62.2" r="1.13" style="--x:120px;--y:2px;animation-delay:0.59s"/>
-<circle cx="104.0" cy="62.2" r="1.54" style="--x:191px;--y:-1px;animation-delay:1.11s"/>
-<circle cx="108.1" cy="62.2" r="1.62" style="--x:134px;--y:-39px;animation-delay:0.78s"/>
-<circle cx="120.4" cy="62.2" r="0.95" style="--x:-46px;--y:53px;animation-delay:0.93s"/>
-<circle cx="124.5" cy="62.2" r="1.64" style="--x:-42px;--y:31px;animation-delay:0.69s"/>
-<circle cx="128.6" cy="62.2" r="1.52" style="--x:120px;--y:-29px;animation-delay:0.85s"/>
-<circle cx="132.7" cy="62.2" r="1.12" style="--x:-30px;--y:-12px;animation-delay:0.61s"/>
-<circle cx="136.8" cy="62.2" r="1.24" style="--x:164px;--y:11px;animation-delay:0.81s"/>
-<circle cx="140.9" cy="62.2" r="1.15" style="--x:-70px;--y:1px;animation-delay:0.66s"/>
-<circle cx="153.2" cy="62.2" r="1.23" style="--x:-80px;--y:29px;animation-delay:0.61s"/>
-<circle cx="157.3" cy="62.2" r="1.43" style="--x:-16px;--y:-52px;animation-delay:1.29s"/>
-<circle cx="161.4" cy="62.2" r="1.64" style="--x:-68px;--y:45px;animation-delay:1.13s"/>
-<circle cx="165.5" cy="62.2" r="0.84" style="--x:-77px;--y:-29px;animation-delay:0.94s"/>
-<circle cx="181.9" cy="62.2" r="1.60" style="--x:-112px;--y:10px;animation-delay:1.25s"/>
-<circle cx="186.0" cy="62.2" r="1.51" style="--x:54px;--y:40px;animation-delay:0.70s"/>
-<circle cx="190.1" cy="62.2" r="1.04" style="--x:-173px;--y:-28px;animation-delay:0.87s"/>
-<circle cx="194.2" cy="62.2" r="1.38" style="--x:-84px;--y:38px;animation-delay:1.00s"/>
-<circle cx="198.3" cy="62.2" r="1.64" style="--x:-39px;--y:32px;animation-delay:1.26s"/>
-<circle cx="202.4" cy="62.2" r="0.92" style="--x:48px;--y:0px;animation-delay:1.11s"/>
-<circle cx="210.6" cy="62.2" r="1.23" style="--x:-98px;--y:7px;animation-delay:1.11s"/>
-<circle cx="214.7" cy="62.2" r="1.43" style="--x:-97px;--y:-28px;animation-delay:0.74s"/>
-<circle cx="218.8" cy="62.2" r="1.64" style="--x:-205px;--y:2px;animation-delay:0.75s"/>
-<circle cx="222.9" cy="62.2" r="1.38" style="--x:-207px;--y:-30px;animation-delay:1.36s"/>
-<circle cx="227.0" cy="62.2" r="1.23" style="--x:-91px;--y:-7px;animation-delay:1.10s"/>
-<circle cx="231.1" cy="62.2" r="0.96" style="--x:-39px;--y:14px;animation-delay:0.84s"/>
-<circle cx="239.3" cy="62.2" r="1.30" style="--x:-149px;--y:38px;animation-delay:1.14s"/>
-<circle cx="243.4" cy="62.2" r="1.64" style="--x:-131px;--y:-28px;animation-delay:1.45s"/>
-<circle cx="255.7" cy="62.2" r="1.44" style="--x:23px;--y:3px;animation-delay:0.99s"/>
-<circle cx="259.8" cy="62.2" r="1.62" style="--x:-138px;--y:45px;animation-delay:1.38s"/>
-<circle cx="61.0" cy="65.7" r="1.62" style="--x:78px;--y:9px;animation-delay:0.88s"/>
-<circle cx="65.1" cy="65.7" r="1.53" style="--x:65px;--y:-38px;animation-delay:0.62s"/>
-<circle cx="69.2" cy="65.7" r="0.80" style="--x:-41px;--y:-9px;animation-delay:0.84s"/>
-<circle cx="89.7" cy="65.7" r="1.61" style="--x:3px;--y:-15px;animation-delay:0.92s"/>
-<circle cx="93.8" cy="65.7" r="1.50" style="--x:55px;--y:6px;animation-delay:0.59s"/>
-<circle cx="106.1" cy="65.7" r="1.53" style="--x:-67px;--y:-3px;animation-delay:1.13s"/>
-<circle cx="110.2" cy="65.7" r="1.56" style="--x:-38px;--y:27px;animation-delay:0.68s"/>
-<circle cx="122.5" cy="65.7" r="1.64" style="--x:102px;--y:1px;animation-delay:0.74s"/>
-<circle cx="126.6" cy="65.7" r="1.40" style="--x:170px;--y:-27px;animation-delay:1.15s"/>
-<circle cx="159.4" cy="65.7" r="1.61" style="--x:20px;--y:-47px;animation-delay:0.80s"/>
-<circle cx="163.5" cy="65.7" r="1.43" style="--x:13px;--y:13px;animation-delay:0.90s"/>
-<circle cx="179.9" cy="65.7" r="1.56" style="--x:-35px;--y:33px;animation-delay:0.73s"/>
-<circle cx="184.0" cy="65.7" r="1.49" style="--x:-137px;--y:-50px;animation-delay:1.34s"/>
-<circle cx="196.3" cy="65.7" r="1.29" style="--x:110px;--y:-51px;animation-delay:1.04s"/>
-<circle cx="200.4" cy="65.7" r="1.64" style="--x:-155px;--y:30px;animation-delay:1.45s"/>
-<circle cx="216.8" cy="65.7" r="1.60" style="--x:-205px;--y:-15px;animation-delay:0.84s"/>
-<circle cx="220.9" cy="65.7" r="1.50" style="--x:-64px;--y:31px;animation-delay:0.95s"/>
-<circle cx="241.4" cy="65.7" r="1.45" style="--x:66px;--y:3px;animation-delay:1.49s"/>
-<circle cx="245.5" cy="65.7" r="1.58" style="--x:-95px;--y:52px;animation-delay:0.99s"/>
-<circle cx="253.7" cy="65.7" r="1.16" style="--x:-182px;--y:22px;animation-delay:0.86s"/>
-<circle cx="257.8" cy="65.7" r="1.64" style="--x:34px;--y:-47px;animation-delay:1.57s"/>
-<circle cx="261.9" cy="65.7" r="0.79" style="--x:-153px;--y:33px;animation-delay:1.19s"/>
-<circle cx="63.0" cy="69.3" r="1.59" style="--x:34px;--y:-1px;animation-delay:0.56s"/>
-<circle cx="67.1" cy="69.3" r="1.64" style="--x:-13px;--y:-23px;animation-delay:0.89s"/>
-<circle cx="71.2" cy="69.3" r="1.59" style="--x:207px;--y:18px;animation-delay:0.90s"/>
-<circle cx="75.3" cy="69.3" r="1.34" style="--x:-62px;--y:-5px;animation-delay:0.60s"/>
-<circle cx="87.6" cy="69.3" r="1.24" style="--x:0px;--y:-21px;animation-delay:0.63s"/>
-<circle cx="91.7" cy="69.3" r="1.64" style="--x:116px;--y:-29px;animation-delay:0.50s"/>
-<circle cx="108.1" cy="69.3" r="1.64" style="--x:-30px;--y:30px;animation-delay:1.06s"/>
-<circle cx="112.2" cy="69.3" r="1.20" style="--x:-40px;--y:50px;animation-delay:1.17s"/>
-<circle cx="120.4" cy="69.3" r="1.49" style="--x:157px;--y:28px;animation-delay:0.72s"/>
-<circle cx="124.5" cy="69.3" r="1.62" style="--x:105px;--y:13px;animation-delay:1.17s"/>
-<circle cx="157.3" cy="69.3" r="1.11" style="--x:-103px;--y:4px;animation-delay:1.32s"/>
-<circle cx="161.4" cy="69.3" r="1.64" style="--x:84px;--y:-49px;animation-delay:0.62s"/>
-<circle cx="165.5" cy="69.3" r="0.84" style="--x:95px;--y:2px;animation-delay:0.62s"/>
-<circle cx="177.8" cy="69.3" r="1.21" style="--x:76px;--y:-38px;animation-delay:0.76s"/>
-<circle cx="181.9" cy="69.3" r="1.64" style="--x:108px;--y:-3px;animation-delay:1.20s"/>
-<circle cx="186.0" cy="69.3" r="1.55" style="--x:-149px;--y:-7px;animation-delay:1.04s"/>
-<circle cx="190.1" cy="69.3" r="1.53" style="--x:-74px;--y:36px;animation-delay:1.39s"/>
-<circle cx="194.2" cy="69.3" r="1.54" style="--x:-108px;--y:11px;animation-delay:1.25s"/>
-<circle cx="198.3" cy="69.3" r="1.64" style="--x:-182px;--y:-38px;animation-delay:1.29s"/>
-<circle cx="202.4" cy="69.3" r="1.42" style="--x:-24px;--y:30px;animation-delay:0.91s"/>
-<circle cx="214.7" cy="69.3" r="1.10" style="--x:-176px;--y:-31px;animation-delay:1.01s"/>
-<circle cx="218.8" cy="69.3" r="1.64" style="--x:-150px;--y:36px;animation-delay:1.28s"/>
-<circle cx="222.9" cy="69.3" r="0.95" style="--x:-6px;--y:45px;animation-delay:0.93s"/>
-<circle cx="243.4" cy="69.3" r="1.57" style="--x:-113px;--y:30px;animation-delay:1.20s"/>
-<circle cx="247.5" cy="69.3" r="1.43" style="--x:-176px;--y:34px;animation-delay:1.14s"/>
-<circle cx="251.6" cy="69.3" r="0.90" style="--x:-71px;--y:7px;animation-delay:1.44s"/>
-<circle cx="255.7" cy="69.3" r="1.64" style="--x:5px;--y:47px;animation-delay:0.92s"/>
-<circle cx="259.8" cy="69.3" r="1.04" style="--x:-135px;--y:-22px;animation-delay:1.44s"/>
-<circle cx="65.1" cy="72.8" r="0.92" style="--x:194px;--y:-4px;animation-delay:0.43s"/>
-<circle cx="69.2" cy="72.8" r="1.25" style="--x:174px;--y:-12px;animation-delay:1.00s"/>
-<circle cx="73.3" cy="72.8" r="1.57" style="--x:-60px;--y:-15px;animation-delay:0.59s"/>
-<circle cx="77.4" cy="72.8" r="1.64" style="--x:91px;--y:-18px;animation-delay:1.07s"/>
-<circle cx="89.7" cy="72.8" r="1.64" style="--x:-29px;--y:-15px;animation-delay:0.62s"/>
-<circle cx="93.8" cy="72.8" r="1.36" style="--x:-2px;--y:29px;animation-delay:1.17s"/>
-<circle cx="106.1" cy="72.8" r="1.39" style="--x:180px;--y:-17px;animation-delay:1.20s"/>
-<circle cx="110.2" cy="72.8" r="1.63" style="--x:-75px;--y:12px;animation-delay:0.56s"/>
-<circle cx="118.4" cy="72.8" r="0.81" style="--x:154px;--y:-42px;animation-delay:0.98s"/>
-<circle cx="122.5" cy="72.8" r="1.64" style="--x:156px;--y:-36px;animation-delay:1.06s"/>
-<circle cx="126.6" cy="72.8" r="1.19" style="--x:17px;--y:-30px;animation-delay:0.60s"/>
-<circle cx="159.4" cy="72.8" r="1.61" style="--x:-143px;--y:11px;animation-delay:1.06s"/>
-<circle cx="163.5" cy="72.8" r="1.43" style="--x:-96px;--y:28px;animation-delay:0.90s"/>
-<circle cx="179.9" cy="72.8" r="1.64" style="--x:17px;--y:-20px;animation-delay:0.99s"/>
-<circle cx="184.0" cy="72.8" r="1.52" style="--x:-29px;--y:29px;animation-delay:1.37s"/>
-<circle cx="188.1" cy="72.8" r="1.16" style="--x:-103px;--y:-12px;animation-delay:1.07s"/>
-<circle cx="192.2" cy="72.8" r="1.16" style="--x:-36px;--y:-39px;animation-delay:1.06s"/>
-<circle cx="196.3" cy="72.8" r="1.16" style="--x:-43px;--y:-38px;animation-delay:0.77s"/>
-<circle cx="200.4" cy="72.8" r="1.16" style="--x:-183px;--y:21px;animation-delay:0.75s"/>
-<circle cx="216.8" cy="72.8" r="1.60" style="--x:-197px;--y:-29px;animation-delay:0.79s"/>
-<circle cx="220.9" cy="72.8" r="1.50" style="--x:-94px;--y:-47px;animation-delay:1.09s"/>
-<circle cx="245.5" cy="72.8" r="1.64" style="--x:-88px;--y:-20px;animation-delay:1.07s"/>
-<circle cx="249.6" cy="72.8" r="1.38" style="--x:-66px;--y:-46px;animation-delay:1.52s"/>
-<circle cx="253.7" cy="72.8" r="1.64" style="--x:-152px;--y:15px;animation-delay:0.86s"/>
-<circle cx="257.8" cy="72.8" r="1.22" style="--x:-210px;--y:28px;animation-delay:1.17s"/>
-<circle cx="75.3" cy="76.4" r="1.53" style="--x:-6px;--y:32px;animation-delay:1.03s"/>
-<circle cx="79.4" cy="76.4" r="1.48" style="--x:149px;--y:41px;animation-delay:0.71s"/>
-<circle cx="87.6" cy="76.4" r="0.99" style="--x:-21px;--y:-19px;animation-delay:1.00s"/>
-<circle cx="91.7" cy="76.4" r="1.64" style="--x:161px;--y:-28px;animation-delay:1.01s"/>
-<circle cx="95.8" cy="76.4" r="1.13" style="--x:84px;--y:2px;animation-delay:0.55s"/>
-<circle cx="104.0" cy="76.4" r="1.17" style="--x:169px;--y:4px;animation-delay:1.18s"/>
-<circle cx="108.1" cy="76.4" r="1.64" style="--x:143px;--y:27px;animation-delay:1.09s"/>
-<circle cx="112.2" cy="76.4" r="0.94" style="--x:7px;--y:-17px;animation-delay:0.81s"/>
-<circle cx="120.4" cy="76.4" r="1.29" style="--x:-57px;--y:18px;animation-delay:0.77s"/>
-<circle cx="124.5" cy="76.4" r="1.64" style="--x:18px;--y:-6px;animation-delay:0.60s"/>
-<circle cx="128.6" cy="76.4" r="1.02" style="--x:60px;--y:-49px;animation-delay:1.18s"/>
-<circle cx="157.3" cy="76.4" r="1.11" style="--x:-107px;--y:-23px;animation-delay:1.19s"/>
-<circle cx="161.4" cy="76.4" r="1.64" style="--x:68px;--y:-43px;animation-delay:0.85s"/>
-<circle cx="165.5" cy="76.4" r="0.84" style="--x:128px;--y:-55px;animation-delay:1.30s"/>
-<circle cx="177.8" cy="76.4" r="0.97" style="--x:-88px;--y:-43px;animation-delay:1.18s"/>
-<circle cx="181.9" cy="76.4" r="1.64" style="--x:-85px;--y:-23px;animation-delay:1.02s"/>
-<circle cx="186.0" cy="76.4" r="1.13" style="--x:48px;--y:-58px;animation-delay:0.84s"/>
-<circle cx="214.7" cy="76.4" r="1.08" style="--x:-64px;--y:10px;animation-delay:1.03s"/>
-<circle cx="218.8" cy="76.4" r="1.64" style="--x:-73px;--y:20px;animation-delay:0.92s"/>
-<circle cx="222.9" cy="76.4" r="1.06" style="--x:33px;--y:17px;animation-delay:0.87s"/>
-<circle cx="243.4" cy="76.4" r="0.78" style="--x:-157px;--y:16px;animation-delay:1.49s"/>
-<circle cx="247.5" cy="76.4" r="1.64" style="--x:-121px;--y:-10px;animation-delay:1.29s"/>
-<circle cx="251.6" cy="76.4" r="1.64" style="--x:-106px;--y:9px;animation-delay:1.00s"/>
-<circle cx="255.7" cy="76.4" r="1.40" style="--x:-152px;--y:15px;animation-delay:1.18s"/>
-<circle cx="61.0" cy="79.9" r="1.53" style="--x:151px;--y:15px;animation-delay:0.83s"/>
-<circle cx="65.1" cy="79.9" r="1.37" style="--x:60px;--y:-33px;animation-delay:0.54s"/>
-<circle cx="69.2" cy="79.9" r="1.24" style="--x:188px;--y:-21px;animation-delay:0.95s"/>
-<circle cx="73.3" cy="79.9" r="1.50" style="--x:141px;--y:-14px;animation-delay:0.44s"/>
-<circle cx="77.4" cy="79.9" r="1.64" style="--x:83px;--y:-40px;animation-delay:0.44s"/>
-<circle cx="89.7" cy="79.9" r="1.14" style="--x:107px;--y:-22px;animation-delay:0.68s"/>
-<circle cx="93.8" cy="79.9" r="1.64" style="--x:-27px;--y:-2px;animation-delay:1.07s"/>
-<circle cx="97.9" cy="79.9" r="1.49" style="--x:173px;--y:-58px;animation-delay:0.79s"/>
-<circle cx="102.0" cy="79.9" r="1.50" style="--x:-30px;--y:15px;animation-delay:0.75s"/>
-<circle cx="106.1" cy="79.9" r="1.64" style="--x:-76px;--y:27px;animation-delay:0.91s"/>
-<circle cx="110.2" cy="79.9" r="1.02" style="--x:40px;--y:-52px;animation-delay:0.76s"/>
-<circle cx="122.5" cy="79.9" r="1.35" style="--x:-90px;--y:-48px;animation-delay:0.82s"/>
-<circle cx="126.6" cy="79.9" r="1.64" style="--x:-85px;--y:-30px;animation-delay:0.81s"/>
-<circle cx="130.7" cy="79.9" r="1.51" style="--x:-87px;--y:-70px;animation-delay:0.95s"/>
-<circle cx="134.8" cy="79.9" r="1.39" style="--x:16px;--y:-45px;animation-delay:1.24s"/>
-<circle cx="138.9" cy="79.9" r="1.59" style="--x:28px;--y:-45px;animation-delay:0.88s"/>
-<circle cx="151.2" cy="79.9" r="1.48" style="--x:41px;--y:-19px;animation-delay:0.67s"/>
-<circle cx="155.3" cy="79.9" r="1.48" style="--x:37px;--y:-12px;animation-delay:0.67s"/>
-<circle cx="159.4" cy="79.9" r="1.63" style="--x:-109px;--y:39px;animation-delay:0.65s"/>
-<circle cx="163.5" cy="79.9" r="1.60" style="--x:-105px;--y:-69px;animation-delay:1.03s"/>
-<circle cx="167.6" cy="79.9" r="1.48" style="--x:63px;--y:-51px;animation-delay:0.96s"/>
-<circle cx="171.7" cy="79.9" r="1.47" style="--x:12px;--y:-16px;animation-delay:1.16s"/>
-<circle cx="179.9" cy="79.9" r="1.04" style="--x:-11px;--y:-67px;animation-delay:0.70s"/>
-<circle cx="184.0" cy="79.9" r="1.64" style="--x:-60px;--y:-10px;animation-delay:1.33s"/>
-<circle cx="188.1" cy="79.9" r="1.54" style="--x:-62px;--y:-16px;animation-delay:0.72s"/>
-<circle cx="192.2" cy="79.9" r="1.37" style="--x:83px;--y:-13px;animation-delay:0.94s"/>
-<circle cx="196.3" cy="79.9" r="1.47" style="--x:-149px;--y:-18px;animation-delay:1.06s"/>
-<circle cx="200.4" cy="79.9" r="1.62" style="--x:-98px;--y:-39px;animation-delay:1.12s"/>
-<circle cx="216.8" cy="79.9" r="1.42" style="--x:57px;--y:-25px;animation-delay:1.46s"/>
-<circle cx="220.9" cy="79.9" r="1.64" style="--x:29px;--y:-11px;animation-delay:0.94s"/>
-<circle cx="225.0" cy="79.9" r="1.51" style="--x:-125px;--y:26px;animation-delay:0.78s"/>
-<circle cx="229.1" cy="79.9" r="1.48" style="--x:33px;--y:-27px;animation-delay:1.27s"/>
-<circle cx="245.5" cy="79.9" r="1.10" style="--x:5px;--y:-18px;animation-delay:1.44s"/>
-<circle cx="249.6" cy="79.9" r="1.64" style="--x:-19px;--y:-20px;animation-delay:0.88s"/>
-<circle cx="253.7" cy="79.9" r="1.58" style="--x:29px;--y:-12px;animation-delay:0.99s"/>
-<circle cx="63.0" cy="83.5" r="1.35" style="--x:124px;--y:-44px;animation-delay:0.99s"/>
-<circle cx="67.1" cy="83.5" r="1.50" style="--x:109px;--y:17px;animation-delay:0.60s"/>
-<circle cx="71.2" cy="83.5" r="1.52" style="--x:62px;--y:-25px;animation-delay:0.99s"/>
-<circle cx="75.3" cy="83.5" r="1.35" style="--x:145px;--y:-30px;animation-delay:0.88s"/>
-<circle cx="95.8" cy="83.5" r="1.39" style="--x:3px;--y:35px;animation-delay:0.76s"/>
-<circle cx="99.9" cy="83.5" r="1.52" style="--x:11px;--y:-63px;animation-delay:0.63s"/>
-<circle cx="104.0" cy="83.5" r="1.38" style="--x:-78px;--y:-70px;animation-delay:1.09s"/>
-<circle cx="124.5" cy="83.5" r="0.89" style="--x:-33px;--y:24px;animation-delay:0.64s"/>
-<circle cx="128.6" cy="83.5" r="1.42" style="--x:-21px;--y:11px;animation-delay:1.08s"/>
-<circle cx="132.7" cy="83.5" r="1.53" style="--x:-62px;--y:-37px;animation-delay:0.93s"/>
-<circle cx="136.8" cy="83.5" r="1.42" style="--x:-77px;--y:1px;animation-delay:0.98s"/>
-<circle cx="140.9" cy="83.5" r="0.85" style="--x:151px;--y:-73px;animation-delay:0.69s"/>
-<circle cx="149.1" cy="83.5" r="1.08" style="--x:48px;--y:9px;animation-delay:1.10s"/>
-<circle cx="153.2" cy="83.5" r="1.36" style="--x:40px;--y:-63px;animation-delay:0.68s"/>
-<circle cx="157.3" cy="83.5" r="1.36" style="--x:121px;--y:18px;animation-delay:0.79s"/>
-<circle cx="161.4" cy="83.5" r="1.36" style="--x:125px;--y:33px;animation-delay:0.98s"/>
-<circle cx="165.5" cy="83.5" r="1.36" style="--x:7px;--y:5px;animation-delay:0.81s"/>
-<circle cx="169.6" cy="83.5" r="1.36" style="--x:17px;--y:-49px;animation-delay:0.68s"/>
-<circle cx="173.7" cy="83.5" r="0.88" style="--x:44px;--y:-43px;animation-delay:1.12s"/>
-<circle cx="186.0" cy="83.5" r="1.34" style="--x:85px;--y:-41px;animation-delay:0.78s"/>
-<circle cx="190.1" cy="83.5" r="1.51" style="--x:-33px;--y:-42px;animation-delay:1.04s"/>
-<circle cx="194.2" cy="83.5" r="1.50" style="--x:-175px;--y:-23px;animation-delay:1.04s"/>
-<circle cx="198.3" cy="83.5" r="1.35" style="--x:-19px;--y:32px;animation-delay:1.07s"/>
-<circle cx="202.4" cy="83.5" r="0.77" style="--x:-94px;--y:-47px;animation-delay:1.05s"/>
-<circle cx="218.8" cy="83.5" r="1.05" style="--x:-101px;--y:2px;animation-delay:0.87s"/>
-<circle cx="222.9" cy="83.5" r="1.32" style="--x:-43px;--y:-56px;animation-delay:1.05s"/>
-<circle cx="227.0" cy="83.5" r="1.36" style="--x:-126px;--y:22px;animation-delay:1.10s"/>
-<circle cx="231.1" cy="83.5" r="1.06" style="--x:6px;--y:29px;animation-delay:1.29s"/>
-<circle cx="247.5" cy="83.5" r="1.37" style="--x:2px;--y:-16px;animation-delay:1.22s"/>
-<circle cx="251.6" cy="83.5" r="1.64" style="--x:-124px;--y:-30px;animation-delay:1.08s"/>
-<circle cx="245.5" cy="87.0" r="1.16" style="--x:22px;--y:-3px;animation-delay:1.45s"/>
-<circle cx="249.6" cy="87.0" r="1.64" style="--x:-172px;--y:-37px;animation-delay:1.38s"/>
-<circle cx="253.7" cy="87.0" r="0.90" style="--x:-130px;--y:4px;animation-delay:1.25s"/>
-<circle cx="239.3" cy="90.6" r="1.31" style="--x:-73px;--y:-39px;animation-delay:1.47s"/>
-<circle cx="243.4" cy="90.6" r="1.59" style="--x:-63px;--y:22px;animation-delay:1.18s"/>
-<circle cx="247.5" cy="90.6" r="1.64" style="--x:-220px;--y:-38px;animation-delay:0.98s"/>
-<circle cx="251.6" cy="90.6" r="0.96" style="--x:-22px;--y:-64px;animation-delay:0.83s"/>
-<circle cx="241.4" cy="94.1" r="1.30" style="--x:-22px;--y:17px;animation-delay:1.19s"/>
-<circle cx="245.5" cy="94.1" r="1.25" style="--x:-229px;--y:21px;animation-delay:1.15s"/>
+<circle cx="159.4" cy="44.4" r="1.39"/>
+<circle cx="163.5" cy="44.4" r="1.24"/>
+<circle cx="157.3" cy="48.0" r="1.11"/>
+<circle cx="161.4" cy="48.0" r="1.64"/>
+<circle cx="165.5" cy="48.0" r="0.84"/>
+<circle cx="159.4" cy="51.5" r="1.21"/>
+<circle cx="163.5" cy="51.5" r="1.07"/>
+<circle cx="216.8" cy="51.5" r="1.60"/>
+<circle cx="220.9" cy="51.5" r="1.50"/>
+<circle cx="71.2" cy="55.1" r="0.79"/>
+<circle cx="99.9" cy="55.1" r="0.80"/>
+<circle cx="132.7" cy="55.1" r="0.80"/>
+<circle cx="190.1" cy="55.1" r="0.80"/>
+<circle cx="214.7" cy="55.1" r="1.14"/>
+<circle cx="218.8" cy="55.1" r="1.64"/>
+<circle cx="222.9" cy="55.1" r="1.01"/>
+<circle cx="61.0" cy="58.6" r="0.99"/>
+<circle cx="65.1" cy="58.6" r="1.59"/>
+<circle cx="69.2" cy="58.6" r="1.64"/>
+<circle cx="73.3" cy="58.6" r="1.64"/>
+<circle cx="77.4" cy="58.6" r="1.48"/>
+<circle cx="93.8" cy="58.6" r="1.43"/>
+<circle cx="97.9" cy="58.6" r="1.64"/>
+<circle cx="102.0" cy="58.6" r="1.64"/>
+<circle cx="106.1" cy="58.6" r="1.41"/>
+<circle cx="126.6" cy="58.6" r="1.48"/>
+<circle cx="130.7" cy="58.6" r="1.64"/>
+<circle cx="134.8" cy="58.6" r="1.64"/>
+<circle cx="138.9" cy="58.6" r="1.51"/>
+<circle cx="151.2" cy="58.6" r="1.28"/>
+<circle cx="155.3" cy="58.6" r="1.59"/>
+<circle cx="159.4" cy="58.6" r="1.59"/>
+<circle cx="163.5" cy="58.6" r="1.39"/>
+<circle cx="184.0" cy="58.6" r="1.40"/>
+<circle cx="188.1" cy="58.6" r="1.64"/>
+<circle cx="192.2" cy="58.6" r="1.64"/>
+<circle cx="196.3" cy="58.6" r="1.50"/>
+<circle cx="208.6" cy="58.6" r="1.27"/>
+<circle cx="212.7" cy="58.6" r="1.59"/>
+<circle cx="216.8" cy="58.6" r="1.64"/>
+<circle cx="220.9" cy="58.6" r="1.63"/>
+<circle cx="225.0" cy="58.6" r="1.59"/>
+<circle cx="229.1" cy="58.6" r="1.59"/>
+<circle cx="237.3" cy="58.6" r="1.07"/>
+<circle cx="241.4" cy="58.6" r="1.59"/>
+<circle cx="245.5" cy="58.6" r="0.93"/>
+<circle cx="257.8" cy="58.6" r="1.55"/>
+<circle cx="261.9" cy="58.6" r="1.48"/>
+<circle cx="58.9" cy="62.2" r="1.05"/>
+<circle cx="63.0" cy="62.2" r="1.64"/>
+<circle cx="67.1" cy="62.2" r="1.24"/>
+<circle cx="71.2" cy="62.2" r="0.94"/>
+<circle cx="75.3" cy="62.2" r="1.18"/>
+<circle cx="79.4" cy="62.2" r="0.90"/>
+<circle cx="91.7" cy="62.2" r="1.62"/>
+<circle cx="95.8" cy="62.2" r="1.53"/>
+<circle cx="99.9" cy="62.2" r="1.13"/>
+<circle cx="104.0" cy="62.2" r="1.54"/>
+<circle cx="108.1" cy="62.2" r="1.62"/>
+<circle cx="120.4" cy="62.2" r="0.95"/>
+<circle cx="124.5" cy="62.2" r="1.64"/>
+<circle cx="128.6" cy="62.2" r="1.52"/>
+<circle cx="132.7" cy="62.2" r="1.12"/>
+<circle cx="136.8" cy="62.2" r="1.24"/>
+<circle cx="140.9" cy="62.2" r="1.15"/>
+<circle cx="153.2" cy="62.2" r="1.23"/>
+<circle cx="157.3" cy="62.2" r="1.43"/>
+<circle cx="161.4" cy="62.2" r="1.64"/>
+<circle cx="165.5" cy="62.2" r="0.84"/>
+<circle cx="181.9" cy="62.2" r="1.60"/>
+<circle cx="186.0" cy="62.2" r="1.51"/>
+<circle cx="190.1" cy="62.2" r="1.04"/>
+<circle cx="194.2" cy="62.2" r="1.38"/>
+<circle cx="198.3" cy="62.2" r="1.64"/>
+<circle cx="202.4" cy="62.2" r="0.92"/>
+<circle cx="210.6" cy="62.2" r="1.23"/>
+<circle cx="214.7" cy="62.2" r="1.43"/>
+<circle cx="218.8" cy="62.2" r="1.64"/>
+<circle cx="222.9" cy="62.2" r="1.38"/>
+<circle cx="227.0" cy="62.2" r="1.23"/>
+<circle cx="231.1" cy="62.2" r="0.96"/>
+<circle cx="239.3" cy="62.2" r="1.30"/>
+<circle cx="243.4" cy="62.2" r="1.64"/>
+<circle cx="255.7" cy="62.2" r="1.44"/>
+<circle cx="259.8" cy="62.2" r="1.62"/>
+<circle cx="61.0" cy="65.7" r="1.62"/>
+<circle cx="65.1" cy="65.7" r="1.53"/>
+<circle cx="69.2" cy="65.7" r="0.80"/>
+<circle cx="89.7" cy="65.7" r="1.61"/>
+<circle cx="93.8" cy="65.7" r="1.50"/>
+<circle cx="106.1" cy="65.7" r="1.53"/>
+<circle cx="110.2" cy="65.7" r="1.56"/>
+<circle cx="122.5" cy="65.7" r="1.64"/>
+<circle cx="126.6" cy="65.7" r="1.40"/>
+<circle cx="159.4" cy="65.7" r="1.61"/>
+<circle cx="163.5" cy="65.7" r="1.43"/>
+<circle cx="179.9" cy="65.7" r="1.56"/>
+<circle cx="184.0" cy="65.7" r="1.49"/>
+<circle cx="196.3" cy="65.7" r="1.29"/>
+<circle cx="200.4" cy="65.7" r="1.64"/>
+<circle cx="216.8" cy="65.7" r="1.60"/>
+<circle cx="220.9" cy="65.7" r="1.50"/>
+<circle cx="241.4" cy="65.7" r="1.45"/>
+<circle cx="245.5" cy="65.7" r="1.58"/>
+<circle cx="253.7" cy="65.7" r="1.16"/>
+<circle cx="257.8" cy="65.7" r="1.64"/>
+<circle cx="261.9" cy="65.7" r="0.79"/>
+<circle cx="63.0" cy="69.3" r="1.59"/>
+<circle cx="67.1" cy="69.3" r="1.64"/>
+<circle cx="71.2" cy="69.3" r="1.59"/>
+<circle cx="75.3" cy="69.3" r="1.34"/>
+<circle cx="87.6" cy="69.3" r="1.24"/>
+<circle cx="91.7" cy="69.3" r="1.64"/>
+<circle cx="108.1" cy="69.3" r="1.64"/>
+<circle cx="112.2" cy="69.3" r="1.20"/>
+<circle cx="120.4" cy="69.3" r="1.49"/>
+<circle cx="124.5" cy="69.3" r="1.62"/>
+<circle cx="157.3" cy="69.3" r="1.11"/>
+<circle cx="161.4" cy="69.3" r="1.64"/>
+<circle cx="165.5" cy="69.3" r="0.84"/>
+<circle cx="177.8" cy="69.3" r="1.21"/>
+<circle cx="181.9" cy="69.3" r="1.64"/>
+<circle cx="186.0" cy="69.3" r="1.55"/>
+<circle cx="190.1" cy="69.3" r="1.53"/>
+<circle cx="194.2" cy="69.3" r="1.54"/>
+<circle cx="198.3" cy="69.3" r="1.64"/>
+<circle cx="202.4" cy="69.3" r="1.42"/>
+<circle cx="214.7" cy="69.3" r="1.10"/>
+<circle cx="218.8" cy="69.3" r="1.64"/>
+<circle cx="222.9" cy="69.3" r="0.95"/>
+<circle cx="243.4" cy="69.3" r="1.57"/>
+<circle cx="247.5" cy="69.3" r="1.43"/>
+<circle cx="251.6" cy="69.3" r="0.90"/>
+<circle cx="255.7" cy="69.3" r="1.64"/>
+<circle cx="259.8" cy="69.3" r="1.04"/>
+<circle cx="65.1" cy="72.8" r="0.92"/>
+<circle cx="69.2" cy="72.8" r="1.25"/>
+<circle cx="73.3" cy="72.8" r="1.57"/>
+<circle cx="77.4" cy="72.8" r="1.64"/>
+<circle cx="89.7" cy="72.8" r="1.64"/>
+<circle cx="93.8" cy="72.8" r="1.36"/>
+<circle cx="106.1" cy="72.8" r="1.39"/>
+<circle cx="110.2" cy="72.8" r="1.63"/>
+<circle cx="118.4" cy="72.8" r="0.81"/>
+<circle cx="122.5" cy="72.8" r="1.64"/>
+<circle cx="126.6" cy="72.8" r="1.19"/>
+<circle cx="159.4" cy="72.8" r="1.61"/>
+<circle cx="163.5" cy="72.8" r="1.43"/>
+<circle cx="179.9" cy="72.8" r="1.64"/>
+<circle cx="184.0" cy="72.8" r="1.52"/>
+<circle cx="188.1" cy="72.8" r="1.16"/>
+<circle cx="192.2" cy="72.8" r="1.16"/>
+<circle cx="196.3" cy="72.8" r="1.16"/>
+<circle cx="200.4" cy="72.8" r="1.16"/>
+<circle cx="216.8" cy="72.8" r="1.60"/>
+<circle cx="220.9" cy="72.8" r="1.50"/>
+<circle cx="245.5" cy="72.8" r="1.64"/>
+<circle cx="249.6" cy="72.8" r="1.38"/>
+<circle cx="253.7" cy="72.8" r="1.64"/>
+<circle cx="257.8" cy="72.8" r="1.22"/>
+<circle cx="75.3" cy="76.4" r="1.53"/>
+<circle cx="79.4" cy="76.4" r="1.48"/>
+<circle cx="87.6" cy="76.4" r="0.99"/>
+<circle cx="91.7" cy="76.4" r="1.64"/>
+<circle cx="95.8" cy="76.4" r="1.13"/>
+<circle cx="104.0" cy="76.4" r="1.17"/>
+<circle cx="108.1" cy="76.4" r="1.64"/>
+<circle cx="112.2" cy="76.4" r="0.94"/>
+<circle cx="120.4" cy="76.4" r="1.29"/>
+<circle cx="124.5" cy="76.4" r="1.64"/>
+<circle cx="128.6" cy="76.4" r="1.02"/>
+<circle cx="157.3" cy="76.4" r="1.11"/>
+<circle cx="161.4" cy="76.4" r="1.64"/>
+<circle cx="165.5" cy="76.4" r="0.84"/>
+<circle cx="177.8" cy="76.4" r="0.97"/>
+<circle cx="181.9" cy="76.4" r="1.64"/>
+<circle cx="186.0" cy="76.4" r="1.13"/>
+<circle cx="214.7" cy="76.4" r="1.08"/>
+<circle cx="218.8" cy="76.4" r="1.64"/>
+<circle cx="222.9" cy="76.4" r="1.06"/>
+<circle cx="243.4" cy="76.4" r="0.78"/>
+<circle cx="247.5" cy="76.4" r="1.64"/>
+<circle cx="251.6" cy="76.4" r="1.64"/>
+<circle cx="255.7" cy="76.4" r="1.40"/>
+<circle cx="61.0" cy="79.9" r="1.53"/>
+<circle cx="65.1" cy="79.9" r="1.37"/>
+<circle cx="69.2" cy="79.9" r="1.24"/>
+<circle cx="73.3" cy="79.9" r="1.50"/>
+<circle cx="77.4" cy="79.9" r="1.64"/>
+<circle cx="89.7" cy="79.9" r="1.14"/>
+<circle cx="93.8" cy="79.9" r="1.64"/>
+<circle cx="97.9" cy="79.9" r="1.49"/>
+<circle cx="102.0" cy="79.9" r="1.50"/>
+<circle cx="106.1" cy="79.9" r="1.64"/>
+<circle cx="110.2" cy="79.9" r="1.02"/>
+<circle cx="122.5" cy="79.9" r="1.35"/>
+<circle cx="126.6" cy="79.9" r="1.64"/>
+<circle cx="130.7" cy="79.9" r="1.51"/>
+<circle cx="134.8" cy="79.9" r="1.39"/>
+<circle cx="138.9" cy="79.9" r="1.59"/>
+<circle cx="151.2" cy="79.9" r="1.48"/>
+<circle cx="155.3" cy="79.9" r="1.48"/>
+<circle cx="159.4" cy="79.9" r="1.63"/>
+<circle cx="163.5" cy="79.9" r="1.60"/>
+<circle cx="167.6" cy="79.9" r="1.48"/>
+<circle cx="171.7" cy="79.9" r="1.47"/>
+<circle cx="179.9" cy="79.9" r="1.04"/>
+<circle cx="184.0" cy="79.9" r="1.64"/>
+<circle cx="188.1" cy="79.9" r="1.54"/>
+<circle cx="192.2" cy="79.9" r="1.37"/>
+<circle cx="196.3" cy="79.9" r="1.47"/>
+<circle cx="200.4" cy="79.9" r="1.62"/>
+<circle cx="216.8" cy="79.9" r="1.42"/>
+<circle cx="220.9" cy="79.9" r="1.64"/>
+<circle cx="225.0" cy="79.9" r="1.51"/>
+<circle cx="229.1" cy="79.9" r="1.48"/>
+<circle cx="245.5" cy="79.9" r="1.10"/>
+<circle cx="249.6" cy="79.9" r="1.64"/>
+<circle cx="253.7" cy="79.9" r="1.58"/>
+<circle cx="63.0" cy="83.5" r="1.35"/>
+<circle cx="67.1" cy="83.5" r="1.50"/>
+<circle cx="71.2" cy="83.5" r="1.52"/>
+<circle cx="75.3" cy="83.5" r="1.35"/>
+<circle cx="95.8" cy="83.5" r="1.39"/>
+<circle cx="99.9" cy="83.5" r="1.52"/>
+<circle cx="104.0" cy="83.5" r="1.38"/>
+<circle cx="124.5" cy="83.5" r="0.89"/>
+<circle cx="128.6" cy="83.5" r="1.42"/>
+<circle cx="132.7" cy="83.5" r="1.53"/>
+<circle cx="136.8" cy="83.5" r="1.42"/>
+<circle cx="140.9" cy="83.5" r="0.85"/>
+<circle cx="149.1" cy="83.5" r="1.08"/>
+<circle cx="153.2" cy="83.5" r="1.36"/>
+<circle cx="157.3" cy="83.5" r="1.36"/>
+<circle cx="161.4" cy="83.5" r="1.36"/>
+<circle cx="165.5" cy="83.5" r="1.36"/>
+<circle cx="169.6" cy="83.5" r="1.36"/>
+<circle cx="173.7" cy="83.5" r="0.88"/>
+<circle cx="186.0" cy="83.5" r="1.34"/>
+<circle cx="190.1" cy="83.5" r="1.51"/>
+<circle cx="194.2" cy="83.5" r="1.50"/>
+<circle cx="198.3" cy="83.5" r="1.35"/>
+<circle cx="202.4" cy="83.5" r="0.77"/>
+<circle cx="218.8" cy="83.5" r="1.05"/>
+<circle cx="222.9" cy="83.5" r="1.32"/>
+<circle cx="227.0" cy="83.5" r="1.36"/>
+<circle cx="231.1" cy="83.5" r="1.06"/>
+<circle cx="247.5" cy="83.5" r="1.37"/>
+<circle cx="251.6" cy="83.5" r="1.64"/>
+<circle cx="245.5" cy="87.0" r="1.16"/>
+<circle cx="249.6" cy="87.0" r="1.64"/>
+<circle cx="253.7" cy="87.0" r="0.90"/>
+<circle cx="239.3" cy="90.6" r="1.31"/>
+<circle cx="243.4" cy="90.6" r="1.59"/>
+<circle cx="247.5" cy="90.6" r="1.64"/>
+<circle cx="251.6" cy="90.6" r="0.96"/>
+<circle cx="241.4" cy="94.1" r="1.30"/>
+<circle cx="245.5" cy="94.1" r="1.25"/>
 </g></defs>
 <text x="160" y="32" text-anchor="middle" font-size="28" font-weight="700" fill="#eef1ec" textLength="184.8" lengthAdjust="spacingAndGlyphs">I build for</text>
 <g class="fringe fm" fill="#e08fd0"><use href="#crowd"/></g>
